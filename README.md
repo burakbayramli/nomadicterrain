@@ -47,5 +47,3 @@ An example `nomterr.conf` file looks like
 }
 ```
 
-
-
