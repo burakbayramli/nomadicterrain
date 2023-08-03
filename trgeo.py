@@ -56,7 +56,8 @@ def park():
                                 weight=4).add_to(m)                
             folium.Polygon(locations=data1,weight=2,color = 'blue').add_to(m)
 
-camp()
-park()
-            
-m.save(base + "/trgeo.html")
+if __name__ == "__main__": 
+             
+    camp()
+    park()            
+    m.save(base + "/trgeo.html")
