@@ -1,0 +1,24 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <a href="/">Back</a>
+    
+    <h2>Name Lookup</h2>
+    
+    <form class="form-inline" action="/name_lookup" method="POST">
+
+      Name:
+      <input type="text" name="name" </p>
+      <input type="submit" value="Go"/>
+      
+    </form>
+
+    {{ res }}
+    
+            
+  </body>
+</html>
