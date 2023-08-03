@@ -222,8 +222,13 @@ def test1():
     m.save("/tmp/out.html")
 
 def test2():
-    get_camp(40.9671978651242, 29.0835162031361,30000)
+    get_camp(40.9671978651242, 29.0835162031361,2000)
+        
+def test3():
+    res = get_amenities("cafe","cafe nero",10000,40.96020776907306,28.818568166035895)
+    for x in res['elements']: print (x)
         
 if __name__ == "__main__": 
  
-    test2()
+    #test2()
+    test3()

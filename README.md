@@ -47,3 +47,9 @@ An example `nomterr.conf` file looks like
 }
 ```
 
+### Contributors
+
+Please feel free to submit bug reports, enhancements. 
+
+
+
