@@ -1,3 +1,7 @@
+"""
+Reads RSS feeds of people listed in a following accounts CSV export file,
+and displays their latest messages in a simple HTML.
+"""
 import feedparser, sys, codecs, socket
 import re, requests, random, os, news
 from bs4 import BeautifulSoup 
@@ -7,10 +11,6 @@ accts = "static/following_accounts.csv"
 
 def getrss():
     socket.setdefaulttimeout(5)
-    feeds = [
-        ("August","https://mastodon.online/@davidaugust.rss",20)
-    ]
-
     content = ""
     content += '''
     <html>
