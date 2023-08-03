@@ -575,7 +575,7 @@ def name_lookup():
         headers = {k: v for v, k in enumerate(next(rd))}
         for row in rd:
             if name in row[headers['cityascii2']].lower():
-                res.append(row)
+                res.append("%s, %s, %s,%s" % (row[1],row[3],row[5],row[6])   )
         
     return render_template('/name_lookup.html', res=res)
 
