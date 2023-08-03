@@ -2,7 +2,7 @@
 import os; os.chdir(os.path.dirname(__file__))
 from flask import Flask, render_template, request, session, redirect, send_file
 from io import StringIO, BytesIO
-import pickle, polyline, util
+import pickle, polyline, util, geocoder
 import numpy as np, os, uuid, glob
 import sys; sys.path.append("guide")
 import json, random, mindmeld, base64, time as timelib
@@ -552,6 +552,18 @@ def amenities():
             folium.Marker([e['lat'],e['lon']], popup=ps, icon=folium.Icon(color="blue")).add_to(m)
     m.save(fouthtml)
     return send_file(fouthtml)
+
+@app.route('/name_lookup_main')
+def name_lookup_main():
+    return render_template('/name_lookup.html')
+    
+@app.route("/name_lookup", methods=["POST"])
+def name_lookup():
+    name = request.form.get("name")
+    g = geocoder.osm(name)
+    res = "%s %s" % (name, g.latlng)
+    return render_template('/name_lookup.html', res=res)
+
 
 
 if __name__ == '__main__':
