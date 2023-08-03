@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
+  
   <body>
     <a href="/">Back</a>
     
@@ -11,13 +12,21 @@
     
     <form class="form-inline" action="/name_lookup" method="POST">
 
+      Type:      
+      <select name="method" method="POST">
+        <option value= "online">Online</option>"
+        <option value= "offline">Offline</option>"
+      </select>
+
       Name:
       <input type="text" name="name" </p>
       <input type="submit" value="Go"/>
       
     </form>
 
-    {{ res }}
+    {% for x in res %} 
+       {{ x }} <br/>
+    {% endfor %}        
     
             
   </body>
