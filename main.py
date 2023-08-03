@@ -52,7 +52,6 @@ def location(loc,zoom):
     fig = plt.figure()
     zoom = float(zoom)
     sm.plot_countries(lat,lon,zoom,outcolor='lavenderblush')    
-    sm.plot_water(lat,lon,zoom)
     plt.plot(lon,lat,'rd')
     plt.savefig(fout)    
     return render_template('/location.html', location=fout, lat=lat, lon=lon)
