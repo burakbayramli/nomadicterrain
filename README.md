@@ -5,16 +5,19 @@ travelers. To start simply run `main.py`.
 
 ### Features
 
+For the current location (either received from phone, or manually set),
+it can supply
+
 * Current weather and prediction for the next 7 days using Open Weather Map
 * Current pollution levels
-* Elevation mapping both online and offline
-* Path elevation between current location towards a target
+* Elevation mapping within a radius both online and offline
+* Path elevation between current location towards a point target as a line graph
 * Graphical wind display, current and prediction
-* Amenities search (cafe, atm, camps) via OSM
-* Trip preperation, mapping (walking routes, cafes, restaurants)
+* Amenities search (cafe, atm, camps) via an online OSM based free service
+* Trip preperation via files, presented on a map with walking routes, cafes, restaurants
 * Latest news retrieval via RSS from reputable sources
 * Most recent messages from Mastodon follows (via RSS)
-* Digital book library indexing and search
+* Digital book library indexing and search (point to a any pdf directory it will index it)
 * Automatic psych profiling
 * Shortest path calculation between two points for walking
 * Previous, current and next month's calendar including current time
