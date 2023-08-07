@@ -34,11 +34,11 @@ The details of the reading results can be found under the `doc/details` folder.
 For Millman it is at `millman/2810.txt` for example, or for Chinese
 `chinese/Monkey.html`, so on..
 
-## MBTI Test
+### MBTI Test
 
 You can also take the MBTI test under `../nomadicterrain/ui/static/mbti_en.html`.
 
-# Blood Type Diet
+### Blood Type Diet
 
 Some food ingredients are good for some blood types, bad for
 others. See the file `data/food.dat` for the whole list. For example
@@ -53,21 +53,21 @@ that food item, meaning that if the sec/non-sec statuses are
 BENEFICIAL, AVOID and you like that food, it probably means you are a
 secretor.
 
-## Lewi Files
+### Lewi 
 
 Now some implementation details; There are some reference files
 `mindmeld` uses from the subproject `jlewi`; No need to copy anything
 back and forth, bcz `mindmeld` folder as-is already has a recently
 updated / working Lewi file copied from this subproject. If you want
 to regenerate the lewi file however, all required files are under the
-`jlewi` subfolder. This is a Java project, see its [README](./jlewi) for
-further info. The calculation of Lewi numbers and "decans" is the most
-beneficial part of this package, doing the same calculation by hand
-was extremely time consuming (the decan information required for the
-calculation is through the `SwissEph` package which we wrapped with
-the Java code found under `jlewi`).
+`jlewi` subfolder. This is a Java project, see its [README](./jlewi)
+for further info. The calculation of Lewi numbers and "decans" is the
+most beneficial part of this package, doing the same calculation by
+hand was extremely time consuming (the decan information required for
+the calculation is through the `SwissEph` package which we wrapped
+with the Java code found under `jlewi`).
 
-## Millman
+### Millman
 
 This is numerology, can be quite predictive for certain things. It can
 also report a cycle number which is the period your life path is on;
@@ -91,7 +91,7 @@ and try to remember the state of your life at those moments in
 time, especially at year 1. The results can be revealing.
 
 
-## Summary
+### Summary
 
 In sum, `mindmeld` calculates the following:
 
