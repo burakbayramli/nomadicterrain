@@ -237,7 +237,6 @@ def get_weather(lat,lon):
             row = [xx['dt_txt'],
                    xx['weather'][0]['description'],
                    xx['main']['temp'], "C",
-                   'feels_like :',xx['main']['feels_like'], "C",
                    'wind: ', xx['wind']['speed'], xx['wind']['deg'],
                    'humidity :',xx['main']['humidity']]
             if "12:00" in xx['dt_txt']:
