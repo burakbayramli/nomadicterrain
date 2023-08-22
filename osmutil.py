@@ -208,6 +208,17 @@ def get_camp(clat,clon,dist):
     r = requests.get(base_url + safe_string)    
     return json.loads(r.text)
 
+def get_mall(clat,clon,amenity_dist):
+    base_url = "https://overpass-api.de/api/interpreter?data="
+    q = """
+    [out:json];
+    node["shop"="mall"](around:%s,%s,%s);
+    out center;
+    """ % (amenity_dist,clat,clon)
+    safe_string = urllib.parse.quote_plus(q)
+    r = requests.get(base_url + safe_string)    
+    return json.loads(r.text)
+
 def test1():
     #grid_assign_centers((36.52259447316748, 27.612981046240638),
     #                     (41.05628025861666, 42.58542464923075))   
@@ -228,7 +239,12 @@ def test3():
     res = get_amenities("cafe","cafe nero",10000,40.96020776907306,28.818568166035895)
     for x in res['elements']: print (x)
         
+def test4():
+    res = get_mall(40.96020776907306,28.818568166035895,10000)
+    for x in res['elements']: print (x)
+        
 if __name__ == "__main__": 
  
     #test2()
-    test3()
+    #test3()
+    test4()

@@ -539,16 +539,25 @@ def amenities():
     amenity_name = request.form.get("amenity_name")
     amenity_dist = float(request.form.get("amenity_dist"))
     fouthtml = TMPDIR + "/direction-%s.html" % uuid.uuid4()
+    m = folium.Map(location=[clat, clon], zoom_start=14, control_scale=True)
     if amenity_type == 'camp': 
         doc = osmutil.get_camp(clat,clon,amenity_dist)
+        for e in doc['elements']:
+            if 'name' in e['tags']:
+                ps = e['tags']['name']
+                folium.Marker([e['lat'],e['lon']], popup=ps, icon=folium.Icon(color="blue")).add_to(m)
+    elif amenity_type == 'avm': 
+        doc = osmutil.get_mall(clat,clon,amenity_dist)
+        for e in doc['elements']:
+            if 'name' in e['tags']:
+                ps = e['tags']['name']
+                folium.Marker([e['lat'],e['lon']], popup=ps, icon=folium.Icon(color="blue")).add_to(m)
     else:
-        doc = osmutil.get_amenities(amenity_type,amenity_name,amenity_dist,clat,clon)
-        
-    m = folium.Map(location=[clat, clon], zoom_start=14, control_scale=True)
-    for e in doc['elements']:
-        if 'name' in e['tags'] and amenity_name in unidecode(e['tags']['name']).lower():
-            ps = "%s,%s" % (e['lat'],e['lon'])
-            folium.Marker([e['lat'],e['lon']], popup=ps, icon=folium.Icon(color="blue")).add_to(m)
+        doc = osmutil.get_amenities(amenity_type,amenity_name,amenity_dist,clat,clon)        
+        for e in doc['elements']:
+            if 'name' in e['tags'] and amenity_name in unidecode(e['tags']['name']).lower():
+                ps = "%s,%s" % (e['lat'],e['lon'])
+                folium.Marker([e['lat'],e['lon']], popup=ps, icon=folium.Icon(color="blue")).add_to(m)
     m.save(fouthtml)
     return send_file(fouthtml)
 

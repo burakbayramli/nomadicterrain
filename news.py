@@ -13,7 +13,8 @@ skip_words = ["Turk", "Türkiye", "Turkey","battery","Webb", "electric","Blinken
               "A\.I\.", "telescope", "Yellen", "Thunberg","charging","Ocasio",
               "tweets","twitter","ChatGPT", "EVs", "electrification", "charger","AI's",
               "Jon Stewart", "quantum", "power grid", "ronaldo", "Wagner", 
-              "LGBTQ+", "Cathie Wood", "Guterres", "AI,","Pope","Andrew Tate"]
+              "LGBTQ+", "Cathie Wood", "Guterres", "AI,","Pope","Andrew Tate",
+              "Taylor Swift"]
 
 
 
