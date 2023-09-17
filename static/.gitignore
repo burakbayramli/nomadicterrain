@@ -4,3 +4,6 @@ group1-shard1of1
 out-*.png
 kitaplar
 classnotes
+pyscript.*
+tst*.html
+invidx-*.json
