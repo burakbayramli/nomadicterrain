@@ -9,6 +9,9 @@ indir = "/opt/Downloads/ml-latest-small"
 means = np.load(tmp + "/means-%d.npz" % int(ITER-1))['arr_0']
 np.savetxt('../static/recom/means.csv',means,fmt='%3.5f')
 
+shutil.copy(tmp + "/movie_title_int.json", "../static/recom/")
+exit()
+
 di = json.loads(open(tmp + "/movie_id_int.json").read())
 direv = json.loads(open(tmp + "/movie_id_int_rev.json").read())
 cluster_ass = np.load(tmp + "/cluster-assignments-9.npz")['arr_0']
