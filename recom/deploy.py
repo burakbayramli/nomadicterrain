@@ -8,7 +8,11 @@ indir = "/opt/Downloads/ml-latest-small"
 outdir = "/home/burak/Documents/repos/burakbayramli.github.com/recom"
 
 means = np.load(tmp + "/means-%d.npz" % int(ITER-1))['arr_0']
-np.savetxt(outdir + '/means.csv',means,fmt='%3.5f')
+fout = open(outdir + '/means.json',"w")
+for i in range(K):
+    fout.write(json.dumps(list( np.round(means[i,:],4) )))
+    fout.write('\n')
+fout.close()    
 
 shutil.copy(tmp + "/movie_title_int.json", outdir)
 
