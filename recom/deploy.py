@@ -31,7 +31,9 @@ for k in range(K):
             if int(row[0]) in k_members: 
                 for movid,rating in jrow.items():                
                     if rating >= 4.0: picks[movid] = 1
-    fout = open(outdir + "/cluster_members_%d.csv"%k,"w")
-    for k in picks: fout.write(k + "\n")
+    fout = open(outdir + "/cluster_members_%d.json"%k,"w")
+    tmp = [int(x) for x in picks.keys()]
+    fout.write(json.dumps(tmp))
+    fout.write('\n')
     fout.close()
-      
+    
