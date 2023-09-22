@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+  <script src="/static/jquery-3.6.0.js"></script>
+  <script src="/static/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      "BBB",
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+  
+</body>
+</html>
