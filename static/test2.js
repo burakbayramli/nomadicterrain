@@ -33,6 +33,7 @@ function autocomplete(inp) {
 	/*append the DIV element as a child of the autocomplete container:*/
 	this.parentNode.appendChild(a);
 	/*for each item in the array...*/
+	if (val.length < 3) return;
 	for (i = 0; i < arr.length; i++) {
             /*check if the item starts with the same letters as the text field value:*/
             if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
@@ -54,6 +55,7 @@ function autocomplete(inp) {
 		a.appendChild(b);
             }
 	}
+
     });
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function(e) {
