@@ -15,15 +15,26 @@ file = fs.readFileSync(path2, 'utf8');
 picks = JSON.parse(file);
 console.log(picks)
 
-title_id['Swordfish (2001)'];
-console.log(means['0'][10]);
+//title_id['Swordfish (2001)'];
+//console.log(means['0'][10]);
 
-K = 5;
-dist = [];
+function closest_cluster(picks, means) {
+    K = Object.keys(means).length;
+    dist = [];
+    for (let i = 0; i < K; i++) {
+	dist_k = 0;
+	Object.keys(picks).forEach(function(key) {
+	    dist_k += (picks[key] - means[i][title_id[key]])**2;
+	})
+	dist.push(Math.sqrt(dist_k));
+    }
 
-for (let i = 0; i < K; i++) {
-    dist_k = 0;
-    Object.keys(picks).forEach(function(key) {
-	console.log('Key : ' + key + ', Value : ' + picks[key] + ' ' + title_id[key])
-    })
+    const index = dist.indexOf(Math.min(...dist))
+    //console.log(dist);
+    return index;
 }
+
+res = closest_cluster(picks, means);
+console.log(res);
+
+
