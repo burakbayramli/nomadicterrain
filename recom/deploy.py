@@ -9,9 +9,9 @@ outdir = "/home/burak/Documents/repos/burakbayramli.github.com/recom"
 
 means = np.load(tmp + "/means-%d.npz" % int(ITER-1))['arr_0']
 fout = open(outdir + '/means.json',"w")
-for i in range(K):
-    fout.write(json.dumps(list( np.round(means[i,:],4) )))
-    fout.write('\n')
+means_dict = {}
+for i in range(K): means_dict[i] = list( np.round(means[i,:],4) )
+fout.write(json.dumps(means_dict))
 fout.close()    
 
 shutil.copy(tmp + "/movie_title_int.json", outdir)
