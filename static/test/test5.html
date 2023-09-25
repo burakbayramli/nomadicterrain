@@ -3,23 +3,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-  <script>
-
-    function add_movie() {
+<script>
+  function show_picks() {
       if (document.cookie.length < 1) {
          document.cookie = "[]"
       }
+      cook = JSON.parse(document.cookie);
+      out = "";
+	    cook.forEach(function(key) {
+	       out += "<a href=''>" + key + "</a><br/>"
+     	})      
+      document.getElementById("picks").innerHTML = out;
+  }
+
+    function add_movie() {
       res = document.getElementById("myInput").value;
       cook = JSON.parse(document.cookie);
       cook.push(res);
-      //alert(cook);
-      
+      alert(cook);
       document.cookie = JSON.stringify(cook);
     }
    
 </script>
 
-<body>
+<body onload='show_picks()'>
 
 <h2>Recommender</h2>
 
@@ -30,11 +37,16 @@
   </div>
 </form>
 
-<script src="test5.js"></script>
 
   <div id="output">
   </div>
 
+  <div id="picks">
+  </div>
+
+
+<script src="test5.js"></script>
+  
 
 </body>
 </html>
