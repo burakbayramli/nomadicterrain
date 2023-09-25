@@ -11,5 +11,5 @@ file = fs.readFileSync(path2, 'utf8');
 const movie_id_int_rev = JSON.parse(file);
 
 cluster_ids.forEach(function(key) {
-    console.log(movie_id_int_rev[key])
+    console.log(key + " " + movie_id_int_rev[key])
 })

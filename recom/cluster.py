@@ -83,19 +83,21 @@ class KMeans2Job:
 def prepare():
 
     df = pd.read_csv(indir + "/movies.csv")
-    d = df.reset_index().set_index('movieId')['index'].to_dict()
+    di = df.reset_index().set_index('movieId')['index'].to_dict()
+    df.reset_index().set_index('movieId')['index'].to_csv("/tmp/out1.csv")
     fout = open(tmp + "/movie_id_int.json","w")
-    fout.write(json.dumps(d))
+    fout.write(json.dumps(di))
     fout.close()
 
     df = pd.read_csv(indir + "/movies.csv")
-    d = df.reset_index().set_index('title')['index'].to_dict()
+    dt = df.reset_index().set_index('title')['index'].to_dict()
+    df.reset_index().set_index('title')['index'].to_csv('/tmp/out2.csv')
     fout = open(tmp + "/movie_title_int.json","w")
-    fout.write(json.dumps(d))
+    fout.write(json.dumps(dt))
     fout.close()
 
     drev = {}
-    for k,v in d.items(): drev[int(v)] = k    
+    for k,v in dt.items(): drev[int(v)] = k
     fout = open(tmp + "/movie_id_int_rev.json","w")
     fout.write(json.dumps(drev))
     fout.close()
