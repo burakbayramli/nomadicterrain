@@ -1,13 +1,16 @@
-import os, numpy as np, util, json, pandas as pd, re
+import os, numpy as np, json, pandas as pd, re
 import numpy.linalg as lin, csv
 
-di = json.loads(open("data/movie_id_int.json").read())
-dt = json.loads(open("data/movie_title_int.json").read())
-cluster_ass = np.load("data/cluster-assignments-9.npz")['arr_0']
+indir = "/opt/Downloads/ml-latest-small"
+tmp = "/tmp/movie"
+
+di = json.loads(open("../static/recom/movie_id_int.json").read())
+dt = json.loads(open("../static/recom/movie_title_int.json").read())
+cluster_ass = np.load("../static/recom/cluster-assignments-9.npz")['arr_0']
 picks = pd.read_csv('movpicks3.csv',index_col=0).to_dict('index')
-means = np.load("data/means-9.npz")['arr_0']
-mov_id_title = pd.read_csv("../movies.csv",index_col="movieId")['title'].to_dict()
-genre = pd.read_csv("../movies.csv",index_col="movieId")['genres'].to_dict()
+means = np.load(tmp + "/recom/means-9.npz")['arr_0']
+mov_id_title = pd.read_csv(indir + "/movies.csv",index_col="movieId")['title'].to_dict()
+genre = pd.read_csv(indir + "/movies.csv",index_col="movieId")['genres'].to_dict()
 
 M = 9742
 U = 610
