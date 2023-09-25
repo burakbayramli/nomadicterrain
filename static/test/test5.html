@@ -12,7 +12,8 @@
       res = document.getElementById("myInput").value;
       cook = JSON.parse(document.cookie);
       cook.push(res);
-      alert(cook);
+      //alert(cook);
+      
       document.cookie = JSON.stringify(cook);
     }
    
@@ -21,8 +22,6 @@
 <body>
 
 <h2>Recommender</h2>
-
-<p>Start typing:</p>
 
 <form autocomplete="off">
   <div class="autocomplete" style="width:300px;">
