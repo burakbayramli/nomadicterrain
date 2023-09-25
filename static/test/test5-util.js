@@ -25,3 +25,7 @@ function add_movie() {
     document.cookie = JSON.stringify(cook);
 }
 
+function recommend() {
+    
+    alert('yes');    
+}

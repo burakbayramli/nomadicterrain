@@ -1,33 +1,32 @@
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 
-<script src="test5-util.js"></script>
-   
-</script>
+    <script src="test5-util.js"></script>
+    
+  </script>
 
-<body onload='show_picks()'>
+  <body onload='show_picks()'>
 
-<h2>Recommender</h2>
+    <h2>Recommender</h2>
 
-<form autocomplete="off">
-  <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text" name="myCountry" placeholder="Movie">
-    <p><button onclick="add_movie()">Add</button></p>
-  </div>
-</form>
-
-
-  <div id="output">
-  </div>
-
-  <div id="picks">
-  </div>
+    <form autocomplete="off">
+      <div class="autocomplete" style="width:300px;">
+        <input id="myInput" type="text" name="myCountry" placeholder="Movie">
+          <button onclick="add_movie()">Add</button>
+        </div>
+      </form>
 
 
-<script src="test5.js"></script>
-  
+      <div id="picks">
+      </div>
 
-</body>
-</html>
+      <p>
+        <button onclick="recommend()">Recomend</button>
+      </p>
+
+      <script src="test5.js"></script>      
+
+    </body>
+  </html>
