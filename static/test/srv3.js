@@ -37,4 +37,3 @@ function closest_cluster(picks, means) {
 res = closest_cluster(picks, means);
 console.log(res);
 
-

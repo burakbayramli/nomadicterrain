@@ -16,8 +16,11 @@ fout.close()
 
 shutil.copy(tmp + "/movie_title_int.json", outdir)
 
+shutil.copy(tmp + "/movie_id_int_rev.json", outdir)
+
 di = json.loads(open(tmp + "/movie_id_int.json").read())
 direv = json.loads(open(tmp + "/movie_id_int_rev.json").read())
+
 cluster_ass = np.load(tmp + "/cluster-assignments-9.npz")['arr_0']
 
 for k in range(K):

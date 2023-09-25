@@ -88,17 +88,18 @@ def prepare():
     fout.write(json.dumps(d))
     fout.close()
 
-    drev = dict((v,k) for k,v in d.items())
-    fout = open(tmp + "/movie_id_int_rev.json","w")
-    fout.write(json.dumps(drev))
-    fout.close()
-
     df = pd.read_csv(indir + "/movies.csv")
     d = df.reset_index().set_index('title')['index'].to_dict()
     fout = open(tmp + "/movie_title_int.json","w")
     fout.write(json.dumps(d))
     fout.close()
-    
+
+    drev = {}
+    for k,v in d.items(): drev[int(v)] = k    
+    fout = open(tmp + "/movie_id_int_rev.json","w")
+    fout.write(json.dumps(drev))
+    fout.close()
+            
     cluster_ass = np.random.randint(K,size=U)
     np.savez(tmp + '/cluster-assignments-0',cluster_ass)
 
