@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+  <script>
+
+    function add_movie() {
+      if (document.cookie.length < 1) {
+         document.cookie = "[]"
+      }
+      res = document.getElementById("myInput").value;
+      cook = JSON.parse(document.cookie);
+      cook.push(res);
+      alert(cook);
+      document.cookie = JSON.stringify(cook);
+    }
+   
+</script>
+
+<body>
+
+<h2>Recommender</h2>
+
+<p>Start typing:</p>
+
+<form autocomplete="off">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Movie">
+    <p><button onclick="add_movie()">Add</button></p>
+  </div>
+</form>
+
+<script src="test5.js"></script>
+
+  <div id="output">
+  </div>
+
+
+</body>
+</html>
