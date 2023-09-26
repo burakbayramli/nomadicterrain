@@ -30,7 +30,6 @@ function closest_cluster(picks, means, title_id) {
     }
 
     const index = dist.indexOf(Math.min(...dist))
-    //console.log(dist);
     return index;
 }
 
