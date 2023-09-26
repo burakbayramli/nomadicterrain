@@ -137,7 +137,11 @@ function recommend() {
     ci = closest_cluster(picks, means, title_id);
     cids = JSON.parse(fetch_cluster_ids(ci));
     recom = sample_wr(cids, "33333", 10);
+    out = ""
     for (var i=0;i<recom.length;i++){
-	console.log(rev[recom[i]]);
+	var m = rev[recom[i]];
+	out += `<a target='_blank' href='http://www.google.com/search?q=${m}'>${m}</a><br/><br/>`
     }
+
+    document.getElementById("recommendations").innerHTML = out;
 }
