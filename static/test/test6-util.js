@@ -93,6 +93,14 @@ function show_picks() {
 	out += "<a href=''>" + key + `</a><a onclick='remove("${key}")' class='remove' href='#'>Remove</a><br/>`
     })      
     document.getElementById("picks").innerHTML = out;
+
+    BUTTONDOWNLOAD.onclick = (function(){
+	let j = document.createElement("a")
+	j.download = "bb_"+Date.now()+".json"
+	j.href = URL.createObjectURL(new Blob([JSON.stringify(cook, null, 2)]))
+	j.click()
+    })
+    
 }
 
 function remove(movie) {
@@ -128,6 +136,7 @@ function sample_wr(sample_from, seed, N) {
     }
     return res;
 }
+
 
 function recommend() {
     picks = JSON.parse(document.cookie)['movies'];
