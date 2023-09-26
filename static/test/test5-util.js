@@ -1,4 +1,5 @@
 function show_picks() {
+    if (document.cookie.length < 1) JSON.stringify({});
     cook = JSON.parse(document.cookie);
     out = "";
     Object.keys(cook).forEach(function(key) {
@@ -9,7 +10,7 @@ function show_picks() {
 
 function remove(movie) {
     cook = JSON.parse(document.cookie);
-    cook.splice( cook.indexOf(movie), 1 ); 
+    delete cook[movie];
     document.cookie = JSON.stringify(cook);
     show_picks();
 }
