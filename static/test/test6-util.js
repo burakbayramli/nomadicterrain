@@ -137,6 +137,9 @@ function sample_wr(sample_from, seed, N) {
     return res;
 }
 
+function paged_results(page, N) {
+    
+}
 
 function recommend() {
     picks = JSON.parse(document.cookie)['movies'];
@@ -145,7 +148,7 @@ function recommend() {
     rev = JSON.parse(fetch_id_title_rev_data());
     ci = closest_cluster(picks, means, title_id);
     cids = JSON.parse(fetch_cluster_ids(ci));
-    recom = sample_wr(cids, "33333", 10);
+    recom = sample_wr(cids, document.cookie, 10);
     out = ""
     for (var i=0;i<recom.length;i++){
 	var m = rev[recom[i]];
