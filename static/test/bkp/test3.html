@@ -1,0 +1,45 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/main.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <script>
+
+    function get_data() {
+
+      url = "http://192.168.43.49:5000/static/recom/movie_title_int.json";
+      return fetch(url)
+             .then((response) => { if(response.ok)  return response.json(); })
+             .then((json) => {
+                const out = json
+                return out;
+             });
+    }
+
+    function foo() {
+      movies = null;
+      this.get_data().then((out) => {
+        movies = out
+       });
+
+    }
+
+    function show() {
+
+       document.getElementById("output").innerText = Object.keys(movies);
+    }
+   
+</script>
+    
+  <body onload="foo()">
+
+  <p><button onclick="show()">Show</button></p>
+
+  <div id="output">
+  </div>
+  
+  
+  </body>
+    
+</html>

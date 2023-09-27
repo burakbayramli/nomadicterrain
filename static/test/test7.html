@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <script src="test7-util.js"></script>
+    
+  </script>
+
+  <body onload='show_picks()'>
+
+    <h2>Recommender</h2>
+
+    <form autocomplete="off">
+      <div class="autocomplete" style="width:300px;">
+        <input id="myInput" type="text" name="myCountry" placeholder="Movie"/>
+        <input id="myRating" type="text" name="myRating"  placeholder="Rating 1-5"/>
+        <button onclick="add_movie()">Add</button>
+        </div>
+      </form>
+
+
+      <div id="picks">
+      </div>
+
+      <p>
+        <button onclick="recommend(0)">Recomend</button>
+      </p>
+
+      <script src="test7.js"></script>      
+
+      <div id="recommendations">
+      </div>
+
+      <button id="BUTTONDOWNLOAD">Export</button>      
+
+      
+    </body>
+  </html>
