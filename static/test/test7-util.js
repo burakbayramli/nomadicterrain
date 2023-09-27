@@ -73,12 +73,16 @@ function closest_cluster(picks, means, title_id) {
     for (let i = 0; i < K; i++) {
 	dist_k = 0;
 	Object.keys(picks).forEach(function(key) {
-	    if (picks[key] > 0) dist_k += (picks[key] - means[i][title_id[key]])**2;
+	    if (picks[key] > 0 && title_id.hasOwnProperty(key)) {
+		dist_k += (picks[key] - means[i][title_id[key]])**2;
+	    }
 	})
 	dist.push(Math.sqrt(dist_k));
     }
 
     const index = dist.indexOf(Math.min(...dist))
+    console.log("Closest " + dist);
+    console.log("Closest " + index);
     return index;
 }
 
