@@ -149,7 +149,12 @@ function paged_results(page, N) {
 }
 
 function recommend(page) {
-    recom = paged_results(page, 10);
+    picks = JSON.parse(document.cookie)['movies'];
+    recom_tmp = paged_results(page, 10);
+    var recom = [];
+    recom_tmp.forEach(function(key) {
+	if (!picks.hasOwnProperty(rev[key])) recom.push(key);
+    })
     out = ""
     for (var i=0;i<recom.length;i++){
 	var m = rev[recom[i]];
