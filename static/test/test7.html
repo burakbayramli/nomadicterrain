@@ -10,15 +10,21 @@
   <body onload='show_picks()'>
 
     <h2>Recommender</h2>
-
+    
+    <table id="recomtopnav" border="0"><tr>
+      <td><a href="/recom">Home</a></td>
+      <td><a href='#' id="BUTTONDOWNLOAD">Export</a></td>
+    </tr></table>
+      
     <form autocomplete="off">
       <div class="autocomplete" style="width:300px;">
-        <input id="myInput" type="text" name="myCountry" placeholder="Movie"/>
-        <input id="myRating" type="text" name="myRating"  placeholder="Rating 1-5"/>
-        <button onclick="add_movie()">Add</button>
+        <table border=0><tr>
+        <td><input id="myInput" type="text" name="myCountry" placeholder="Movie"/></td>
+        <td><input id="myRating" type="text" name="myRating"  placeholder="Rating 1-5"/></td>
+        <td><button onclick="add_movie()">Add</button></td>
+        </tr></table>
         </div>
       </form>
-
 
       <div id="picks">
       </div>
@@ -32,8 +38,5 @@
       <div id="recommendations">
       </div>
 
-      <button id="BUTTONDOWNLOAD">Export</button>      
-
-      
     </body>
   </html>

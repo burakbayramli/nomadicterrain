@@ -91,8 +91,10 @@ function show_picks() {
 	empty = {"movies": {}}
 	document.cookie = JSON.stringify(empty);
     }
+    
     cook = JSON.parse(document.cookie);
     out = "";
+    out += "<h5>Picks</h5>"
     Object.keys(cook['movies']).forEach(function(key) {
 	out += "<a href=''>" + key + `</a><a onclick='remove("${key}")' class='remove' href='#'>Remove</a><br/>`
     })      
@@ -160,12 +162,13 @@ function recommend(page) {
 	if (!picks.hasOwnProperty(rev[key])) recom.push(key);
     })
     out = ""
+    out += "<h5>Recommendations</h5>"
     for (var i=0;i<recom.length;i++){
 	var m = rev[recom[i]];
 	out += `<a target='_blank' href='http://www.google.com/search?q=${m}'>${m}</a><br/><br/>`
     }
     next = page + 1;
-    out += `<br/><a href='#' onclick='recommend(${next})'>Next</a><br/><br/>`;
+    out += `<br/><a href='#' onclick='recommend(${next})'>Next >></a><br/><br/>`;
     
     document.getElementById("recommendations").innerHTML = out;
 }
