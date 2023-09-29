@@ -105,7 +105,6 @@ def calculate_lewi_decans(decans):
                if not pd.isnull(smap.loc[planets[i],'tick']) and (planets[x] in smap.loc[planets[i],'tick']):
                   res.append(smap.loc[planets[i],'tick'][planets[x]])
             
-   print ('res',res)
    return sorted(res)
 
 
@@ -146,7 +145,6 @@ def calculate_all_lewi():
    d = timedelta(days=1)
    while (s+d != e):
       date = s.strftime('%Y%m%d')
-      print (date, calculate_lewi(date))
       s = s + d
    
 def calculate_all_lewi_json():
@@ -160,14 +158,14 @@ def calculate_all_lewi_json():
    e = datetime.strptime(endd, '%d/%m/%Y')
    d = timedelta(days=1)
    fout = open("/tmp/lewi.json","w")
-   fout.write("{'first': %s, 'last': %s, 'data': [\n" % (s.strftime('%Y%m%d'),e.strftime('%Y%m%d')))
+   fout.write('{\n"first": %s, "data": [\n' % s.strftime('%Y%m%d'))
    while (s+d != e):
       date = s.strftime('%Y%m%d')
       print (date)
       fout.write (str(calculate_lewi(date)) + ",\n")
       s = s + d
       fout.flush()
-   fout.write ("]")
+   fout.write ("]\n}")
    
 if __name__ == "__main__": 
    calculate_all_lewi_json()

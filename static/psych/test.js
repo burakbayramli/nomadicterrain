@@ -1,8 +1,7 @@
 const fs = require('fs')
 
-file = fs.readFileSync("test2.json", 'utf8');
+file = fs.readFileSync("/tmp/lewi.json", 'utf8');
 const out = JSON.parse(file);
 
-console.log(out);
-console.log(out[1]);
+console.log(out['data'][1]);
 
