@@ -17,6 +17,7 @@ def get_decans(date):
    # mapping.planets. 
    decans = pd.read_csv(fdir + "/" + 'data/decans.dat',names=['date','decans'],sep=' ')
    tmp=np.array(decans[decans['date']==int(date)]['decans'])
+   print ('tmp',tmp)
    res = tmp[0].split(':')   
    res = res[:-1]
    res = list(map(int, res))
@@ -105,7 +106,7 @@ def calculate_lewi_decans(decans):
                if not pd.isnull(smap.loc[planets[i],'tick']) and (planets[x] in smap.loc[planets[i],'tick']):
                   res.append(smap.loc[planets[i],'tick'][planets[x]])
             
-                  
+   print ('res',res)
    return sorted(res)
 
 
@@ -149,5 +150,26 @@ def calculate_all_lewi():
       print (date, calculate_lewi(date))
       s = s + d
    
+def calculate_all_lewi_json():
+   '''
+   Calculates all lewi numbers for decans. Decans must have been calculated
+   first using jlewi
+   '''
+   #startd = '1/1/2021'
+   startd = '1/2/2021'
+   endd = '1/1/2030'
+   s = datetime.strptime(startd, '%d/%m/%Y')
+   e = datetime.strptime(endd, '%d/%m/%Y')
+   d = timedelta(days=1)
+   fout = open("/tmp/lewi.json","w")
+   fout.write("{'first': %s, 'last': %s, 'data': [\n" % (s.strftime('%Y%m%d'),e.strftime('%Y%m%d')))
+   while (s+d != e):
+      date = s.strftime('%Y%m%d')
+      print (date)
+      fout.write (str(calculate_lewi(date)) + ",\n")
+      s = s + d
+      fout.flush()
+   fout.write ("]")
+   
 if __name__ == "__main__": 
-   calculate_all_lewi()
+   calculate_all_lewi_json()

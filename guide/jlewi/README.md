@@ -23,15 +23,19 @@ further calculations, through a simple `calc()` function.
 
 ## COMPILING
 
-Ant is used for all build related tasks. Simply type `ant` in the
-project directory, and you will get a jlewi.jar file. To run tests,
-type `ant test`. If you do not know what Ant is, go to
-`http://ant.apache.org`.
+On Ubuntu run `sudo apt install default-jdk`
+
+Then issue
+
+`javac -classpath src/java/:lib/commons-lang3-3.13.0.jar src/java/org/jlewi/GenerateDecans.java`
 
 ## HOW TO USE
 
-You can generate all decans for a long time period by using `ant run`
+You can generate all decans for a long time period by using
+
+```
+java -classpath src/java/:lib/commons-lang3-3.13.0.jar org.jlewi.GenerateDecans
+```
+
 which calls `GenerateDecans.java` class. The output will be under
 `/tmp/decans.dat`. For more details see `SampleTest.java`.
-
-

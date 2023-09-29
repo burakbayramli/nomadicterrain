@@ -15,7 +15,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import org.apache.commons.lang.time.FastDateFormat;
+//import org.apache.commons.lang.time.FastDateFormat;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 public class GenerateDecans
 {
@@ -54,7 +55,7 @@ public class GenerateDecans
     
     public static final void main(final String[] args) throws Exception {
 	
-	Date date = stringToDateddMM("01/01/1800");
+	Date date = stringToDateddMM("01/01/1880");
 	Date end = stringToDateddMM("01/01/2100");
 
 	BufferedWriter wd = new BufferedWriter(new FileWriter("/tmp/decans.dat"));
