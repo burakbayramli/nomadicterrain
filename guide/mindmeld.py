@@ -17,7 +17,6 @@ def get_decans(date):
    # mapping.planets. 
    decans = pd.read_csv(fdir + "/" + 'data/decans.dat',names=['date','decans'],sep=' ')
    tmp=np.array(decans[decans['date']==int(date)]['decans'])
-   print ('tmp',tmp)
    res = tmp[0].split(':')   
    res = res[:-1]
    res = list(map(int, res))
@@ -155,8 +154,7 @@ def calculate_all_lewi_json():
    Calculates all lewi numbers for decans. Decans must have been calculated
    first using jlewi
    '''
-   #startd = '1/1/2021'
-   startd = '1/2/2021'
+   startd = '1/1/1880'
    endd = '1/1/2030'
    s = datetime.strptime(startd, '%d/%m/%Y')
    e = datetime.strptime(endd, '%d/%m/%Y')
