@@ -115,8 +115,6 @@ def calculate_lewi(date):
 def calculate(date):
    decans = get_decans(date)
    print (decans)
-   sun = np.ceil(float(decans[0])/3)-1
-   moon = np.ceil(float(decans[1])/3)-1
    diff = (datetime.now() - datetime.strptime(str(date), '%Y%m%d')).days
    return {
       'age': diff / 365,
