@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 file = fs.readFileSync("lewi.json", 'utf8');
 const out = JSON.parse(file);
 
