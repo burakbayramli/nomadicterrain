@@ -94,15 +94,7 @@ function show_picks() {
     Object.keys(prefs['movies']).forEach(function(key) {
 	out += "<span class='container'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
     })      
-    document.getElementById("picks").innerHTML = out;
-
-    BUTTONDOWNLOAD.onclick = (function(){
-	let j = document.createElement("a")
-	j.download = "bb_"+Date.now()+".json"
-	j.href = URL.createObjectURL(new Blob([JSON.stringify(prefs, null, 2)]))
-	j.click()
-    })
-    
+    document.getElementById("picks").innerHTML = out;    
 }
 
 function remove(movie) {
