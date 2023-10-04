@@ -1,4 +1,16 @@
 
+
+function show_picks() {
+    init_cookies();    
+    prefs = get_prefs();
+    out = "";
+    out += "<h5>Picks</h5>"
+    Object.keys(prefs['movies']).forEach(function(key) {
+	out += "<span class='container'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
+    })      
+    document.getElementById("picks").innerHTML = out;    
+}
+
 function fetch_means_data() {
 
     url = "/static/recomdata/means.json";
@@ -84,17 +96,6 @@ function closest_cluster(picks, means, title_id) {
     console.log("Closest " + dist);
     console.log("Closest " + index);
     return index;
-}
-
-function show_picks() {
-    init_cookies();    
-    prefs = get_prefs();
-    out = "";
-    out += "<h5>Picks</h5>"
-    Object.keys(prefs['movies']).forEach(function(key) {
-	out += "<span class='container'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
-    })      
-    document.getElementById("picks").innerHTML = out;    
 }
 
 function remove(movie) {
