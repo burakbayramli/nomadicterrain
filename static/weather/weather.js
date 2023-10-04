@@ -1,7 +1,7 @@
 
 
 function fetchForecast() {
-    var endpoint = "https://api.openweathermap.org/data/2.5/onecall?lat=38.7267&lon=-9.1403&exclude=current,hourly,minutely,alerts&units=metric&appid=";
+    var endpoint = "https://api.openweathermap.org/data/2.5/onecall?lat=38.7267&lon=-9.1403&exclude=minutely,alerts&units=metric&appid=";
     prefs = get_prefs();
     endpoint = endpoint + prefs['weather']['owm_key']
     
@@ -13,10 +13,9 @@ function fetchForecast() {
 		);
 		return;
 	    }
-
 	    response.json().then(function (data) {
 		console.log(data);
-		var fday = "";
+		var res = "";
 		data.daily.forEach((value, index) => {
 		    if (index > 0) {
 			var dayname = new Date(value.dt * 1000).toLocaleDateString("en", {
@@ -24,9 +23,10 @@ function fetchForecast() {
 			});
 			var temp = value.temp.day.toFixed(0);
 			var hum = value.humidity.toFixed(0);
-			console.log(temp + " " + hum)
+			res += `<p>${temp},${hum}</p>`
 		    }
 		});
+		document.getElementById('output').innerHTML = res;
 	    });
 	})
 	.catch(function (err) {
@@ -41,7 +41,8 @@ function init() {
     if ('owm_key' in prefs['weather']) {
 	document.getElementById("owm_key").value = prefs['weather']['owm_key'];
     }
-    fetchForecast();
+    res = fetchForecast();
+    document.getElementById('output').innerHTML = res;
 }
 
 function set_owm_key() {
