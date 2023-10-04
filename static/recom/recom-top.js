@@ -87,9 +87,10 @@ function closest_cluster(picks, means, title_id) {
 }
 
 function show_picks() {
+    alert(all_apps);
     if (document.cookie.length < 1) {
-	empty = {"movies": {}}
-	document.cookie = 'bb=' + JSON.stringify(empty) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC';
+	empty = {"weather": {}, "movies": {}}
+	document.cookie = 'bb=' + JSON.stringify(empty) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
     }
     
     //cook = JSON.parse(document.cookie);
@@ -115,7 +116,7 @@ function remove(movie) {
     var elems = document.cookie.split("=");
     cook = JSON.parse(elems[1]);    
     delete cook['movies'][movie];
-    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC';
+    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
     show_picks();
 }
 
@@ -125,7 +126,7 @@ function add_movie() {
     var elems = document.cookie.split("=");
     cook = JSON.parse(elems[1]);    
     cook['movies'][mov] = rat;
-    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC';
+    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
 }
 
 
