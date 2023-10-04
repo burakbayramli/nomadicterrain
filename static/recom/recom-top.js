@@ -87,18 +87,11 @@ function closest_cluster(picks, means, title_id) {
 }
 
 function show_picks() {
-    alert(all_apps);
-    if (document.cookie.length < 1) {
-	empty = {"weather": {}, "movies": {}}
-	document.cookie = 'bb=' + JSON.stringify(empty) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
-    }
-    
-    //cook = JSON.parse(document.cookie);
-    var elems = document.cookie.split("=");
-    cook = JSON.parse(elems[1]);    
+    init_cookies();    
+    prefs = get_prefs();
     out = "";
     out += "<h5>Picks</h5>"
-    Object.keys(cook['movies']).forEach(function(key) {
+    Object.keys(prefs['movies']).forEach(function(key) {
 	out += "<span class='container'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
     })      
     document.getElementById("picks").innerHTML = out;
@@ -106,27 +99,25 @@ function show_picks() {
     BUTTONDOWNLOAD.onclick = (function(){
 	let j = document.createElement("a")
 	j.download = "bb_"+Date.now()+".json"
-	j.href = URL.createObjectURL(new Blob([JSON.stringify(cook, null, 2)]))
+	j.href = URL.createObjectURL(new Blob([JSON.stringify(prefs, null, 2)]))
 	j.click()
     })
     
 }
 
 function remove(movie) {
-    var elems = document.cookie.split("=");
-    cook = JSON.parse(elems[1]);    
-    delete cook['movies'][movie];
-    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
+    prefs = get_prefs();
+    delete prefs['movies'][movie];
+    save_cookie(prefs);
     show_picks();
 }
 
 function add_movie() {
     mov = document.getElementById("myInput").value;
     rat = document.getElementById("myRating").value;
-    var elems = document.cookie.split("=");
-    cook = JSON.parse(elems[1]);    
-    cook['movies'][mov] = rat;
-    document.cookie = 'bb=' + JSON.stringify(cook) + '; expires=Wed, 05 Aug 2025 23:00:00 UTC;path=/';
+    prefs = get_prefs();
+    prefs['movies'][mov] = rat;
+    save_cookie(prefs);
 }
 
 
@@ -149,9 +140,8 @@ function sample_wr(sample_from, seed, N) {
 }
 
 function paged_results(page, N) {
-    var elems = document.cookie.split("=");
-    cook = JSON.parse(elems[1]);    
-    picks = cook['movies'];
+    prefs = get_prefs();
+    picks = prefs['movies'];
     means = JSON.parse(fetch_means_data());
     title_id = JSON.parse(fetch_title_id_data());
     rev = JSON.parse(fetch_id_title_rev_data());
@@ -162,9 +152,8 @@ function paged_results(page, N) {
 }
 
 function recommend(page) {
-    var elems = document.cookie.split("=");
-    cook = JSON.parse(elems[1]);    
-    picks = cook['movies'];
+    prefs = get_prefs();
+    picks = prefs['movies'];
     recom_tmp = paged_results(page, 10);
     var recom = [];
     recom_tmp.forEach(function(key) {
