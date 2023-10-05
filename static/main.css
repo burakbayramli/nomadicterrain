@@ -16,4 +16,6 @@
    text-transform: uppercase;
 }
 
-
+.hourrow span {
+    padding: 10px;
+}

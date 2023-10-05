@@ -16,14 +16,19 @@ function fetchForecast() {
 	    response.json().then(function (data) {
 		console.log(data);
 		var res = "";
-		data.daily.forEach((value, index) => {
+		data.hourly.forEach((value, index) => {
 		    if (index > 0) {
 			var dayname = new Date(value.dt * 1000).toLocaleDateString("en", {
 			    weekday: "long",
 			});
-			var temp = value.temp.day.toFixed(0);
-			var hum = value.humidity.toFixed(0);
-			res += `<p>${temp},${hum}</p>`
+			var temp = value.temp;
+			var hum = value.humidity;
+			var date = new Date(value.dt * 1000);
+			var day = date.getDay();
+			var mon = date.getMonth();
+			var hours = date.getHours();
+			var dt = mon + "/" + day + " " + hours + ":00";			
+			res += `<p class='hourrow'><span>${dayname}</span><span>${temp}</span><span>${hum}</span><span>${dt}</span></p>`;
 		    }
 		});
 		document.getElementById('output').innerHTML = res;
