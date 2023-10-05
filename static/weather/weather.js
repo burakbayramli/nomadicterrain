@@ -27,8 +27,9 @@ function fetchForecast() {
 	    response.json().then(function (data) {
 		console.log(data);
 		var res = "";
+		res += "<p class='hourrow'><span>Day</span><span>Temperature</span><span>Humidity</span><span>Date</span></p>";
 		data.hourly.forEach((value, index) => {
-		    if (index > 0) {
+		    if (index % 3 == 0) {
 			var dayname = new Date(value.dt * 1000).toLocaleDateString("en", {
 			    weekday: "long",
 			});
