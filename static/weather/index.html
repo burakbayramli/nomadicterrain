@@ -7,13 +7,22 @@
   <script src="../common.js"></script>    
   <script src="weather.js"></script>    
   
-  <body onload='init()'>
+  <body onload='init2()'>
 
-    <div id='output'></div>
+    <p>
+      <button onclick="getLocation()">Get Location</button>
+      &nbsp;
+      <button onclick="getWeatherData()">Get Forecast</button>
+    </p>
+    
+    <div id="position"></div>
+
+    <div id='output'></div><br/>
     
     <input id="owm_key" type="text" name="owmkey"/>
     
     <button onclick="set_owm_key()">Set</button>
+    
     
   </body>
   

@@ -1,9 +1,20 @@
 
+function getLocation() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("position").innerHTML = lat + " " + lon;    
+}
 
 function fetchForecast() {
-    var endpoint = "https://api.openweathermap.org/data/2.5/onecall?lat=38.7267&lon=-9.1403&exclude=minutely,alerts&units=metric&appid=";
     prefs = get_prefs();
-    endpoint = endpoint + prefs['weather']['owm_key']
+    var key = prefs['weather']['owm_key'];
+    var endpoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=${key}`;
     
     fetch(endpoint)
 	.then(function (response) {
@@ -48,6 +59,29 @@ function init() {
     }
     res = fetchForecast();
     document.getElementById('output').innerHTML = res;
+}
+
+function init2() {
+    init_cookies(); 
+    prefs = get_prefs();
+    console.log(prefs);
+    if ('owm_key' in prefs['weather']) {
+	document.getElementById("owm_key").value = prefs['weather']['owm_key'];
+    }
+    if(typeof lat === 'undefined') {
+	document.getElementById("position").innerHTML = "<font color='red'>Position not set</font>";
+    }
+}
+
+function getWeatherData() {
+
+    if(typeof lat === 'undefined') {
+	document.getElementById("position").innerHTML = "<font color='red'>Position not set</font>";
+    }
+
+    res = fetchForecast();
+    document.getElementById('output').innerHTML = res;
+    
 }
 
 function set_owm_key() {
