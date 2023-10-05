@@ -210,48 +210,6 @@ def plot_elev(coords,zoom,start,steps):
     plt.clf()
     return render_template('/elev.html', location=fout, lat=lat, lon=lon)
 
-
-def get_weather(lat,lon):
-    base_url = 'http://api.openweathermap.org/data/2.5/weather?'
-    weatherapi = params['weatherapi']
-    payload = { 'lat': str(lat), 'lon': str(lon), 'units': 'metric', 'APPID': weatherapi }
-    r = requests.get(base_url, params=payload) 
-    res = []
-    for x in r.iter_lines():
-        x = json.loads(x.decode())
-        wetb = util.wet_bulb(float(x['main']['temp']), 1e5, float(x['main']['humidity']))
-        res.append(x['name'])
-        res.append (x['main'])
-        res.append (['wet bulb', np.round(wetb,2)])
-        res.append (x['wind'])
-        res.append (('clouds', x['clouds']))
-
-    base_url = 'http://api.openweathermap.org/data/2.5/forecast?'
-    payload = { 'lat': str(lat), 'lon': str(lon), 'units': 'metric', 'APPID': weatherapi }
-    r = requests.get(base_url, params=payload) 
-
-    for x in r.iter_lines():
-        x = json.loads(x.decode())
-        for xx in x['list']:
-            rain = xx.get('rain')
-            row = [xx['dt_txt'],
-                   xx['weather'][0]['description'],
-                   xx['main']['temp'], "C",
-                   'wind: ', xx['wind']['speed'], xx['wind']['deg'],
-                   'humidity :',xx['main']['humidity']]
-            if "12:00" in xx['dt_txt']:
-                wbt = util.wet_bulb(float(xx['main']['temp']), 1e5, float(xx['main']['humidity']))
-                row.append(["wet bulb:", np.round(wbt,2)])
-            res.append (row)
-            res.append ('---------------')
-    return res
-
-@app.route('/goweather/<coords>')
-def goweather(coords):
-    lat,lon = coords.split(';')
-    res = get_weather(lat,lon)
-    return render_template('/weather.html', res=res)
-
 @app.route('/extnews')
 def extnews():
     import news

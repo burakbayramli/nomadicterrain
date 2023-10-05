@@ -14,7 +14,6 @@ function setLocOnPage(lat,lon){
   document.getElementById("myloc").href = "/location/" + lat  + ";" + lon+"/0.4";
   document.getElementById("locpos").innerHTML = lat  + "," + lon;
   document.getElementById("trav").href = "/travel_main/" + lat  + ";" + lon;
-  document.getElementById("weat").href = "/goweather/" + lat  + ";" + lon;
   document.getElementById("pollu").href = "/gopollution/" + lat  + ";" + lon;
   document.getElementById("time").href = "/time/" + lat  + ";" + lon;
   document.getElementById("elev").href = "/plot_elev/" + lat  + ";" + lon+"/0.05/50/20";
@@ -61,7 +60,7 @@ function showPosition(position) {
             <a href="/market">Market</a>
           </li>
           <li>
-            <a id="weat" href="/goweather/40.9544;29.09139">Weather</a>,
+            <a id="weat" href="/static/weather/index.html">Weather</a>,
             <a id="pollu" href="/gopollution/40.9544;29.09139">Pollution</a>
           </li>
           <li><a href="/book">Loogle/Recoll</a></li>
