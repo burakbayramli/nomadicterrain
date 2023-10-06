@@ -42,10 +42,6 @@ var news_sources = [["First Post","https://www.firstpost.com/rss/world.xml"],
 		   ];
 
 		    
-
-//var skip_words = ['Trump','South'];
-//var skip_words = [];
-
 function visit() {
     // based on https://github.com/pokiiio/hatena-blog-parser
     prefs = get_prefs();
@@ -71,7 +67,6 @@ function visit() {
 	    postTitle = postTitle.replace("]]>","");
 	    postDescr = postDescr.replace("<![CDATA[","");
 	    postDescr = postDescr.replace("]]>","");
-	    console.log(postDescr);
 	    let skip = false;
 	    skip_words.forEach(function(word) {
 		if (postDescr.includes(word) || postTitle.includes(word)) {
@@ -90,8 +85,9 @@ function visit() {
 function init() {
     init_cookies();     
     prefs = get_prefs();
+    console.log(prefs);
     if ( ! prefs['news'].hasOwnProperty("filter_words") ) {
-	prefs['news']['filter_words'] = "";
+	prefs['news']['filter_words'] = "example1,example2";
     }
     visit();
 }
