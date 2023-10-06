@@ -2,7 +2,7 @@
 function imp() {
     prefs = get_prefs();
     new_picks = JSON.parse(document.getElementById("myTextarea").value);    
-    set_cookie(new_picks);
+    save_cookie(new_picks);
     alert('done');
 }
 
