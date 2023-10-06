@@ -1,5 +1,4 @@
 
-
 function imp() {
     prefs = get_prefs();
     new_picks = JSON.parse(document.getElementById("myTextarea").value);    
