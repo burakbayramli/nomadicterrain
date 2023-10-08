@@ -21,9 +21,9 @@ def getnews():
     feeds = [
         ("H2 Central","https://hydrogen-central.com/feed/",20),
         ("Politico.eu","https://www.politico.eu/feed/",5),
-        ("First Post","https://www.firstpost.com/rss/world.xml",10),
+#        ("First Post","https://www.firstpost.com/rss/world.xml",10),
         ("France 24","https://www.france24.com/en/rss",10),
-        ("Politico","https://www.politico.com/rss/politicopicks.xml",10),
+#        ("Politico","https://www.politico.com/rss/politicopicks.xml",10),
         ("TDB","https://feeds.thedailybeast.com/summary/rss/articles",10),
         ("The Atlantic", "https://www.theatlantic.com/feed/all",8),
         ("Informed Comment","https://www.juancole.com/feed",10),        
@@ -31,13 +31,13 @@ def getnews():
         ("The Guardian","http://www.theguardian.com/world/rss",10),
         ('Al Monitor','https://www.al-monitor.com/rss',20),
         ("TASS","http://tass.com/rss/v2.xml",20),
-        ("Arab News","https://www.arabnews.com/cat/3/rss.xml",10),
+#        ("Arab News","https://www.arabnews.com/cat/3/rss.xml",10),
         ("Jane's Defence", "https://www.janes.com/feeds/news", 10),
         ("Japan Times","https://www.japantimes.co.jp/feed/",7),
         ("CGTN","https://www.cgtn.com/subscribe/rss/section/world.xml",10),
-        ('CNBC','https://www.cnbc.com/id/100727362/device/rss/rss.html',10),        
+#        ('CNBC','https://www.cnbc.com/id/100727362/device/rss/rss.html',10),        
         ('WSJ','https://feeds.a.dj.com/rss/RSSOpinion.xml',10),
-        ("NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",15),
+#        ("NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",15),
         ("WION","https://www.wionews.com/feeds/world/rss.xml",20),        
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10)
     ]
