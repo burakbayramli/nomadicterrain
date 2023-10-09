@@ -111,9 +111,9 @@ def calculate_lewi_decans(decans):
 def calculate_lewi(date):
    return calculate_lewi_decans(get_decans(date))
 
+
 def calculate(date):
    decans = get_decans(date)
-   print (decans)
    diff = (datetime.now() - datetime.strptime(str(date), '%Y%m%d')).days
    return {
       'age': diff / 365,
