@@ -23,15 +23,10 @@ var news_sources = [['FuelCellsWorks','https://fuelcellsworks.com/feed/'],
 		    ["Politico","https://www.politico.com/rss/politicopicks.xml"],
 		    ["Arab News","https://www.arabnews.com/cat/3/rss.xml"],
 		    ["Fox News","https://moxie.foxnews.com/google-publisher/latest.xml"],
-		    ['UN News','https://news.un.org/feed/subscribe/en/news/all/rss.xml'],
 		    ["CNBC","https://www.cnbc.com/id/100727362/device/rss/rss.html"],
 		    ["NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"]
 		   ];
-
 		    
-var news_sources = [['FuelCellsWorks','https://fuelcellsworks.com/feed/']
-		   ];
-
 		    
 function visit() {
     // based on https://github.com/pokiiio/hatena-blog-parser
@@ -79,6 +74,7 @@ function visit() {
 	});
 
     })
+    document.getElementById("processing").style.display = "none";
     document.getElementById("news").innerHTML = out;
 }
 
@@ -89,5 +85,8 @@ function init() {
     if ( ! prefs['news'].hasOwnProperty("filter_words") ) {
 	prefs['news']['filter_words'] = "example1,example2";
     }
+    document.getElementById("processing").style.display = "block";
     visit();
 }
+
+
