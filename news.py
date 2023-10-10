@@ -26,6 +26,7 @@ def getnews():
 #        ("Politico","https://www.politico.com/rss/politicopicks.xml",10),
         ("TDB","https://feeds.thedailybeast.com/summary/rss/articles",10),
         ("The Atlantic", "https://www.theatlantic.com/feed/all",8),
+        ("The Lever","https://www.levernews.com/rss/",8),
         ("Informed Comment","https://www.juancole.com/feed",10),        
         ("Independent, The", "http://www.independent.co.uk/news/world/rss", 10),
         ("The Guardian","http://www.theguardian.com/world/rss",10),
