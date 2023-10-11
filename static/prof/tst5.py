@@ -38,6 +38,7 @@ def calculate_cycle(d):
     if total > 9: 
         res = str(total)
         total = int(res[0]) + int(res[1])
+    print ('total',total)
     return total
    
    
