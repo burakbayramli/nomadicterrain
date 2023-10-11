@@ -16,7 +16,7 @@ function get_millman(birth_date) {
 function calculate_cycle(birth_date) {
 
     res = get_millman(birth_date)
-    console.log(res);
+
     var now_year = String(new Date().getFullYear());
 
     mon = String(birth_date.getMonth()+1);
@@ -27,11 +27,7 @@ function calculate_cycle(birth_date) {
 
     if (day.length == 1) { day = "0" + day; }
 
-    console.log(now_year + "-" + mon + "-" + day);
-
     dt = new Date(now_year + "-" + mon + "-" + day)
-
-    console.log(dt);
 
     res = get_millman(dt);
 
@@ -43,11 +39,18 @@ function calculate_cycle(birth_date) {
     } else {
 	total = parseInt(res[0]);
     }
+    if (total > 9) {
+	res = String(total);
+	total = parseInt(res[0]) + parseInt(res[1]) 
+    }
 
-    console.log(total);
+    return total;
 }
     
-const birth_date = new Date("1973-04-24");
-calculate_cycle(birth_date);
+const birth_date = new Date("1945-10-05");
+res = calculate_cycle(birth_date);
+console.log(res);
+
+
 
 

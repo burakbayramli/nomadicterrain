@@ -168,4 +168,9 @@ def calculate_all_lewi_json():
    fout.write ("]\n}")
    
 if __name__ == "__main__": 
-   calculate_all_lewi_json()
+   #calculate_all_lewi_json()
+
+   res = calculate_cycle("19881001");
+   print (res)
+   
+   

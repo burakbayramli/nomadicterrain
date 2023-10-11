@@ -24,13 +24,10 @@ def calculate_cycle(d):
     now_year = datetime.now().year      
     cs = str(birth_date.day)+"/"+str(birth_date.month)+"/"+str(now_year)
     cycle_date = datetime.strptime(cs, '%d/%m/%Y').date()
-    print ('cycle_date',cycle_date)
     str_cycle_date = cycle_date.strftime('%Y%m%d')
     millman = calculate_millman(str_cycle_date)
     res = str(millman[0])
-    print ('res',res)
     res = res[0:2]
-    print ('res',res)
     if len (res) > 1:
        total = int(res[0]) + int(res[1])
     else:
@@ -38,13 +35,12 @@ def calculate_cycle(d):
     if total > 9: 
         res = str(total)
         total = int(res[0]) + int(res[1])
-    print ('total',total)
     return total
    
    
 if __name__ == "__main__": 
    
-   res = calculate_cycle("19730424")
+   res = calculate_cycle("19451005")
    print (res)
    
    
