@@ -166,10 +166,33 @@ def calculate_all_lewi_json():
       s = s + d
       fout.flush()
    fout.write ("]\n}")
+
+def export():
+
+   s = "19000101"
+   fout = open("/tmp/data-19000101.json","w")
+   fout.write("[\n")
+   for i in range(54790):
+   #for i in range(3):
+       d =  datetime.datetime.strptime(s, "%Y%m%d")
+       curr = d + datetime.timedelta(days=i)
+       d2 = conv(curr.strftime('%d/%m/%Y'))
+       res1 = calculate_millman(d2)
+       res2 = get_spiller(d2)
+       res3 = get_chinese(d2)
+       res4 = calculate_lewi(d2)
+       line = str([res2, res3, res1, res4])
+       line = line.replace("'",'"')
+       fout.write(line)
+       fout.write(',\n')
+       fout.flush()
+
+   fout.write("[]]")
+
+   
    
 if __name__ == "__main__": 
    #calculate_all_lewi_json()
-
    res = calculate_cycle("19881001");
    print (res)
    
