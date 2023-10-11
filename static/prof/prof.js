@@ -56,7 +56,7 @@ function calculate_cycle(birth_date) {
     return total;
 }
 
-function init() {
+function calculate() {
 
     const birth_date = new Date("1973-04-24");
     res = get_data(birth_date);

@@ -7,10 +7,18 @@
 
   <script src="prof.js"></script>
   
-  <body onload='init()'>
+  <body>
 
     <h2>Profiling</h2>
 
+    <td><input size=2 id="day" type="text" name="day" placeholder="04"/></td>
+    /
+    <td><input size=2 id="mon" type="text" name="mon" placeholder="12"/></td>
+    /
+    <td><input size=2 id="year" type="text" name="year" placeholder="1993"/></td>
+
+    <td><button onclick="calculate()">Read</button></td>    
+   
     <div id="output">
 
     </div>
