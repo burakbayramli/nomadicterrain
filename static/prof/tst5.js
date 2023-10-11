@@ -1,9 +1,10 @@
 const fs = require('fs')
 
 file = fs.readFileSync("data-19000101.json", 'utf8');
+
 const data = JSON.parse(file);
 
-function get_millman(birth_date) {
+function get_data(birth_date) {
     const dt1 = new Date("1900-01-01");
 
     diff = birth_date.getTime() - dt1.getTime();
@@ -15,7 +16,7 @@ function get_millman(birth_date) {
 
 function calculate_cycle(birth_date) {
 
-    res = get_millman(birth_date)
+    res = get_data(birth_date)
 
     var now_year = String(new Date().getFullYear());
 
