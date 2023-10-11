@@ -38,7 +38,7 @@ function calculate_cycle(birth_date) {
 
     dt = new Date(now_year + "-" + mon + "-" + day)
 
-    res = get_millman(dt);
+    res = get_data(dt);
 
     res = String(res[2][0]);
         
@@ -58,7 +58,40 @@ function calculate_cycle(birth_date) {
 
 function init() {
 
-    const birth_date = new Date("1945-10-05");
+    const birth_date = new Date("1973-04-24");
     res = get_data(birth_date);
-    console.log(res); 
+    console.log(res);
+    out = "";
+    out += `<p>Spiller</p>`;
+    out += `<p><a href="details/spiller/${res[0]}.html">${res[0]}</a></p>`;
+
+    out += `<p>Chinese</p>`;
+    out += `<p><a href="details/chinese/${res[1]}.html">${res[1]}</a></p>`;
+
+    mil1 = String(res[2][0]) + String(res[2][1]);
+    console.log(mil1);
+    
+    out += `<p>Lewi</p>`;
+    for (var i=0;i<res[3].length;i++) {
+	var lewi = res[3][i];
+	out += `<a href="details/lewi/${lewi}.html">${lewi}</a>&nbsp;&nbsp;`;	
+    }
+    out += "</p>";
+
+    out += `<p>Millman</p>`;
+    out += `<p><a href="details/millman/${mil1}.html">${mil1}</a>&nbsp;&nbsp;`;
+
+    for (var i=2;i<res[2].length;i++) {
+	var mil2 = res[2][i];
+	out += `<a href="details/millman/${mil2}.html">${mil2}</a>&nbsp;&nbsp;`;	
+    }
+    out += "</p>";
+
+    out += "<p>Cycle</p>";
+    var c = calculate_cycle(birth_date);
+    out += `<p><a href="details/millman/nineyearcycle.html">${c}</a></p>`;
+    
+    document.getElementById("output").innerHTML = out;
+
+    
 }
