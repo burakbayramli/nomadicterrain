@@ -67,9 +67,14 @@ function calculate() {
     console.log(birth_date);
     res = get_data(birth_date);
 
+    spiller = res[0];
+    
+    if (year == "1973") {
+	spiller = "Gemini"
+    }
     out = "";
     out += `<p>Spiller</p>`;
-    out += `<p><a href="details/spiller/${res[0]}.html">${res[0]}</a></p>`;
+    out += `<p><a href="details/spiller/${spiller}.html">${spiller}</a></p>`;
 
     out += `<p>Chinese</p>`;
     out += `<p><a href="details/chinese/${res[1]}.html">${res[1]}</a></p>`;
