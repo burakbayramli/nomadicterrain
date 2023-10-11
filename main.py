@@ -56,68 +56,6 @@ def location(loc,zoom):
     plt.savefig(fout)    
     return render_template('/location.html', location=fout, lat=lat, lon=lon)
 
-@app.route('/profile_main')
-def profile_main():
-    return render_template('/profile.html')
-
-@app.route("/profile", methods=["POST"])
-def profile():
-    day = request.form.get("day")
-    mon = request.form.get("mon")
-    year = request.form.get("year")
-    d = "%s%s%s" % (year,mon,day)
-    return profile_date(d)
-
-@app.route("/profile_date/<date>", )
-def profile_date(date):
-    print (date)
-    res =  mindmeld.calculate(date)
-    res['date'] = date
-    if 'spiller_pdf' in params:
-        pf = params['spiller_pdf']
-        pf = json.loads(open(pf).read())
-        res['spiller_tr'] = pf['tr'][res['spiller'].lower()]
-        res['spiller_en'] = pf['en'][res['spiller'].lower()]
-    return render_template('/profile.html', res=res)
-
-@app.route("/profile_text/<d>")
-def profile_text(d):
-    res =  mindmeld.calculate(str(d))
-    if 'spiller_pdf' in params:
-        pf = params['spiller_pdf']
-        pf = json.loads(open(pf).read())
-        res['spiller_tr'] = pf['tr'][res['spiller'].lower()]
-        res['spiller_en'] = pf['en'][res['spiller'].lower()]
-    return render_template('/profile_text.html', res=res)
-
-@app.route('/guide/spiller/<which>')
-def guide_spiller(which):
-    fin = params['guide_detail_dir'] + "/spiller/" + which + ".html"
-    output = open(fin).read()
-    return render_template('/profile_detail.html', output=output)
-
-@app.route('/guide/chinese/<which>')
-def guide_chinese(which):
-    fin = params['guide_detail_dir'] + "/chinese/" + which + ".html"
-    output = open(fin).read()
-    return render_template('/profile_detail.html', output=output)
-
-@app.route('/guide/millman/<which>')
-def guide_millman(which):
-    fin = params['guide_detail_dir'] + "/millman/" + which + ".txt"
-    content = open(fin).readlines()
-    output = ""
-    for line in content: 
-        output += line + "<br/>"
-    return render_template('/profile_detail.html', output=output)
-
-@app.route('/guide/lewi/<which>')
-def guide_lewi(which):
-    fin = params['guide_detail_dir'] + "/lewi/" + which + ".html"
-    output = open(fin).read()
-    return render_template('/profile_detail.html', output=output)
-
-
 @app.route('/travel_main/<coords>')
 def travel_main(coords):
     lat,lon = coords.split(';')

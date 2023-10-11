@@ -58,9 +58,15 @@ function calculate_cycle(birth_date) {
 
 function calculate() {
 
-    const birth_date = new Date("1973-04-24");
+    var day = document.getElementById("day").value;
+    var mon = document.getElementById("mon").value;
+    var year = document.getElementById("year").value;
+        
+    //const birth_date = new Date("1973-04-24");
+    const birth_date = new Date(year + "-" + mon + "-" + day);
+    console.log(birth_date);
     res = get_data(birth_date);
-    console.log(res);
+
     out = "";
     out += `<p>Spiller</p>`;
     out += `<p><a href="details/spiller/${res[0]}.html">${res[0]}</a></p>`;
@@ -69,7 +75,6 @@ function calculate() {
     out += `<p><a href="details/chinese/${res[1]}.html">${res[1]}</a></p>`;
 
     mil1 = String(res[2][0]) + String(res[2][1]);
-    console.log(mil1);
     
     out += `<p>Lewi</p>`;
     for (var i=0;i<res[3].length;i++) {
