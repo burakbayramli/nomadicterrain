@@ -20,16 +20,22 @@ res = get_millman(birth_date)
 
 console.log(res);
 
-var now_year = new Date().getFullYear();
-
-console.log(now_year);
+var now_year = String(new Date().getFullYear());
 
 mon = String(birth_date.getMonth()+1);
 
 if (mon.length == 1) { mon = "0" + mon; }
 
-console.log(mon);
+day = String(birth_date.getDate());
 
-console.log(birth_date.getDate());
+if (day.length == 1) { day = "0" + day; }
 
+console.log(now_year + "-" + mon + "-" + day);
 
+dt = new Date(now_year + "-" + mon + "-" + day)
+
+console.log(dt);
+
+res = get_millman(dt);
+
+console.log(res);
