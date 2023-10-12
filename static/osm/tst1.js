@@ -62,6 +62,12 @@ function test2() {
     for(var i = 0; i < this.markers.length; i++){
 	map.removeLayer(this.markers[i]);
     }
+    
+    tbody = `[out:json];node['amenity'~'${type}'](around:${dist},${lat},${lon});out center;`
+    if (type == 'avm') {
+	tbody = `[out:json];node['shop'='mall'](around:${dist},${lat},${lon});out center;`
+    }
+    
     (async () => {
 	const api = await fetch('https://www.overpass-api.de/api/interpreter?', {
 	    method: 'POST',
@@ -69,15 +75,21 @@ function test2() {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'
 	    },
-	    body:`[out:json];node['amenity'~'${type}'](around:${dist},${lat},${lon});out center;`
+	    body: tbody
 	});
 	const answer = await api.json();
 	elems = answer['elements'];
 	markers = []
 	elems.forEach(function(x) {
-	    var m = L.marker([x['lat'],x['lon']]).addTo(map);
-	    markers.push(m);
-	    m.bindPopup(x['tags']['name']).openPopup();
+	    skip = false;
+	    currname = String(x['tags']['name']).toLowerCase();
+	    if (currname.length > 0 && !currname.includes(name.toLowerCase())) skip = true;
+	    if (!skip) {
+		var m = L.marker([x['lat'],x['lon']]).addTo(map);
+		markers.push(m);
+		m.bindPopup(x['tags']['name']).openPopup();
+	    }
+
 	});
 	
     })()    
