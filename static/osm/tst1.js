@@ -1,6 +1,5 @@
 
-
-function init()  {
+function get_data() {
 
     (async () => {
 	const api = await fetch('https://www.overpass-api.de/api/interpreter?', {
@@ -9,33 +8,36 @@ function init()  {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'
 	    },
-	    body:"[out:json];node(48.865,2.25,48.9,2.27)[amenity=restaurant];out;"
+	    body:"[out:json];node['amenity'~'cafe'](around:3000,40.96519108206366,28.83733041103168);out center;"
 	});
 	const answer = await api.json();
-	console.log(answer);
-
-	out = "";
-
-	answer.elements.forEach(function(elem) {
-	    console.log(elem);
-	})
 	
-	document.getElementById("output").textContent = out;
+	document.getElementById("output").innerText = JSON.stringify(answer);
     })()
+}    
 
-}
-
-function init2() {
-//    map = L.map('map').setView([51.505, -0.09], 10);
-//    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//	maxZoom: 19,
-//	attribution: 'ddd'
-//    }).addTo(map);
+function init()  {
+    if(typeof lat === 'undefined') {
+	document.getElementById("position").innerHTML = "<font color='red'>Position not set</font>";
+    }
     
 }
 
+function getLocation() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("position").innerHTML = lat + " " + lon;    
+}
+
+
 function test1() {
-    alert('sdfsf');
+    get_data();
     map = L.map('map').setView([51.505, -0.09], 10);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
