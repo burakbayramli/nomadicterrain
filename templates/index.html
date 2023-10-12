@@ -27,7 +27,7 @@ function setLocOnPage(lat,lon){
   document.getElementById("wind3").href = "/gowind/" + lat  + ";" + lon+"/8/100";
   document.getElementById("wind4").href = "/gowind/" + lat  + ";" + lon+"/16/100";
   document.getElementById("directions").href = "/directions_main/" + lat  + ";" + lon;
-  document.getElementById("amenities").href = "/amenities_main/" + lat  + ";" + lon;
+
 }
 function readLocInput() {
   var pos = document.getElementById("locValue").value;
@@ -104,7 +104,7 @@ function showPosition(position) {
           <li><a id="profile" href="/static/prof/index.html">Profile</a></li>
           <li><a id='directions' href="/directions_main/40.9544;29.09139">Directions</a></li>
           <li>
-            <a id='amenities' href="/amenities_main/40.9544;29.09139">Amenities</a>,
+            <a id='amenities' href="/static/osm/index.html">Amenities</a>,
             <a id='name_lookup' href="/name_lookup_main">Name Lookup</a>
           </li>
           <p>
