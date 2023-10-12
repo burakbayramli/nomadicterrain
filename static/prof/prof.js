@@ -8,6 +8,26 @@ function fetch_data() {
     return JSON.parse(xmlHttp.responseText);
 }
 
+function fetch_docs() {
+
+    url = "/static/prof/spildocs.json";
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url = url, false ); 
+    xmlHttp.send( null );
+    return JSON.parse(xmlHttp.responseText);
+}
+
+function spildoc_tr() {
+    docs = fetch_docs();
+    url = docs['tr'][spiller];
+    window.open(url, '_blank');
+}
+
+function spildoc_en() {
+    docs = fetch_docs();
+    url = docs['en'][spiller];
+    window.open(url, '_blank');
+}
 
 function get_data(birth_date) {
 
@@ -67,7 +87,7 @@ function calculate() {
     console.log(birth_date);
     res = get_data(birth_date);
 
-    spiller = res[0];
+    spiller = res[0]; // global variable
     
     if (year == "1973") {
 	spiller = "Gemini"
