@@ -1,5 +1,5 @@
 
-function init2() {
+function init() {
 
     apid = "TlFIUEVOWUY0SzZRTThHUA==";
     z = Math.cos(10); z++; k = atob(apid); y = Math.sin(10)*Math.cos(1);
@@ -29,7 +29,6 @@ function init2() {
 		out += "Open: " + daily[last_key]["1. open"] + "\n";
 		out += "High: " + daily[last_key]["2. high"] + "\n";
 		out += "Low: " + daily[last_key]["3. low"] + "\n";
-		out += "Close: " + daily[last_key]["4. close"] + "\n";
 		out += "Close: " + daily[last_key]["4. close"] + "\n";
 		out += "Volume: " + daily[last_key]["5. volume"] + "\n";
 		

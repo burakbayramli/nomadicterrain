@@ -190,35 +190,6 @@ def goto_from_coord(start, distance, bearing):
     d = geopy.distance.distance(kilometers = distance)
     return d.destination(point=s, bearing=bearing)
 
-def get_camp(clat,clon,dist):
-    base_url = "https://overpass-api.de/api/interpreter?data="
-    res1 = goto_from_coord((clat,clon),dist/1000,45)
-    res2 = goto_from_coord((clat,clon),dist/1000,225)
-    lowlat = np.min([res1[0],res2[0]])
-    lowlon = np.min([res1[1],res2[1]])
-    hilat = np.max([res1[0],res2[0]])
-    hilon = np.max([res1[1],res2[1]])
-    q = """
-    [out:json];
-       node["tourism"="camp_site"]
-       (%f,%f,%f,%f); out; (._;>;);
-    out;
-    """ % (lowlat,lowlon,hilat,hilon)
-    safe_string = urllib.parse.quote_plus(q)
-    r = requests.get(base_url + safe_string)    
-    return json.loads(r.text)
-
-def get_mall(clat,clon,amenity_dist):
-    base_url = "https://overpass-api.de/api/interpreter?data="
-    q = """
-    [out:json];
-    node["shop"="mall"](around:%s,%s,%s);
-    out center;
-    """ % (amenity_dist,clat,clon)
-    safe_string = urllib.parse.quote_plus(q)
-    r = requests.get(base_url + safe_string)    
-    return json.loads(r.text)
-
 def test1():
     #grid_assign_centers((36.52259447316748, 27.612981046240638),
     #                     (41.05628025861666, 42.58542464923075))   
@@ -232,17 +203,6 @@ def test1():
     folium.PolyLine(locations=coords, color="red").add_to(m)
     m.save("/tmp/out.html")
 
-def test2():
-    get_camp(40.9671978651242, 29.0835162031361,2000)
-        
-def test3():
-    res = get_amenities("cafe","cafe nero",10000,40.96020776907306,28.818568166035895)
-    for x in res['elements']: print (x)
-        
-def test4():
-    res = get_mall(40.96020776907306,28.818568166035895,10000)
-    for x in res['elements']: print (x)
-        
 if __name__ == "__main__": 
  
     #test2()
