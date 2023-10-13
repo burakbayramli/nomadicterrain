@@ -166,35 +166,6 @@ def extmasto():
         yield content
     return Response(generate(), mimetype='text/html')
 
-@app.route('/market')
-def market():
-    import matplotlib.pyplot as plt
-    import pandas as pd
-    plt.figure()
-    end = datetime.datetime.now()
-    start=end-datetime.timedelta(days=90)
-    start = int(timelib.mktime(start.timetuple()))
-    end = int(timelib.mktime(end.timetuple()))
-
-    url = "https://query1.finance.yahoo.com/v7/finance/download/^IXIC?period1=" + str(start) + "&period2=" + str(end) + "&interval=1d&events=history&includeAdjustedClose=true"
-    r = urllib2.urlopen(url).read()
-    file = BytesIO(r)
-    df1 = pd.read_csv(file,index_col='Date',parse_dates=True)
-
-    url = "https://query1.finance.yahoo.com/v7/finance/download/^RUT?period1=" + str(start) + "&period2=" + str(end) + "&interval=1d&events=history&includeAdjustedClose=true"
-    r = urllib2.urlopen(url).read()
-    file = BytesIO(r)
-    df2 = pd.read_csv(file,index_col='Date',parse_dates=True)
-
-    ax1 = df2['Adj Close'].plot(color='blue', grid=True, label='Nasdaq')
-    ax2 = df1['Adj Close'].plot(color='red', grid=True, label='Russell',secondary_y=True)
-    h1, l1 = ax1.get_legend_handles_labels()
-    h2, l2 = ax2.get_legend_handles_labels()
-    plt.legend(h1+h2, l1+l2, loc=2)
-    fout = TMPDIR + "/out-%s.png" % uuid.uuid4()
-    plt.savefig(fout)
-    return send_file(fout)
-
 @app.route('/gopollution/<coords>')
 def gopollution(coords):
     lat,lon = coords.split(';')
