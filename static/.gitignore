@@ -2,9 +2,10 @@
 usb60
 group1-shard1of1
 out-*.png
-kitaplar
 tst*.html
 invidx-*.json
-recomdata
 jquery-3.6.0.js
 jquery-ui.js
+travdata
+recomdata
+kitaplar
