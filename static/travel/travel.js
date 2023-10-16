@@ -49,7 +49,6 @@ function get_paths(gpx) {
 }
 
 function test1() {
-    //url = "https://raw.githubusercontent.com/burakbayramli/kod/master/travel/urla/index.json";
     mainurl = "http://localhost:5000/static/travdata/polonezkoy/index.json";
     main = JSON.parse(get_data(mainurl));
     console.log(main['center']);
