@@ -50,32 +50,38 @@ function get_paths(gpx) {
 
 function test1() {
     //url = "https://raw.githubusercontent.com/burakbayramli/kod/master/travel/urla/index.json";
-    url = "http://localhost:5000/static/travdata/polonezkoy/index.json";
-    res = JSON.parse(get_data(url));
-    console.log(res['center']);
-    console.log(res);
-    map = L.map('map').setView([res['center'][0],res['center'][1]], 12);
+    mainurl = "http://localhost:5000/static/travdata/polonezkoy/index.json";
+    main = JSON.parse(get_data(mainurl));
+    console.log(main['center']);
+    console.log(main);
+    map = L.map('map').setView([main['center'][0],main['center'][1]], 12);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: 'ddd'
     }).addTo(map);
 
-    var m = L.marker([res['center'][0],res['center'][1]]).addTo(map);
-
-    url = "http://localhost:5000/static/travdata/polonezkoy/cekmekoy-alemdag-orman-parkuru.gpx";
-    paths = get_paths(get_data(url));
-    console.log(paths.length);
-
-    paths.forEach(function(path) {
-	var line = new L.Polyline(path, {
-	    color: 'red',
-	    weight: 1,
-	    opacity: 0.5,
-	    smoothFactor: 1
-	});
-	line.addTo(map);
+    var m = L.marker([main['center'][0],main['center'][1]]).addTo(map);
+    
+    Object.keys(main['points']).forEach(function(key) {
+	var m = L.marker([main['points'][key][0], main['points'][key][1]]).addTo(map);
+	m.bindPopup(key).openPopup();
     });
+            
+    main['maps'].forEach(function(currurl) {
+	url = mainurl.substring(0,mainurl.lastIndexOf("/")+1) + currurl;
+	paths = get_paths(get_data(url));
+	console.log(paths.length);
 
+	paths.forEach(function(path) {
+	    var line = new L.Polyline(path, {
+		color: 'red',
+		weight: 1,
+		opacity: 0.5,
+		smoothFactor: 1
+	    });
+	    line.addTo(map);
+	});
+    });
     
 }
 
