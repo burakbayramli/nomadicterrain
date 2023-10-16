@@ -16,7 +16,8 @@ function getLocation() {
 function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    document.getElementById("position").innerHTML = lat + " " + lon;
+    out = "<br/>" + lat + " " + lon;
+    document.getElementById("position").innerHTML = out;
 }
 
 function get_paths(gpx) {
