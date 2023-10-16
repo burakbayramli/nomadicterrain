@@ -19,7 +19,3 @@ segments.forEach(function(segment) {
     })
     console.log(res.length);
 })
-
-
-
-
