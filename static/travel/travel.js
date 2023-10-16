@@ -94,7 +94,6 @@ function test1() {
 }
 
 function add_url() {
-
     var new_url = document.getElementById("new_url").value;    
     prefs = get_prefs();
     prefs['travel'][new_url] = "1";
