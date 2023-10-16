@@ -41,6 +41,13 @@ function get_paths(gpx) {
     return all_res;
 }
 
+function remove(url) {
+    prefs = get_prefs();
+    delete prefs['travel'][url];
+    save_cookie(prefs);
+    show_plans();
+}
+
 function show_plans() {
     init_cookies();    
     prefs = get_prefs();
