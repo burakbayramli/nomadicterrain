@@ -40,6 +40,21 @@ function get_paths(gpx) {
     return all_res;
 }
 
+function show_plans() {
+    init_cookies();    
+    prefs = get_prefs();
+    out = "";
+    out += "<h5>Plans</h5>"
+    Object.keys(prefs['travel']).forEach(function(key) {
+	out += "<span class='container'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
+    })      
+    document.getElementById("plans").innerHTML = out;    
+}
+
+function init() {
+    show_plans();
+}
+
 function test1() {
     mainurl = "http://localhost:5000/static/travdata/polonezkoy/index.json";
     main = JSON.parse(get_data(mainurl));
