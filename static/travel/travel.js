@@ -34,9 +34,9 @@ function get_index(url) {
     return JSON.parse(result);
 }
 
-function init() {
+function test1() {
     //url = "https://raw.githubusercontent.com/burakbayramli/kod/master/travel/urla/index.json";
-    url = "http://192.168.43.49:5000/static/travdata/urla/index.json";
+    url = "http://localhost:5000/static/travdata/urla/index.json";
     res = get_index(url);
     console.log(res['center']);
     console.log(res);
