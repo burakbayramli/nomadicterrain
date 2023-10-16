@@ -1,9 +1,10 @@
 
-function init()  {
-    if(typeof lat === 'undefined') {
-	document.getElementById("position").innerHTML = "<font color='red'>Position not set</font>";
-    }
-    
+function get_data(url) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url = url, false ); 
+    xmlHttp.send( null );
+    result = xmlHttp.responseText;
+    return result;
 }
 
 function getLocation() {
@@ -16,15 +17,6 @@ function showPosition(position) {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     document.getElementById("position").innerHTML = lat + " " + lon;
-}
-
-
-function get_data(url) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url = url, false ); 
-    xmlHttp.send( null );
-    result = xmlHttp.responseText;
-    return result;
 }
 
 function get_paths(gpx) {
@@ -51,12 +43,11 @@ function get_paths(gpx) {
 function test1() {
     mainurl = "http://localhost:5000/static/travdata/polonezkoy/index.json";
     main = JSON.parse(get_data(mainurl));
-    console.log(main['center']);
-    console.log(main);
-    map = L.map('map').setView([main['center'][0],main['center'][1]], 12);
+
+    map = L.map('map').setView([main['center'][0],main['center'][1]], 10);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
-	attribution: 'ddd'
+	attribution: 'OSM'
     }).addTo(map);
 
     var m = L.marker([main['center'][0],main['center'][1]]).addTo(map);
@@ -69,18 +60,12 @@ function test1() {
     main['maps'].forEach(function(currurl) {
 	url = mainurl.substring(0,mainurl.lastIndexOf("/")+1) + currurl;
 	paths = get_paths(get_data(url));
-	console.log(paths.length);
 
 	paths.forEach(function(path) {
 	    var line = new L.Polyline(path, {
-		color: 'red',
-		weight: 1,
-		opacity: 0.5,
-		smoothFactor: 1
+		color: 'red', weight: 1, opacity: 0.5, smoothFactor: 1
 	    });
 	    line.addTo(map);
 	});
-    });
-    
+    });    
 }
-
