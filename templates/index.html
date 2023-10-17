@@ -13,7 +13,6 @@ function getLocation() {
 function setLocOnPage(lat,lon){
   document.getElementById("myloc").href = "/location/" + lat  + ";" + lon+"/0.4";
   document.getElementById("locpos").innerHTML = lat  + "," + lon;
-  document.getElementById("trav").href = "/travel_main/" + lat  + ";" + lon;
   document.getElementById("pollu").href = "/gopollution/" + lat  + ";" + lon;
   document.getElementById("time").href = "/time/" + lat  + ";" + lon;
   document.getElementById("elev").href = "/plot_elev/" + lat  + ";" + lon+"/0.05/50/20";
@@ -66,7 +65,7 @@ function showPosition(position) {
           <li><a href="/book">Loogle/Recoll</a></li>
           <li><a href="/url">Lynx</a></li>
           <li><a id="myloc" href="/location/40.9544;29.09139/0.1">My Location</a></li>
-          <li><a id='trav' href="/travel_main/40.9544;29.09139">Trip Map</a></li>
+          <li><a href="/static/travel/">Trip Map</a></li>
           <li>Elevation
             <a id="elev1" href="/gotopo2/40.9544;29.09139/1">
               1 km
