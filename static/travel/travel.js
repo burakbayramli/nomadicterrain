@@ -1,4 +1,8 @@
 
+function init() {
+    show_plans();
+}
+
 function get_data(url) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url = url, false ); 
@@ -56,13 +60,9 @@ function show_plans() {
     Object.keys(prefs['travel']).forEach(function(key) {
 	var urldesc = key.replace("http://","");
 	var urldesc = urldesc.replace("https://","");
-	out += `<a onclick='show_plan("${key}")' href='#'>${urldesc}</a><span class='container'><a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`;
+	out += `<a onclick='show_plan("${key}")' href='#'>${urldesc}</a><a class='rmblock' onclick='remove("${key}")' href='#'>Remove</a><br/>`;
     })      
     document.getElementById("plans").innerHTML = out;    
-}
-
-function init() {
-    show_plans();
 }
 
 function show_plan(mainurl) {
