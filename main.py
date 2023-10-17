@@ -6,8 +6,7 @@ import pickle, polyline, util, geocoder
 import numpy as np, os, uuid, glob
 import sys; sys.path.append("guide")
 import json, random, mindmeld, base64, time as timelib
-import wind, osmutil
-import geopy.distance, datetime, shutil
+import wind, geopy.distance, datetime, shutil
 import csv, io, zipfile, folium
 from urllib.request import urlopen
 import urllib, requests, re
