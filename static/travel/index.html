@@ -10,6 +10,15 @@
       #map {
         height: 300px;
       }
+      .container a {
+         font-size: 9px;
+         padding-right: 10px;
+         padding-left: 10px;
+      }
+      #plans {
+         padding-top: 10px;
+         padding-bottom: 30px;
+      }
     </style>
   </head>  
 
@@ -25,9 +34,10 @@
     <p>
 
       <div>
-        <button onclick="getLocation()">Get Location</button>        
-        <button onclick="test1()">Map</button>
+        <button onclick="getLocation()">Get Location</button>
+        
         <input size=12 id="new_url" type="text" name="new_url" placeholder="https//.../index.json"/>
+
         <button onclick="add_url()">Add</button>        
       </div>
         
