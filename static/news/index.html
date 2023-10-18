@@ -2,27 +2,41 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>  
+    <link rel="stylesheet" href="../bbmain.css">
 
-  <script src="../common.js"></script>    
+  </head>
+
+  <script src="../common.js"></script>
   <script src="news.js"></script>
   
+    
   <body onload='init()'>
     
-    <button id="but1" onclick="saveShowHideTextBox()">Set Filter</button>
-    <p>
-      <textarea style="display:none;" id="filter_words" cols="30" rows="10" ></textarea>
-    </p>
-    
-    <div id="news">
+    <div class="bbheader">
+      <h1><a href="..">BBApps</a></h1>
+      <p>News</p>
     </div>
 
-    <div id="processing">
-      <img src='busy.gif'/>
+    <div id="bbmain">
+      
+
+      <button id="but1" onclick="saveShowHideTextBox()">Set Filter</button>
+      <p>
+        <textarea style="display:none;" id="filter_words" cols="30" rows="10" ></textarea>
+      </p>
+      
+      <div id="news">
+      </div>
+
+      <div id="processing">
+        <img src='busy.gif'/>
+      </div>
+
+      <div><br/><a href="../index.html">Up</a></div>
+      
     </div>
     
   </body>
-  
-</html>
 
+</html>
 
