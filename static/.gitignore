@@ -2,7 +2,6 @@
 usb60
 group1-shard1of1
 out-*.png
-tst*.html
 invidx-*.json
 jquery-3.6.0.js
 jquery-ui.js
