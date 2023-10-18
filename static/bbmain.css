@@ -25,4 +25,10 @@
     padding-top: 10px;
     padding-bottom: 30px;
 }
-
+#osmentry {
+    display: none;
+}
+#osmposition {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
