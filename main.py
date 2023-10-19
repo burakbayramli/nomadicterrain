@@ -38,23 +38,6 @@ def my_curr_location():
 def index():
     return render_template('/index.html')
 
-@app.route('/location/<loc>/<zoom>')
-def location(loc,zoom):
-    import matplotlib.pyplot as plt
-    import simplegeomap as sm
-    lat,lon = loc.split(';')
-    lat,lon=float(lat),float(lon)
-    session['geo'] = (lat,lon)
-    fout = "static/out-%s.png" % uuid.uuid4()
-    clean_dir()
-    lat,lon=float(lat),float(lon)
-    fig = plt.figure()
-    zoom = float(zoom)
-    sm.plot_countries(lat,lon,zoom,outcolor='lavenderblush')    
-    plt.plot(lon,lat,'rd')
-    plt.savefig(fout)    
-    return render_template('/location.html', location=fout, lat=lat, lon=lon)
-
 @app.route('/plot_elev/<coords>/<zoom>/<start>/<steps>')
 def plot_elev(coords,zoom,start,steps):
     import matplotlib.pyplot as plt
