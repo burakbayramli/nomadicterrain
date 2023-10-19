@@ -76,20 +76,6 @@ def extmasto():
         yield content
     return Response(generate(), mimetype='text/html')
 
-@app.route('/gopollution/<coords>')
-def gopollution(coords):
-    lat,lon = coords.split(';')
-    weatherapi = params['weatherapi']
-    url = 'http://api.openweathermap.org/data/2.5/air_pollution?'
-    payload = { 'lat': str(lat), 'lon': str(lon), 'appid': weatherapi }
-    r = requests.get(url, params=payload)
-    tmp = [json.loads(x.decode()) for x in r.iter_lines()]
-    res = []
-    res.append(tmp[0]['list'][0]['main'])
-    comp = tmp[0]['list'][0]['components']
-    for xx in comp: res.append ((xx, comp[xx]))
-    return render_template('/weather.html', res=res)
-
 @app.route('/time/<coords>')
 def time(coords):    
     import timezonefinder
