@@ -8,7 +8,7 @@
     <script src="../common.js"></script>
     <script src="weather.js"></script>
     
-    <body onload='init2()'>
+    <body onload='init()'>
 
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
@@ -20,7 +20,9 @@
       <p>
         <button onclick="getLocation()">Get Location</button>
         &nbsp;
-        <button onclick="getWeatherData()">Get Forecast</button>
+        <button onclick="getWeatherData()">Weather</button>
+        &nbsp;
+        <button onclick="getPollution()">Pollution</button>
       </p>
       
       <div id="weatherposition"></div>
