@@ -22,6 +22,13 @@ function parse_fred(file) {
     return res;
 }
 
-r = parse_fred(file);
-console.log(r);
+//r = parse_fred(file);
+//console.log(r);
 
+
+const secondsSinceEpoch = Math.round(Date.now() / 1000);
+
+console.log(secondsSinceEpoch);
+
+//1697795959
+//1697795971
