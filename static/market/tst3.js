@@ -1,7 +1,6 @@
 
-var ts = require("./timeseries.js");
+var pa = require("./portfolio_analytics.dist.js");
 
-let sums = [10, 20, 22];
-
-console.log(ts.pct_change(sums));
+res = pa.sharpeRatio([100, 110, 105, 107.5, 115], [100, 100, 100, 100, 100]);
+console.log(res);
 
