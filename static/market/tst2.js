@@ -1,11 +1,17 @@
 
 function parse_fred(file) {
     lines = file.split('\n');
-    res = [];
-    for (var i=0;i<lines.length;i++) {
+    res = {};
+    dates = [];
+    vals = [];
+    for (var i=1;i<lines.length;i++) {
 	tokens = lines[i].split(',');
-	res.push([tokens[0],parseFloat(tokens[1])]);
+	dates.push(tokens[0]);
+	vals.push(parseFloat(tokens[1]));
     }
+    toks = lines[0].split(',');
+    res[toks[0]] = dates;
+    res[toks[1]] = vals;
     return res;
 }
 
@@ -17,6 +23,5 @@ function init() {
     xmlHttp.send( null );
     result = xmlHttp.responseText;    
     r = parse_fred(result);
-    console.log(r[4]);
-    console.log(r[10]);
+    console.log(Object.keys(r));
 }
