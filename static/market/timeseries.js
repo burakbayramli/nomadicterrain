@@ -1,4 +1,12 @@
 
+function pct_change(arr) {
+    let changes = [];
+    for (let i = 1; i < arr.length; i++) {
+	changes[i] = arr[i] / arr[i-1] ; 
+    }
+    return changes;
+}
+
 function cumprod(dataset) {
 
     var out = 1; 
@@ -10,5 +18,6 @@ function cumprod(dataset) {
 }
 
 module.exports = {
-      cumprod: cumprod
+    cumprod: cumprod,
+    pct_change: pct_change
 };

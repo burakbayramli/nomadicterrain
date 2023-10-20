@@ -9,8 +9,6 @@ const fs = require('fs')
 
 file = fs.readFileSync("fredout.csv", 'utf8');
 
-//console.log(file);
-
 function parse_fred(file) {
     lines = file.split('\n');
     res = [];
