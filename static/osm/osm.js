@@ -2,8 +2,7 @@
 function init()  {
     if(typeof lat === 'undefined') {
 	document.getElementById("osmposition").innerHTML = "<font color='red'>Position not set</font>";
-    }
-    
+    }    
 }
 
 function getLocation() {
