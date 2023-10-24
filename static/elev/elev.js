@@ -52,7 +52,7 @@ function plot_elevation () {
     console.log(lat);
     console.log(lon);
     var lat=40.5; var lon=29.5;
-    var S = 100;
+    var S = 20;
     var xmin = lon - (radius / S);
     var xmax = lon + (radius / S);
     var ymin = lat - (radius / S);
