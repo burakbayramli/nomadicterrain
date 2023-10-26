@@ -1,8 +1,6 @@
 var math = require('../math.js');
 const fs = require('fs')
 
-var grid_tens_cache = {};
-
 var K = 3;
 
 function replace_block(mat, block, new_val) {    
@@ -42,6 +40,8 @@ for (var i=latend;i>=latbeg;i--) {
     k++;
     console.log('------------');
 }
+
+var grid_tens_cache = {};
 
 function in_tens(x) {
     return parseInt(parseInt(parseFloat(parseInt(x)) / 10)*10);
