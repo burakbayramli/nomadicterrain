@@ -31,12 +31,15 @@ var news_sources = [["First Post","https://www.firstpost.com/rss/world.xml"],
 		    ['FuelCellsWorks','https://fuelcellsworks.com/feed/']
 		   ];
 		    
-		    
-function visit() {
+
+async function show_processing() {
+    document.getElementById('processing').style.display = 'block';    
+}
+
+function get_news() {
     // based on https://github.com/pokiiio/hatena-blog-parser
     prefs = get_prefs();
     skip_words = prefs['news']['filter_words'].split(",");
-    document.getElementById("processing").style.display = "block";
     
     out = "";
     news_sources.forEach(function(elem) {
@@ -86,9 +89,10 @@ function visit() {
     document.getElementById("processing").style.display = "none";
     document.getElementById("news").innerHTML = out;
 }
-
+		    
 function init() {
     init_cookies();     
+    document.getElementById("processing").style.display = "none";
     prefs = get_prefs();
     if ( ! prefs['news'].hasOwnProperty("filter_words") ) {
 	prefs['news']['filter_words'] = "example1,example2";
