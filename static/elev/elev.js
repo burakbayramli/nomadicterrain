@@ -11,7 +11,6 @@ function showPosition(position) {
     document.getElementById("osmposition").innerHTML = lat + " " + lon;
 }
 
-
 function plot_elevation () {
 
     url = "/static/elev/data/out-40-20.json"
