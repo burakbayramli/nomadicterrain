@@ -109,12 +109,15 @@ function show_plan(mainurl) {
     });
             
     main['maps'].forEach(function(currurl) {
-	url = mainurl.substring(0,mainurl.lastIndexOf("/")+1) + currurl;
+	url = currurl;
+	if (! currurl.includes("http")) {
+	    url = mainurl.substring(0,mainurl.lastIndexOf("/")+1) + currurl;
+	}
 	paths = get_paths(get_data(url));
 
 	paths.forEach(function(path) {
 	    var line = new L.Polyline(path, {
-		color: 'red', weight: 1, opacity: 0.5, smoothFactor: 1
+		color: 'red', weight: 2, opacity: 0.5, smoothFactor: 1
 	    });
 	    line.addTo(map);
 	});

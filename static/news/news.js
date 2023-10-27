@@ -1,7 +1,6 @@
 
 function saveShowHideTextBox(){
     prefs = get_prefs();
-    console.log(prefs['news']['filter_words']);
     var x = document.getElementById("filter_words");
     if (x.style.display === "none") {
 	document.getElementById("filter_words").value = prefs['news']['filter_words'];
@@ -37,6 +36,7 @@ function visit() {
     // based on https://github.com/pokiiio/hatena-blog-parser
     prefs = get_prefs();
     skip_words = prefs['news']['filter_words'].split(",");
+    document.getElementById("processing").style.display = "block";
     
     out = "";
     news_sources.forEach(function(elem) {
@@ -90,12 +90,9 @@ function visit() {
 function init() {
     init_cookies();     
     prefs = get_prefs();
-    console.log(prefs);
     if ( ! prefs['news'].hasOwnProperty("filter_words") ) {
 	prefs['news']['filter_words'] = "example1,example2";
     }
-    document.getElementById("processing").style.display = "block";
-    visit();
 }
 
 

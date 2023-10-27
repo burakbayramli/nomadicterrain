@@ -1,9 +1,7 @@
 var math = require('../math.js');
 const fs = require('fs')
 
-var K = 3;
-
-function replace_block(mat, block, new_val) {    
+function replace_block(mat, K, block, new_val) {    
     console.log(block[0],block[1]);
     var k=0;
     var l=0;
@@ -18,9 +16,10 @@ function replace_block(mat, block, new_val) {
     
 }
 
+var K = 3;
 var m = math.zeros([K*3,K*2]);
 var newm = [[1,2,3],[4,5,7],[8,9,10]];
-replace_block(m, [0,1], newm);
+replace_block(m, K, [0,1], newm);
 console.log(m);
 
 var latbeg = 40;
@@ -68,4 +67,3 @@ res = get_tens_data(40.22,29.66);
 console.log(res['40-29'].length);
 res = get_tens_data(30.22,24.11);
 console.log(res['30-24'].length);
-
