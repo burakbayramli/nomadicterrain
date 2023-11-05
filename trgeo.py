@@ -1,7 +1,7 @@
 import pandas as pd, folium, numpy as np, json
 from pygeodesy.sphericalNvector import LatLon
 
-m = folium.Map(location=[40,33], tiles='Stamen Terrain', zoom_start=7)
+m = folium.Map(location=[40,33], zoom_start=7)
 base = "/opt/Downloads/trgeo"
 
 def average(coords):
