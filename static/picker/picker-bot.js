@@ -17,9 +17,11 @@ function fetch_cities() {
 
 function autocomplete(inp) {
 
-    arr = null;
+    cities_dict = null; // global
+    var arr = null;
     fetch_cities().then((out) => {
         arr = Object.keys(out);
+	cities_dict = out;
     });
     
     var currentFocus;
