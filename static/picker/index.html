@@ -34,18 +34,27 @@
       <div id="picked">
       </div>
       </p>
-                  
+
+      <h4>Pick By Clicks</h4>
+      
       <div id="map"></div>
+      
+      <h4>Pick By Name</h4>
+      
+      <div>
+        <form autocomplete="off" style="padding: 0">
+          <div class="autocomplete">
+            <table><tr>
+              <td><input id="myInput" type="text" name="myCountry" placeholder="City"/></td>
+            </tr>
+            </table>
+          </div>
+        </form>
+        <br/>
+        <button onclick="set_named_pick()">Set</button>
 
+      </div>
 
-      <form autocomplete="off" style="padding: 0">
-        <div class="autocomplete">
-          <table><tr>
-            <td><input id="myInput" type="text" name="myCountry" placeholder="Movie"/></td>
-          </tr>
-          </table>
-        </div>
-      </form>
       
       <script src="picker-bot.js"></script>
       

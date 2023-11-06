@@ -1,10 +1,10 @@
 function fetch_cities() {
 
     url = "/static/picker/data/cities.csv";
-    var cities = {};
     return fetch(url)
         .then((response) => { if(response.ok)  return response.text(); })
         .then((text) => {
+	    var cities = {};
             const lines = text.split("\n");
 	    console.log(lines.length);
 	    lines.forEach(function(line) {
