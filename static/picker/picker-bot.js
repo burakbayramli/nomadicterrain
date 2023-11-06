@@ -1,13 +1,17 @@
 function fetch_cities() {
 
     url = "/static/picker/data/cities.csv";
+    var cities = {};
     return fetch(url)
         .then((response) => { if(response.ok)  return response.text(); })
         .then((text) => {
             const lines = text.split("\n");
 	    console.log(lines.length);
-	    console.log(lines[30]);
-            return lines;
+	    lines.forEach(function(line) {
+		toks = line.split(";");
+		cities[toks[0]] = toks[1];
+	    });
+            return cities;
         });
 }
 
@@ -15,7 +19,7 @@ function autocomplete(inp) {
 
     arr = null;
     fetch_cities().then((out) => {
-        arr = out;
+        arr = Object.keys(out);
     });
     
     var currentFocus;

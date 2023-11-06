@@ -1,6 +1,4 @@
 
-
-
 function show() {
 
     var map = L.map('map').setView([40,30], 4);
