@@ -14,10 +14,9 @@
 
   <script src="../common.js"></script>
   <script src="picker.js"></script>
-  
-    
+      
   <body onload='show()'>
-    
+
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
       <p>Picker</p>
@@ -25,18 +24,31 @@
 
     <div id="bbmain">
 
+    
       <p>
         Allows picking of geo coordinates anywhere in the world by
         name, or by simply clicking on it via the map below. 
       </p>
-
+     
       <p>
       <div id="picked">
       </div>
       </p>
-      
+                  
       <div id="map"></div>
-                
+
+
+      <form autocomplete="off" style="padding: 0">
+        <div class="autocomplete">
+          <table><tr>
+            <td><input id="myInput" type="text" name="myCountry" placeholder="Movie"/></td>
+          </tr>
+          </table>
+        </div>
+      </form>
+      
+      <script src="picker-bot.js"></script>
+      
       <div><br/><a href="../index.html">Up</a></div>
     
     </div>

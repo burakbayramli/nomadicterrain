@@ -1,6 +1,6 @@
 function fetch_movie_data() {
 
-    url = "http://192.168.43.49:5000/static/recomdata/movie_title_int.json";
+    url = "/static/recomdata/movie_title_int.json";
     return fetch(url)
         .then((response) => { if(response.ok)  return response.json(); })
         .then((json) => {

@@ -1,7 +1,9 @@
 
+
+
 function show() {
 
-    map = L.map('map').setView([40,30], 4);
+    var map = L.map('map').setView([40,30], 4);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: 'ddd'
