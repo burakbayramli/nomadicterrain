@@ -16,7 +16,7 @@
   <script src="osm.js"></script>
   
     
-  <body>
+  <body onload='init()'>
     
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
@@ -28,6 +28,8 @@
 
     <p>
       <button onclick="getLocation()">Get Location</button>
+      &nbsp;
+      <button onclick="getLocationFromPicker()">Picker</button>
     </p>
 
     <div id='osmentry'>

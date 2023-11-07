@@ -1,8 +1,6 @@
 
 function init()  {
-    if(typeof lat === 'undefined') {
-	document.getElementById("osmposition").innerHTML = "<font color='red'>Position not set</font>";
-    }    
+    init_cookies(); 
 }
 
 function getLocation() {
@@ -11,11 +9,7 @@ function getLocation() {
     }
 }
 
-function showPosition(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    document.getElementById("osmposition").innerHTML = lat + " " + lon;
-    document.getElementById("osmentry").style.display = "block";
+function display_map() {
     map = L.map('map').setView([lat,lon], 12);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
@@ -34,6 +28,24 @@ function showPosition(position) {
     });    
     var orangeIcon = new LeafIcon({iconUrl: '../travel/marker-icon-2x-orange.png'});
     L.marker([lat,lon], {icon: orangeIcon}).addTo(map);    
+}
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("osmposition").innerHTML = lat + " " + lon;
+    document.getElementById("osmentry").style.display = "block";
+    display_map();
+}
+
+function getLocationFromPicker() {
+    prefs = get_prefs();
+    coords = prefs['picker']['coord'].split(" ");
+    lat = parseFloat(coords[0]);
+    lon = parseFloat(coords[1]);
+    document.getElementById("osmposition").innerHTML = lat + " " + lon;
+    document.getElementById("osmentry").style.display = "block";
+    display_map();
 }
 
 function show() {
