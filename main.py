@@ -289,35 +289,6 @@ def directions():
         routeutil.create_folium(lat1,lon1,path,fouthtml)
         return send_file(fouthtml)
 
-
-@app.route('/name_lookup_main')
-def name_lookup_main():
-    return render_template('/name_lookup.html')
-    
-@app.route("/name_lookup", methods=["POST"])
-def name_lookup():
-    name = request.form.get("name")
-    method = request.form.get("method")
-    print ('method',method)
-    res = []
-    if method == "online":
-        g = geocoder.osm(name)    
-        res.append("%s %s" % (name, g.latlng))
-    if method == "offline":
-        zfile = params['osm_dir'] + "/geolitecity.zip"
-        zip_file    = zipfile.ZipFile(zfile)
-        items_file  = zip_file.open('geolitecity.csv')
-        items_file  = io.TextIOWrapper(items_file)
-        rd = csv.reader(items_file)
-        headers = {k: v for v, k in enumerate(next(rd))}
-        for row in rd:
-            if name in row[headers['cityascii2']].lower():
-                res.append("%s, %s, %s,%s" % (row[1],row[3],row[5],row[6])   )
-        
-    return render_template('/name_lookup.html', res=res)
-
-
-
 if __name__ == '__main__':
     app.debug = True
     app.secret_key = "aksdfkasf"
