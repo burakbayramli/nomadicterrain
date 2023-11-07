@@ -19,5 +19,5 @@ function show() {
 function set_named_pick() {
     name = document.getElementById("myInput").value;
     console.log(name);
-    console.log(cities_dict[name]);
+    console.log(cities_dict[name].split(" "));
 }
