@@ -590,6 +590,13 @@ function showPosition(position) {
     document.getElementById("weatherposition").innerHTML = lat + " " + lon;    
 }
 
+function getLocationFromPicker() {
+    coords = prefs['picker']['coord'].split(" ");
+    lat = parseFloat(coords[0]);
+    lon = parseFloat(coords[1]);
+    document.getElementById("weatherposition").innerHTML = lat + " " + lon;    
+}
+
 function fetchForecast() {
     prefs = get_prefs();
     var key = prefs['weather']['owm_key'];
@@ -642,12 +649,8 @@ function fetchForecast() {
 function init() {
     init_cookies(); 
     prefs = get_prefs();
-    console.log(prefs);
     if ('owm_key' in prefs['weather']) {
 	document.getElementById("owm_key").value = prefs['weather']['owm_key'];
-    }
-    if(typeof lat === 'undefined') {
-	document.getElementById("weatherposition").innerHTML = "<font color='red'>Position not set</font>";
     }
 }
 
@@ -655,8 +658,8 @@ function getWeatherData() {
 
     if(typeof lat === 'undefined') {
 	document.getElementById("weatherposition").innerHTML = "<font color='red'>Position not set</font>";
+	return;
     }
-
     res = fetchForecast();
     document.getElementById('output').innerHTML = res;
     
@@ -669,6 +672,12 @@ function set_owm_key() {
 }
 
 function getPollution() {
+
+    if(typeof lat === 'undefined') {
+	document.getElementById("weatherposition").innerHTML = "<font color='red'>Position not set</font>";
+	return;
+    }
+    
     prefs = get_prefs();
     var key = prefs['weather']['owm_key'];
     var endpoint = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${key}`;
