@@ -6,7 +6,7 @@ import pickle, polyline, util, geocoder
 import numpy as np, os, uuid, glob
 import sys; sys.path.append("guide")
 import json, random, mindmeld, base64, time as timelib
-import wind, geopy.distance, datetime, shutil
+import geopy.distance, datetime, shutil
 import csv, io, zipfile, folium
 from urllib.request import urlopen
 import urllib, requests, re
@@ -175,15 +175,6 @@ def url_encode():
     e = str(e); e = e[:-1]; e = e[2:]
     OnlyOne().url = e
     return urlpage()
-
-@app.route('/gowind/<coords>/<ahead>/<wide>')
-def gowind(coords,ahead,wide):
-    lat,lon = coords.split(';')
-    ahead = int(ahead)
-    wide = float(wide)
-    fout = TMPDIR + "/out-%s.html" % uuid.uuid4()
-    wind.plot_wind(lat,lon,ahead,wide,fout) # 0,2,6,22    
-    return send_file(fout)
 
 @app.route('/edit_tweet')
 def edit_tweet():

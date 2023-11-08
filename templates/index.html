@@ -19,10 +19,6 @@ function setLocOnPage(lat,lon){
   document.getElementById("elev3").href = "/gotopo2/" + lat  + ";" + lon+"/10";
   document.getElementById("elev4").href = "/gotopo2/" + lat  + ";" + lon+"/20";
   document.getElementById("elev5").href = "/elev_line_main/" + lat  + ";" + lon+"/20";
-  document.getElementById("wind1").href = "/gowind/" + lat  + ";" + lon+"/0/100";
-  document.getElementById("wind2").href = "/gowind/" + lat  + ";" + lon+"/4/100";
-  document.getElementById("wind3").href = "/gowind/" + lat  + ";" + lon+"/8/100";
-  document.getElementById("wind4").href = "/gowind/" + lat  + ";" + lon+"/16/100";
   document.getElementById("directions").href = "/directions_main/" + lat  + ";" + lon;
 
 }
@@ -57,7 +53,7 @@ function showPosition(position) {
             <a href="/static/market/index.html">Market</a>
           </li>
           <li>
-            <a id="weat" href="/static/weather/index.html">Weather/Pollution</a>,
+            <a id="weat" href="/static/weather/index.html">Weather/Pollution</a>
           </li>
           <li><a href="/book">Loogle/Recoll</a></li>
           <li><a href="/url">Lynx</a></li>
@@ -89,13 +85,6 @@ function showPosition(position) {
              <a href="/static/recom/index.html">Movie Recommendations</a>
           </li>
           <a id="time" href="/time/40.9544;29.09139">Calendar</a>
-          <li>
-            Wind &nbsp;
-            <a id="wind1" href="/gowind/40.9544;29.09139/0/100">Now</a>,&nbsp;
-            <a id="wind2" href="/gowind/40.9544;29.09139/4/100">12 hrs</a>,&nbsp;
-            <a id="wind3" href="/gowind/40.9544;29.09139/8/100">24 hrs</a>,&nbsp;
-            <a id="wind4" href="/gowind/40.9544;29.09139/16/100">48 hrs</a> 
-          </li>
           <li><a id="profile" href="/static/prof/index.html">Profile</a></li>
           <li><a id='directions' href="/directions_main/40.9544;29.09139">Directions</a></li>
           <li>
