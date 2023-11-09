@@ -14,9 +14,26 @@
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
           crossorigin=""></script>
 
-  <script src="ukrmap.js"></script>
+  <script src="ukrconf.js"></script>
       
-  <body onload='init();plot("2023/ukrdata/fl-1024.json","2023/ukrdata/fl-1109.json");'>
+  <body onload='init()'>
+
+      <select id="before" name="before" method="POST">
+        <option value= ""></option>"
+        <option value= "2023/fl-0907.json">2023/fl-0907.json</option>"
+        <option value= "2023/fl-1024.json">2023/fl-1024.json</option>"
+
+      </select>
+
+      <select id="after" name="after" method="POST">
+        <option value= ""></option>"
+        <option value= "2023/fl-1109.json">2023/fl-1109.json</option>"
+
+      </select>
+      &nbsp;
+      <button onclick="show()">Map</button>      
+
+
     
     <div id="map"></div>      
           

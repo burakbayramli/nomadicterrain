@@ -1,7 +1,14 @@
 
+lines = [];
+
 function plot(before,after) {
-    
-    url = `https://raw.githubusercontent.com/muratk5n/thirdwave/master/en/mbl/${before}`;
+
+    lines.forEach(function(x) {	
+	x.remove(map);
+    });
+    lines = [];
+		      
+    url = `/static/ukrconf/${before}`;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url = url, false ); 
     xmlHttp.send( null );
@@ -15,8 +22,9 @@ function plot(before,after) {
 	color: 'darkblue', weight: 2, opacity: 0.5, smoothFactor: 1
     });
     linebef.addTo(map);
+    lines.push(linebef);
     
-    url = `https://raw.githubusercontent.com/muratk5n/thirdwave/master/en/mbl/${after}`;
+    url = `/static/ukrconf/${after}`;
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url = url, false ); 
     xmlHttp.send( null );
@@ -30,15 +38,23 @@ function plot(before,after) {
 	color: 'red', weight: 2, opacity: 0.5, smoothFactor: 1
     });
     lineaft.addTo(map);
-    
+    lines.push(lineaft);
 }
 
 function init() {
     map = L.map('map').setView([51,44], 5);
     
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: 'OSM'
     }).addTo(map);
 
+}
+
+function show() {
+
+    var bef = document.getElementById("before").value;
+    var aft = document.getElementById("after").value;
+
+    plot(bef,aft);
 }
