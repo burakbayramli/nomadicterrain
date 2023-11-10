@@ -12,13 +12,8 @@ function getLocation() {
 }
 function setLocOnPage(lat,lon){
   document.getElementById("locpos").innerHTML = lat  + "," + lon;
-  document.getElementById("time").href = "/time/" + lat  + ";" + lon;
-  document.getElementById("elev").href = "/plot_elev/" + lat  + ";" + lon+"/0.05/50/20";
-  document.getElementById("elev1").href = "/gotopo2/" + lat  + ";" + lon+"/1";
-  document.getElementById("elev2").href = "/gotopo2/" + lat  + ";" + lon+"/5";
-  document.getElementById("elev3").href = "/gotopo2/" + lat  + ";" + lon+"/10";
-  document.getElementById("elev4").href = "/gotopo2/" + lat  + ";" + lon+"/20";
   document.getElementById("elev5").href = "/elev_line_main/" + lat  + ";" + lon+"/20";
+  document.getElementById("time").href = "/time/" + lat  + ";" + lon;
   document.getElementById("directions").href = "/directions_main/" + lat  + ";" + lon;
 
 }
@@ -58,24 +53,9 @@ function showPosition(position) {
           <li><a href="/book">Loogle/Recoll</a></li>
           <li><a href="/url">Lynx</a></li>
           <li><a href="/static/travel/">Trip Map</a></li>
-          <li>Elevation
-            <a id="elev1" href="/gotopo2/40.9544;29.09139/1">
-              1 km
-            </a>,&nbsp;
-            <a id="elev2" href="/gotopo2/40.9544;29.09139/5">
-              5 
-            </a>,&nbsp;
-            <a id="elev3" href="/gotopo2/40.9544;29.09139/10">
-              10 
-            </a>,&nbsp;
-            <a id="elev4" href="/gotopo2/40.9544;29.09139/20">
-              20 
-            </a>,&nbsp;
-            <a id="elev" href="/plot_elev/40.9544;29.09139/0.05/50/20">
-              Local
-            </a>,&nbsp;
+          <li>
             <a id="elev5" href="/elev_line_main/40.9544;29.09139">
-              Line
+              Line Elevation
             </a> 
           </li>
           <li>
