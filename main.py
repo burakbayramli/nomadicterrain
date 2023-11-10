@@ -100,14 +100,6 @@ def time(coords):
                            weekday=weekday,
                            tzone=timezone_str)
 
-@app.route('/gotopo2/<coords>/<how_far>')
-def gotopo2(coords,how_far):
-    import elevutil
-    lat,lon = coords.split(';')
-    how_far = float(how_far)
-    fout = TMPDIR + "/out-%s.html" % uuid.uuid4()
-    elevutil.plot_topo(lat,lon,how_far,fout)
-    return send_file(fout)
 
 class OnlyOne(object):
     class __OnlyOne:
