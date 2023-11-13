@@ -13,7 +13,6 @@ function getLocation() {
 function setLocOnPage(lat,lon){
   document.getElementById("locpos").innerHTML = lat  + "," + lon;
   document.getElementById("elev5").href = "/elev_line_main/" + lat  + ";" + lon+"/20";
-  document.getElementById("time").href = "/time/" + lat  + ";" + lon;
   document.getElementById("directions").href = "/directions_main/" + lat  + ";" + lon;
 
 }
@@ -67,7 +66,7 @@ function showPosition(position) {
           <li>
              <a href="/static/recom/index.html">Movie Recommendations</a>
           </li>
-          <a id="time" href="/time/40.9544;29.09139">Calendar</a>
+          <a href="/static/calen">Calendar</a>
           <li><a id="profile" href="/static/prof/index.html">Profile</a></li>
           <li><a id='directions' href="/directions_main/40.9544;29.09139">Directions</a></li>
           <li>
