@@ -17,8 +17,29 @@
   <script src="polyline.js"></script>
       
   <body onload='init()'>
-    
-      <div id="map"></div>      
+
+    <div id='pathentry'>
+
+      From
+      <input id="coordfr" type="text" name="coordfr" placeholder="latitude,longitude"/>
+      <button onclick="setCurrentFrom()">Use Current</button>
+      <button onclick="setPickerFrom()">Use Picker</button>
+      <br/>
+      <br/>
+      
+      To &nbsp;&nbsp;&nbsp;&nbsp;
+      <input id="coordto" type="text" name="coordto" placeholder="latitude,longitude"/>
+      <button onclick="setCurrentTo()">Use Current</button>
+      <button onclick="setPickerTo()">Use Picker</button>
+      <br/>
+      <br/>
+      <button onclick="shortest()">Path</button>
+      
+    </div>
+
+    <br/>
+      
+    <div id="map"></div>      
                 
     <div><br/><a href="../index.html">Up</a></div>
     

@@ -1,13 +1,54 @@
 
+function setCurrentFrom() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(setCurrentFromCallback);
+    }
+}
+
+function setCurrentFromCallback(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("coordfr").value = lat + "," + lon;    
+}
+
+function setCurrentTo() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(setCurrentToCallback);
+    }
+}
+
+function setCurrentToCallback(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("coordto").value = lat + "," + lon;
+}
+
+function setPickerFrom() {
+    coords = prefs['picker']['coord'].split(" ");
+    lat = parseFloat(coords[0]);
+    lon = parseFloat(coords[1]);
+    document.getElementById("coordfr").value = lat + "," + lon;    
+}
+
+function setPickerTo() {
+    coords = prefs['picker']['coord'].split(" ");
+    lat = parseFloat(coords[0]);
+    lon = parseFloat(coords[1]);
+    document.getElementById("coordto").value = lat + "," + lon;    
+}
+
 function init()  {
     init_cookies();
-    shortest();
 }
 
 function shortest() {
 
-    var [lat1, lon1] = [40.976010662280586, 29.081443051759983];
-    var [lat2, lon2] = [37.377289145215066, 27.295607731239233];
+    //var [lat1, lon1] = [40.976010662280586, 29.081443051759983];
+    //var [lat2, lon2] = [37.377289145215066, 27.295607731239233];
+    coords = document.getElementById("coordfr").value.split(",");
+    var [lat1, lon1] = coords;
+    coords = document.getElementById("coordto").value.split(",");
+    var [lat2, lon2] = coords;
 
     url = `http://router.project-osrm.org/route/v1/car/${lon1},${lat1};${lon2},${lat2}?alternatives=false`;
 
@@ -19,7 +60,7 @@ function shortest() {
     var coordinates = polyline.decode(encoded);
     var c = coordinates[0];
 
-    map = L.map('map').setView([c[0],c[1]], 10);
+    map = L.map('map').setView([c[0],c[1]], 7);
     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
