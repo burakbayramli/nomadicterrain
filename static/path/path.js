@@ -1,4 +1,37 @@
 
+var LeafIcon = L.Icon.extend({
+    options: {
+        shadowUrl: '../travel/marker-shadow.png',
+        iconSize:     [20, 40],
+        shadowSize:   [25, 30],
+        iconAnchor:   [10, 45],
+        shadowAnchor: [2, 30],
+        popupAnchor:  [-1, -30]
+    }
+});
+
+var currLocMarker = null;
+
+function markLocation() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(markLocationCallback);
+    }
+}
+
+function markLocationCallback(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    var orangeIcon = new LeafIcon({iconUrl: '../travel/marker-icon-2x-orange.png'});
+    if (typeof lat !== 'undefined') {
+	if (currLocMarker != null) {
+	    map.removeLayer(currLocMarker);
+	}
+	currLocMarker = L.marker([lat,lon], {icon: orangeIcon});
+	currLocMarker.addTo(map);
+    }
+    
+}
+
 function setCurrentFrom() {
     if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(setCurrentFromCallback);
