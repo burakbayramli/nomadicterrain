@@ -19,7 +19,7 @@ skip_words = ["Turk", "Türkiye", "Turkey","battery","Webb", "electric","Blinken
 
 def getnews():
     feeds = [
-        ("H2 Central","https://hydrogen-central.com/feed/",20),
+#        ("H2 Central","https://hydrogen-central.com/feed/",20),
 #        ("Politico.eu","https://www.politico.eu/feed/",5),
 #        ("First Post","https://www.firstpost.com/rss/world.xml",10),
         ("France 24","https://www.france24.com/en/rss",10),
