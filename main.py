@@ -174,6 +174,20 @@ def elev_line_calc():
     elevutil.line_elev_calc((lat1,lon1), (lat2,lon2), fout)
     return send_file(fout)
 
+@app.route('/upload_main')
+def upload_main():
+    return render_template("/upload.html")
+
+@app.route('/upload', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      fout =  "/tmp/" + f.filename
+      f.save(fout)     
+      return 'file uploaded successfully'
+   return "OK"
+
+
 if __name__ == '__main__':
     app.debug = True
     app.secret_key = "aksdfkasf"
