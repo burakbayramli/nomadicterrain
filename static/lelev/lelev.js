@@ -11,8 +11,6 @@ function goto(fr, a, d) {
     var D = d*KM_DEG;
     var res = [];
     var P  = D / N
-    //console.log(Math.sin(degToRad(180)));
-    //console.log(Math.sin(2*Math.PI / 4));
     for (var i=0;i<N; i++) {
 	lat = fr[0] + (P*i)*Math.sin(a);
 	lon = fr[1] + (P*i)*Math.cos(a);
@@ -34,4 +32,29 @@ function init() {
     xmlHttp.send( null );
     result = JSON.parse(xmlHttp.responseText);
     console.log(result['results']);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("position").innerHTML = lat + " " + lon;    
+}
+
+function getLocationFromPicker() {
+    coords = prefs['picker']['coord'].split(" ");
+    lat = parseFloat(coords[0]);
+    lon = parseFloat(coords[1]);
+    document.getElementById("position").innerHTML = lat + " " + lon;    
+}
+
+function calc() {
+
+    var type = document.getElementById("deg").value;
+    console.log(deg);
 }
