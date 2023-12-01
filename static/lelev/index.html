@@ -10,7 +10,7 @@
   <script src="lelev.js"></script>
   
     
-  <body onload='init()'>
+  <body>
     
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
@@ -23,7 +23,8 @@
       <p>
         Get elevation changes on a straight line starting from a
         current or a chosen location towards a (degree) direction and
-        distance.
+        distance. Directions are in trigonometric degrees, North is
+        90 degrees, South is 270.
       </p>
       
       <p>
@@ -37,10 +38,10 @@
       
       <p>
         Direction:
-        <input size="5" id="deg" type="text" name="deg"/>
+        <input size="5" id="deg_id" type="text" name="deg_name"/>
         &nbsp;&nbsp;&nbsp;
         Distance:
-        <select id="dist" name="dist" method="POST">
+        <select id="dist_id" name="dist_name" method="POST">
           <option value= ""></option>"
           <option value= "0.5">0.5 km</option>"
           <option value= "1">1 km</option>"
@@ -50,7 +51,10 @@
         </select>
       </p>
 
+      <button onclick="calc()">Show</button>
 
+      <div id='elevgraph'></div>
+      
       <div><br/><a href="../index.html">Up</a></div>
       
     </div>
