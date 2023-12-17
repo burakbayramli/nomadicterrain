@@ -90,10 +90,13 @@ def visible(element):
        return False
    return True
     
-@app.route('/textify/<url>')
-def textify(url):
-    url = base64.urlsafe_b64decode(bytes(url,'utf-8'))
-    resp = requests.get(url, headers=headers)
+@app.route('/url')
+def urlpage():
+    return render_template('/url.html',url=OnlyOne().url)
+
+@app.route("/url_encode", methods=["POST"])
+def url_encode():
+    resp = requests.get(request.form.get("url"), headers=headers)
     soup = BeautifulSoup(resp.text,features="lxml")
     texts = soup.findAll(text=True)
     visible_texts = filter(visible, texts)
@@ -101,19 +104,7 @@ def textify(url):
     for x in visible_texts:
         content += x
     return content
-
-@app.route('/url')
-def urlpage():
-    return render_template('/url.html',url=OnlyOne().url)
-
-@app.route("/url_encode", methods=["POST"])
-def url_encode():
-    url = request.form.get("url")
-    e = base64.urlsafe_b64encode(bytes(url,'utf-8'))
-    e = str(e); e = e[:-1]; e = e[2:]
-    OnlyOne().url = e
-    return urlpage()
-
+    
 @app.route('/edit_tweet')
 def edit_tweet():
     content = OnlyOne().tweet
