@@ -22,7 +22,7 @@ def getnews():
 #        ("H2 Central","https://hydrogen-central.com/feed/",20),
 #        ("Politico.eu","https://www.politico.eu/feed/",5),
 #        ("First Post","https://www.firstpost.com/rss/world.xml",10),
-        ("France 24","https://www.france24.com/en/rss",10),
+#        ("France 24","https://www.france24.com/en/rss",10),
 #        ("Politico","https://www.politico.com/rss/politicopicks.xml",10),
 #        ("TDB","https://feeds.thedailybeast.com/summary/rss/articles",10),
         ("The Atlantic", "https://www.theatlantic.com/feed/all",8),
