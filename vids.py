@@ -8,7 +8,7 @@ def strip_html(input):
 
 def getvids():
     feeds = [
-        ("WA", "https://www.youtube.com/feeds/videos.xml?channel_id=UCBS7ypf4ccm6e_bu35EiAAA",10)        
+        ("Everything Always", "https://www.youtube.com/feeds/videos.xml?channel_id=UCBS7ypf4ccm6e_bu35EiAAA",5) 
     ]
 
     content = ""
@@ -22,13 +22,17 @@ def getvids():
     '''
     
     for name,url,lim in feeds:
-        print (name)
         content += "<h3>" + name + "</h3>\n"
         try:
             d = feedparser.parse(url)
             for i,post in enumerate(d.entries):
-                print ('link',post.link)
-                print ('ssm',post.summary)
+                v = post.link.replace("https://www.youtube.com/watch?v=","")
+                summary = "<br><br>" + post.summary[:400]
+                vimg = "http://img.youtube.com/vi/%s/0.jpg" % v
+                content += "<a href='%s'>%s</a><br/><br/>\n" % (post.link, post.title)
+                content += "<img width='200' src='%s'>\n" % (vimg)
+                content += "%s<br/><br/>\n" % (summary)
+                if i>lim: break
         except Exception as e:
             print (repr(e))
             continue
@@ -37,3 +41,6 @@ def getvids():
 
 if __name__ == "__main__": 
     res = getvids()
+    fout = open("/tmp/vids.html","w")
+    fout.write(res)
+    fout.close()
