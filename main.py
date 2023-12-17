@@ -38,11 +38,19 @@ def my_curr_location():
 def index():
     return render_template('/index.html')
 
-
 @app.route('/extnews')
 def extnews():
     import news
     content = news.getnews()
+    from flask import Response
+    def generate():
+        yield content
+    return Response(generate(), mimetype='text/html')
+
+@app.route('/extvids')
+def extvids():
+    import vids
+    content = vids.getvids()
     from flask import Response
     def generate():
         yield content
