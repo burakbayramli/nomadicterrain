@@ -13,6 +13,7 @@ def getvids():
         ("baklykov", "UC13grFkpvC315pZWUHBTFlw",5),
         ("histleg",  "UCHqqf2BwNM4Oih-a_ikbWww",5),
         ("blackout", "UCV_q52WAPdc90WudBqyGSFw",5),
+        ("vanguard", "UC98DCNPM9B3ZP4TiDANonIA",5),
         ("dore",     "UC3M7l8ved_rYQ45AVzS0RGA",5),
         ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5),
         ("dialect",  "UC3KV2kFy2YhjYvverIy2WnA",5),
