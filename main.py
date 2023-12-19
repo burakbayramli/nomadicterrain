@@ -2,19 +2,13 @@
 import os; os.chdir(os.path.dirname(__file__))
 from flask import Flask, render_template, request, session, redirect, send_file
 from io import StringIO, BytesIO
-import pickle, polyline, util, geocoder
-import numpy as np, os, uuid, glob
-import sys; sys.path.append("guide")
-import json, random, mindmeld, base64, time as timelib
-import geopy.distance, datetime, shutil
-import csv, io, zipfile, folium
+import pickle, polyline, util, os, uuid, glob, sys
+import json, random, base64, time as timelib
+import datetime, shutil, csv, io
 from urllib.request import urlopen
 import urllib, requests, re
-import gpxpy, gpxpy.gpx
-import calendar, datedelta
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
-from unidecode import unidecode
 
 app = Flask(__name__)
 
@@ -135,24 +129,6 @@ def submit_search():
         results.append(row)
 
     return render_template("/book.html",results=results)
-
-
-@app.route('/elev_line_main/<coords>')
-def elev_line_main(coords):
-    lat,lon = coords.split(';')
-    lat,lon=float(lat),float(lon)
-    session['geo'] = (lat,lon)
-    return render_template('/elev_line.html')
-
-@app.route("/elev_line_calc", methods=["POST"])
-def elev_line_calc():
-    import elevutil
-    lat1,lon1 = session['geo']
-    lat2 = request.form.get("lat2")
-    lon2 = request.form.get("lon2")
-    fout = TMPDIR + "/out-%s.png" % uuid.uuid4()
-    elevutil.line_elev_calc((lat1,lon1), (lat2,lon2), fout)
-    return send_file(fout)
 
 @app.route('/upload_main')
 def upload_main():
