@@ -19,7 +19,8 @@ def getvids():
         ("dialect",  "UC3KV2kFy2YhjYvverIy2WnA",5),
         ("lerner",   "UCiBditpj7sdROMYz02qoCMQ",5),
         ("unzick",   "UC2r6quRlj_KdT7QBPjB3GsA",5),
-        ("jazeera",  "UCNye-wNBqNL5ZzHSJj3l8Bg",5)        
+        ("jazeera",  "UCNye-wNBqNL5ZzHSJj3l8Bg",5),
+        ("elec intifada", "UC9jY5IcAA99wX8MZQ9K9r-Q",5)
     ]
 
     content = ""
@@ -33,7 +34,7 @@ def getvids():
     '''
     
     for name,url,lim in feeds:
-        content += "<h3>" + name + "</h3>\n"
+        content += "<h2>" + name + "</h2>\n"
         try:
             d = feedparser.parse(vbase + url)
             for i,post in enumerate(d.entries):
