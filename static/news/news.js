@@ -18,21 +18,23 @@ function saveShowHideTextBox(){
 }
 
 var news_sources = [["Politico","https://www.politico.com/rss/politicopicks.xml"],
-		    ["Politico.eu","https://api.allorigins.win/raw?url=https://www.politico.eu/feed/"],
+//		    ["Politico.eu","https://api.allorigins.win/raw?url=https://www.politico.eu/feed/"],
 		    ["Arab News","https://www.arabnews.com/cat/3/rss.xml"],
 		    ["TDB","https://api.allorigins.win/raw?url=https://feeds.thedailybeast.com/summary/rss/articles"],
 		    ["The Guardian","https://api.allorigins.win/raw?url=http://www.theguardian.com/world/rss"],
 		    ["CNBC","https://www.cnbc.com/id/100727362/device/rss/rss.html"],
-		    ["France 24","https://api.allorigins.win/raw?url=https://www.france24.com/en/rss"],
 		    ["NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"],
+		    ["The Lever", "https://api.allorigins.win/raw?url=https://www.levernews.com/rss"],
+		    ["France 24","https://api.allorigins.win/raw?url=https://www.france24.com/en/rss"],
 		    ["Al Monitor", "https://api.allorigins.win/raw?url=https://www.al-monitor.com/rss"],
 		    ["TASS", "https://api.allorigins.win/raw?url=http://tass.com/rss/v2.xml"],
 		    ["First Post","https://www.firstpost.com/rss/world.xml"],
 		    ["Janes","https://api.allorigins.win/raw?url=https://www.janes.com/feeds/news"],
 		    ["Hindustan Times World","https://api.allorigins.win/raw?url=https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml"],
-		    ['H2 Central','https://api.allorigins.win/raw?url=https://hydrogen-central.com/feed/'],
+//		    ['H2 Central','https://api.allorigins.win/raw?url=https://hydrogen-central.com/feed/'],
 		    ["WION","https://api.allorigins.win/raw?url=https://www.wionews.com/feeds/world/rss.xml"]
 		   ];
+
 		    
 function get_news() {
     // based on https://github.com/pokiiio/hatena-blog-parser

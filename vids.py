@@ -6,6 +6,7 @@ def getvids():
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [
         ("always", "UCBS7ypf4ccm6e_bu35EiAAA",5),
+        ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
         ("eli", "UCc3a1REv31FQzun8yXtXBqw",5),
         ("weeb",     "UCy-p2WfI1exR0yrmNFRfcag",5),
         ("due",      "UC743NEuMiqYOaUHO4oPhI2Q",5),
@@ -18,9 +19,7 @@ def getvids():
         ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5),
         ("dialect",  "UC3KV2kFy2YhjYvverIy2WnA",5),
         ("lerner",   "UCiBditpj7sdROMYz02qoCMQ",5),
-        ("unzick",   "UC2r6quRlj_KdT7QBPjB3GsA",5),
-        ("jazeera",  "UCNye-wNBqNL5ZzHSJj3l8Bg",5),
-        ("elec intifada", "UC9jY5IcAA99wX8MZQ9K9r-Q",5)
+        ("unzick",   "UC2r6quRlj_KdT7QBPjB3GsA",5)
     ]
 
     content = ""

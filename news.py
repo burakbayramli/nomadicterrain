@@ -37,7 +37,6 @@ def getnews():
         ("Japan Times","https://www.japantimes.co.jp/feed/",7),
         ("CGTN","https://www.cgtn.com/subscribe/rss/section/world.xml",10),
 #        ('CNBC','https://www.cnbc.com/id/100727362/device/rss/rss.html',10),        
-        ('WSJ','https://feeds.a.dj.com/rss/RSSOpinion.xml',10)
 #        ("NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",15),
 #        ("WION","https://www.wionews.com/feeds/world/rss.xml",20)
 #        ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10)
