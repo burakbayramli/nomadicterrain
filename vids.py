@@ -7,6 +7,7 @@ def getvids():
     feeds = [
         ("always", "UCBS7ypf4ccm6e_bu35EiAAA",5),
         ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
+        ("kelly hays","UCfMHF8GPio8NAeP0loK1VmA",5),
         ("eli", "UCc3a1REv31FQzun8yXtXBqw",5),
         ("weeb",     "UCy-p2WfI1exR0yrmNFRfcag",5),
         ("due",      "UC743NEuMiqYOaUHO4oPhI2Q",5),
@@ -16,10 +17,7 @@ def getvids():
         ("blackout", "UCV_q52WAPdc90WudBqyGSFw",5),
         ("vanguard", "UC98DCNPM9B3ZP4TiDANonIA",5),
         ("dore",     "UC3M7l8ved_rYQ45AVzS0RGA",5),
-        ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5),
-        ("dialect",  "UC3KV2kFy2YhjYvverIy2WnA",5),
-        ("lerner",   "UCiBditpj7sdROMYz02qoCMQ",5),
-        ("unzick",   "UC2r6quRlj_KdT7QBPjB3GsA",5)
+        ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5)
     ]
 
     content = ""
