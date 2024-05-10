@@ -1,14 +1,11 @@
-import base64
-
-import imageio
+import base64, imageio, io
 from PIL import Image
 
-img = imageio.imread('sait_bayramli.jpg')
+d = "/home/burak/Documents/Dropbox/Photos/2024/album"
+img = imageio.imread(d + '/sait_bayramli.jpg')
 img = Image.fromarray(img).resize((60, 60))
-img.save("/tmp/out.jpg", "JPEG")
-
-with open("/tmp/out.jpg", "rb") as image_file:
-    fin = image_file.read()
-    encoded_string = base64.b64encode(fin)
+buffer = io.BytesIO()
+img.save(buffer, "JPEG")
+encoded_string = base64.b64encode(buffer.getvalue())
 print (encoded_string)
 
