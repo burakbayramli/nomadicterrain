@@ -20,7 +20,9 @@ function show_images(imgs,offset) {
 	out += "<tr>";
 	for (var j=0;j<3;j++) {
 	    out += "<td>";
+	    out += "<a href='" + album['photos'][imgs[i]]['url'] + "'>";
 	    out += "<img src='data:image/png;base64," + album['photos'][imgs[i]]['thumbnail']+"'></img>";
+	    out += "</a>";
 	    out += "</td>";
 	    i++;
 	    if (i>=N) break;
