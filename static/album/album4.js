@@ -47,7 +47,8 @@ function showpageparam() {
     var myParam = location.search.split('photo=')[1]    
     console.log(myParam);
     var out = "";
+    out += "<div>" + album['photos'][myParam]['desc'] + "</div>"; // 
     out += "<img width='500' src='" + album['photos'][myParam]['url'] + "'></img>";
-    document.getElementById('output').innerHTML = out;    
+    document.getElementById('output').innerHTML = out;		  // 
     
 }
