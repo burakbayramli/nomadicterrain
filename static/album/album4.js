@@ -46,7 +46,7 @@ function showpageparam() {
     var myParam = location.search.split('photo=')[1]    
     console.log(myParam);
     var out = "";
-    out += "<div>" + album['photos'][myParam]['desc'] + "</div>"; 
+    out += "<div><center>" + album['photos'][myParam]['desc'] + "</center></div>"; 
     out += "<img onclick='xy_click(event)' width='500' src='" + album['photos'][myParam]['url'] + "'></img>";
     document.getElementById('output').innerHTML = out;		  
     
