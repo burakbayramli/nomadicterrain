@@ -43,7 +43,7 @@ function doit() {
 
 function showpageparam() {
     album = JSON.parse(fetch_album_json());
-    var myParam = location.search.split('photo=')[1]    
+    var myParam = location.search.split('photo=')[1];
     console.log(myParam);
     var out = "";
     out += "<div><center>" + album['photos'][myParam]['desc'] + "</center></div>"; 
