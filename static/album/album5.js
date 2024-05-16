@@ -48,7 +48,16 @@ function showall() {
 }
 
 function next() {    
+    if ((offset - BATCH) > imgs.length) return;
+    console.log('next');
     offset = offset + BATCH;
+    show_thumb_list();
+}
+
+function previous() {
+    if ((offset - BATCH) < 0) return;
+    console.log('prev');
+    offset = offset - BATCH;
     show_thumb_list();
 }
 
