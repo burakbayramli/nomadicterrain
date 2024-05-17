@@ -13,11 +13,8 @@ function fetch_album_json() {
   
 function show_thumb_list() {
     album = JSON.parse(fetch_album_json());
-    //console.log('offset', offset);
-    //console.log('imgs', imgs);
     var keys = Object.keys(album['photos']);
     var N = Math.min(BATCH,imgs.length);
-    //console.log("n",N);
     var out = "";
     out += "<table>";
     var i = offset;
