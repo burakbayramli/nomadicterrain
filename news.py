@@ -27,6 +27,7 @@ def getnews():
 #        ('Al Monitor','https://www.al-monitor.com/rss',20),
 #        ("TASS","http://tass.com/rss/v2.xml",20),
 #        ("Arab News","https://www.arabnews.com/cat/3/rss.xml",10),
+        ("Informed Comment","https://www.juancole.com/feed",10),
         ("The American Conservative","https://www.theamericanconservative.com/feed",10),
 #        ("Jane's Defence", "https://www.janes.com/feeds/news", 10),
 #        ('CNBC','https://www.cnbc.com/id/100727362/device/rss/rss.html',10),        
