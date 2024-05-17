@@ -13,23 +13,25 @@ function fetch_album_json() {
   
 function show_thumb_list() {
     album = JSON.parse(fetch_album_json());
-    console.log('offset', offset);
-    console.log('imgs', imgs);
+    //console.log('offset', offset);
+    //console.log('imgs', imgs);
     var keys = Object.keys(album['photos']);
     var N = Math.min(BATCH,imgs.length);
-    console.log("n",N);
+    //console.log("n",N);
     var out = "";
     out += "<table>";
     var i = offset;
     while (i<offset+N) {
 	out += "<tr>";
 	for (var j=0;j<3;j++) {
-	    out += "<td>";
-	    out += "<a target='_blank' href='/static/album/photo4.html?photo=" + imgs[i] + "'>";
-	    out += "<img src='data:image/png;base64," + album['photos'][imgs[i]]['thumbnail']+"'></img>";
-	    out += "</a>";
-	    out += "</td>";
-	    i++;
+	    if (i<imgs.length) {
+		out += "<td>";
+		out += "<a target='_blank' href='/static/album/photo5.html?photo=" + imgs[i] + "'>";
+		out += "<img src='data:image/png;base64," + album['photos'][imgs[i]]['thumbnail']+"'></img>";
+		out += "</a>";
+		out += "</td>";
+	    }
+	    i = i + 1;
 	    if (i>=offset+N) break;
 	}	
 	out += "</tr>";
@@ -40,7 +42,7 @@ function show_thumb_list() {
 
 function showall() {
     imgs = ['ikizoglu1.jpg','IMG-20200424-WA0000.jpg','IMG-20240508-WA0000.jpg','sait_bayramli.jpg',
-	    'IMG-20240508-WA0000.jpg','sait_bayramli.jpg','ikizoglu1.jpg','IMG-20200424-WA0000.jpg'];
+	    '20240517_111121.jpg','20240517_111154.jpg','ilkokul001.jpg'];
     
     offset = 0;
     show_thumb_list();
