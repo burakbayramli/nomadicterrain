@@ -60,13 +60,14 @@ function previous() {
     show_thumb_list();
 }
 
-function showpageparam() {
+function photo_details() {
     album = JSON.parse(fetch_album_json());
     var myParam = location.search.split('photo=')[1];
     console.log(myParam);
     var out = "";
     out += "<div><center>" + album['photos'][myParam]['desc'] + "</center></div>"; 
     out += "<img onclick='xy_click(event)' width='500' src='" + album['photos'][myParam]['url'] + "'></img>";
+    out += "<div><center>Resimdekiler: " + Object.keys(album['photos'][myParam]['people']) + "</center></div>";
     document.getElementById('output').innerHTML = out;		  
     
 }
