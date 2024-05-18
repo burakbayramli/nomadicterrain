@@ -38,9 +38,9 @@ function show_thumb_list() {
 }
 
 function showall() {
-    imgs = ['ikizoglu1.jpg','IMG-20200424-WA0000.jpg','IMG-20240508-WA0000.jpg','sait_bayramli.jpg',
-	    '20240517_111121.jpg','20240517_111154.jpg','ilkokul001.jpg'];
-    
+    album = JSON.parse(fetch_album_json());
+    imgs = Object.keys(album['photos']);
+    console.log(imgs);
     offset = 0;
     show_thumb_list();
     
