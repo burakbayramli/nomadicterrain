@@ -60,15 +60,29 @@ function previous() {
     show_thumb_list();
 }
 
+function person_detail(p) {
+    album = JSON.parse(fetch_album_json());
+    var s = p + " : ";
+    album["people"][p]["stories"].forEach(function(x) {
+	s += x + "<br/>";
+    });
+    document.getElementById('person_detail').innerHTML = s;
+}
+
 function photo_details() {
     album = JSON.parse(fetch_album_json());
-    var myParam = location.search.split('photo=')[1];
-    console.log(myParam);
+    var pic = location.search.split('photo=')[1];
+    console.log(pic);
     var out = "";
-    out += "<div><center>" + album['photos'][myParam]['desc'] + "</center></div>"; 
-    out += "<img onclick='xy_click(event)' width='500' src='" + album['photos'][myParam]['url'] + "'></img>";
-    out += "<div><center>Resimdekiler: " + Object.keys(album['photos'][myParam]['people']) + "</center></div>";
-    document.getElementById('output').innerHTML = out;		  
+    out += "<img onclick='xy_click(event)' width='500' src='" + album['photos'][pic]['url'] + "'></img>";
+    out += "<div><center>" + album['photos'][pic]['desc'] + "</center></div>"; 
+    out += "<div><center>Resimdekiler: ";
+    ppl = album['photos'][pic]['people'];
+    Object.keys(ppl).forEach(function(x) {
+	out += `<a href='#' onclick='person_detail("${x}")'>${x}</a>&nbsp;`;
+    });
+    out += "</center></div>";
+    document.getElementById('output').innerHTML = out;
     
 }
 
@@ -77,3 +91,5 @@ function xy_click(event) {
     let y = event.clientY;
     console.log(x + " " + y);
 }
+
+
