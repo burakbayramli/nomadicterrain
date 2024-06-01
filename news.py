@@ -6,14 +6,10 @@ import re, time, os
 def strip_html(input):
     return BeautifulSoup(input, "lxml").text
 
-skip_words = ["Turk", "Türkiye", "Turkey","battery","Webb", "electric","Blinken","Biden",
-              "lithium", "AOC", "der Leyen", "Erdo.an","Elon", "Musk","Tesla",
-              "batteries", "SpaceX", "Mars","black hole", "artificial intelligence",
-              " AI ", "AI ", " AI", "poll", "Zelensky", "black hole", " EV ", "Webb",
-              "A\.I\.", "telescope", "Yellen", "Thunberg","charging","Ocasio",
-              "tweets","twitter","ChatGPT", "EVs", "electrification", "charger",
-              "AI's","AI’s", "quantum", "power grid", "LGBTQ+", "Cathie Wood",
-              "Guterres", "AI,","Macron", "porn", "rape", "raping"]
+skip_words = ["Turk", "Türkiye", "Turkey","battery","Webb","Markle",
+              "electric", "lithium", "Elon", "Musk","Tesla", "SpaceX",
+              "Mars","black hole", "artificial intelligence", " AI ",
+              "AI","black hole", "EV","ChatGPT", "AI"]
 
 def getnews():
     feeds = [
@@ -27,7 +23,7 @@ def getnews():
 #        ('Al Monitor','https://www.al-monitor.com/rss',20),
 #        ("TASS","http://tass.com/rss/v2.xml",20),
 #        ("Arab News","https://www.arabnews.com/cat/3/rss.xml",10),
-#        ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10)
+        ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
         ("Informed Comment","https://www.juancole.com/feed",10),
         ("The American Conservative","https://www.theamericanconservative.com/feed",10)
 #        ("Jane's Defence", "https://www.janes.com/feeds/news", 10),
