@@ -1,4 +1,6 @@
 
+// cols = ['GlobalEventID', 'Day', 'MonthYear', 'Year', 'FractionDate','Actor1Code', 'Actor1Name', 'Actor1CountryCode','Actor1KnownGroupCode', 'Actor1EthnicCode' 'Actor1Religion1Code', 'Actor1Religion2Code', 'Actor1Type1Code', 'Actor1Type2Code', 'Actor1Type3Code', 'Actor2Code', 'Actor2Name', 'Actor2CountryCode', 'Actor2KnownGroupCode', 'Actor2EthnicCode', 'Actor2Religion1Code', 'Actor2Religion2Code', 'Actor2Type1Code', 'Actor2Type2Code', 'Actor2Type3Code', 'IsRootEvent','EventCode', 'EventBaseCode']
+
 function init() {
 
     //var url = "http://192.168.43.49:5000/static/20240602.export.CSV.zip";
@@ -11,13 +13,15 @@ function init() {
 	.then(function(zip) {
 	    //var res = zip.file(`20240602.export.CSV`).async('string');
 	    var res = zip.file('in2.csv').async('string');
-	    //console.log(typeof(res));
-	    //console.log(res);
 	    return res;
 	}).then(function(text) {
-	    console.log(text)
+	    //console.log(text);
+	    var lines = text.split('\n');
+	    lines.forEach(function(line) {
+		console.log('line', line);
+		var tokens = line.split('\t');
+		console.log(tokens.length); 
+	    });
 	});
-    }).then(function(done) {
-	console.log('done');
-    });    
+    });
 }
