@@ -10,6 +10,8 @@ function init() {
 	.then(function(zip) {
 	    //var res = zip.file(`20240602.export.CSV`).async('string');
 	    var res = zip.file('in.csv').async('string');
+	    console.log(res)
+	    res = res.split(',');
 	});
     }).then(function(done) {
 	console.log('done');
