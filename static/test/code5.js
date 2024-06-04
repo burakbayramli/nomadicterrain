@@ -20,6 +20,7 @@ function plotConflicts() {
 }
 
 function init() {
+    display_map();
 }
 
 function showMap(day) {
@@ -29,9 +30,13 @@ function showMap(day) {
     for (i = 0; i < cols.length; i++) {
 	col_d[cols[i]] = i;
     }
-    console.log('frac', col_d['FractionDate']);
-
-    display_map();
+    
+    for(var i = 0; i < this.markers.length; i++){
+	map.removeLayer(this.markers[i]);
+    }
+    if (this.markers.length > 0) {
+	this.markers = [];
+    }
     
     //var url = "http://192.168.43.49:5000/static/20240602.export.CSV.zip";
     //var url = "http://192.168.43.49:5000/static/20240525.export.CSV.zip";
@@ -60,10 +65,10 @@ function showMap(day) {
 		    var surl = tokens[col_d['SOURCEURL']];
 		    var surl_desc = surl.substr(11,10) + "...";
 		    var pop = `<a href="${surl}" target="_blank">${surl_desc}</a>`;
-		    L.circleMarker( [lat,lon], {radius: 1, color: 'red'} ).bindPopup(pop).addTo( map );
+		    var m = L.circleMarker( [lat,lon], {radius: 1, color: 'red'} ).bindPopup(pop).addTo( map );
+		    this.markers.push(m);
 		}
-		
-		
+				
 	    });
 	}).then(function(done) {
 	    console.log('done');
