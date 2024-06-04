@@ -21,16 +21,16 @@ function init() {
 
     display_map();
     
-    //var url = "http://192.168.43.49:5000/static/20240602.export.CSV.zip";
+    var url = "http://192.168.43.49:5000/static/20240602.export.CSV.zip";
     //var url = "http://data.gdeltproject.org/events/20240602.export.CSV.zip";
-    var url = "http://192.168.43.49:5000/static/in2.zip";
+    //var url = "http://192.168.43.49:5000/static/in2.zip";
 
     fetch(url).then(res => res.arrayBuffer()).then(arrayBuffer => {
 	var new_zip = new JSZip();
 	new_zip.loadAsync(arrayBuffer)
 	.then(function(zip) {
-	    //var res = zip.file(`20240602.export.CSV`).async('string');
-	    var res = zip.file('in2.csv').async('string');
+	    var res = zip.file(`20240602.export.CSV`).async('string');
+	    //var res = zip.file('in2.csv').async('string');
 	    return res;
 	}).then(function(text) {
 	    //console.log(text);
@@ -40,7 +40,8 @@ function init() {
 		var tokens = line.split('\t');
 		//console.log(tokens.length);
 		var [lat,lon] = [tokens[col_d['Actor1Geo_Lat']], tokens[col_d['Actor1Geo_Long']]];
-		if (lat != undefined) {
+		var code = tokens[col_d['Actor1Type1Code']];
+		if (lat != undefined && code == 'MIL') {
 		    var surl = tokens[col_d['SOURCEURL']];
 		    var surl_desc = surl.substr(11,10) + "...";
 		    var pop = `<a href="${surl}" target="_blank">${surl_desc}</a>`;
