@@ -21,10 +21,19 @@
   <body onload='init()'>
 
     <div id='datepicker'>
-      <input type="text" id="datepicker" style="display: none"/>
+      <p style="display:none" id="result-1">&nbsp;</p>
+      <input type="text" id="demo-1"/>
       <script>
-        var picker = new Lightpick({ inline: true, field: document.getElementById('datepicker') });
+        var picker = new Lightpick({
+           field: document.getElementById('demo-1'),
+           onSelect: function(date){
+           document.getElementById('result-1').innerHTML = date.format('Do MMMM YYYY');
+          }
+        });
       </script>
+
+
+      
       <button onclick="plotConflicts()">Plot Conflicts</button>      
     </div>
     

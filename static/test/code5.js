@@ -11,7 +11,7 @@ function display_map() {
 }
 
 function plotConflicts() {
-    var d = document.getElementById("datepicker").value;
+    var d = document.getElementById("demo-1").value;
     var day = d.substr(0,2);
     var mon = d.substr(3,2);
     var year = d.substr(6,4);
