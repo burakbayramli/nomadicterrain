@@ -41,15 +41,13 @@ function showMap(day) {
     //var url = "http://192.168.43.49:5000/static/20240602.export.CSV.zip";
     //var url = "http://192.168.43.49:5000/static/20240525.export.CSV.zip";
     //var url = "http://192.168.43.49:5000/static/20240526.export.CSV.zip";
-    //var url = "http://data.gdeltproject.org/events/20240602.export.CSV.zip";
-    var url = `http://192.168.43.49:5000/static/${day}.export.CSV.zip`;
+    var url = "http://data.gdeltproject.org/events/20240602.export.CSV.zip";
+    //var url = `http://192.168.43.49:5000/static/${day}.export.CSV.zip`;
 
     fetch(url).then(res => res.arrayBuffer()).then(arrayBuffer => {
 	var new_zip = new JSZip();
 	new_zip.loadAsync(arrayBuffer)
 	.then(function(zip) {
-	    //var res = zip.file(`20240602.export.CSV`).async('string');
-	    //var res = zip.file(`20240525.export.CSV`).async('string');
 	    var res = zip.file(`${day}.export.CSV`).async('string');
 	    return res;
 	}).then(function(text) {
