@@ -57,14 +57,14 @@ function setCurrentToCallback(position) {
 }
 
 function setPickerFrom() {
-    coords = prefs['picker']['coord'].split(" ");
+    coords = sessionStorage.getItem('picker_coord').split(" ");
     lat = parseFloat(coords[0]);
     lon = parseFloat(coords[1]);
     document.getElementById("coordfr").value = lat + "," + lon;    
 }
 
 function setPickerTo() {
-    coords = prefs['picker']['coord'].split(" ");
+    coords = sessionStorage.getItem('picker_coord').split(" ");
     lat = parseFloat(coords[0]);
     lon = parseFloat(coords[1]);
     document.getElementById("coordto").value = lat + "," + lon;    
