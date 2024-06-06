@@ -94,6 +94,5 @@ function process_news() {
 }
 		    
 function init() {
-    init_cookies();     
     document.getElementById("processing").style.display = "none";
 }
