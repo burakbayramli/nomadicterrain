@@ -1,3 +1,4 @@
+
 function fetch_movie_data() {
 
     url = "/static/recomdata/movie_title_int.json";

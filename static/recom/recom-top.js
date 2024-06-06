@@ -1,12 +1,14 @@
 
 
 function show_picks() {
-    init_cookies();    
-    prefs = get_prefs();
+    var movies = JSON.parse(localStorage.getItem("movie_picks"));
+    if (movies == null) {
+	localStorage.setItem("movie_picks",JSON.stringify({}));
+    }    
     out = "";
     out += "<h5>Picks</h5>"
-    Object.keys(prefs['movies']).forEach(function(key) {
-	out += "<span class='recomcontainer'>" + key + `<a onclick='remove("${key}")' href='#'>Remove</a></span><br/>`
+    Object.keys(movies).forEach(function(mov) {
+	out += "<span class='recomcontainer'>" + mov + `<a onclick='remove("${mov}")' href='#'>Remove</a></span><br/>`
     })      
     document.getElementById("picks").innerHTML = out;    
 }
@@ -98,19 +100,19 @@ function closest_cluster(picks, means, title_id) {
     return index;
 }
 
-function remove(movie) {
-    prefs = get_prefs();
-    delete prefs['movies'][movie];
-    save_cookie(prefs);
-    show_picks();
-}
-
 function add_movie() {
     mov = document.getElementById("myInput").value;
     rat = document.getElementById("myRating").value;
-    prefs = get_prefs();
-    prefs['movies'][mov] = rat;
-    save_cookie(prefs);
+    movies = JSON.parse(localStorage.getItem("movie_picks"));
+    movies[mov] = rat;
+    localStorage.setItem("movie_picks",JSON.stringify(movies));
+}
+
+function remove(movie) {
+    movies = JSON.parse(localStorage.getItem("movie_picks"));
+    delete movies[movie];
+    localStorage.setItem("movie_picks",JSON.stringify(movies));
+    show_picks();
 }
 
 
@@ -133,8 +135,7 @@ function sample_wr(sample_from, seed, N) {
 }
 
 function paged_results(page, N) {
-    prefs = get_prefs();
-    picks = prefs['movies'];
+    picks = JSON.parse(localStorage.getItem("movie_picks"));
     means = JSON.parse(fetch_means_data());
     title_id = JSON.parse(fetch_title_id_data());
     rev = JSON.parse(fetch_id_title_rev_data());
@@ -145,8 +146,7 @@ function paged_results(page, N) {
 }
 
 function recommend(page) {
-    prefs = get_prefs();
-    picks = prefs['movies'];
+    picks = JSON.parse(localStorage.getItem("movie_picks"));    
     recom_tmp = paged_results(page, 10);
     var recom = [];
     recom_tmp.forEach(function(key) {
