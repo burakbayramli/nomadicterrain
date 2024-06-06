@@ -1,5 +1,4 @@
 
-
 function show_picks() {
     var movies = JSON.parse(localStorage.getItem("movie_picks"));
     if (movies == null) {
