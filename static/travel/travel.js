@@ -138,7 +138,7 @@ function add_url() {
 
 function remove(url) {
     plans = JSON.parse(localStorage.getItem("travel_plans"));
-    var index = plans.indexOf(item);
+    var index = plans.indexOf(url);
     if (index !== -1) {
 	plans.splice(index, 1);
     }
