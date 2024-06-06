@@ -96,10 +96,4 @@ function process_news() {
 function init() {
     init_cookies();     
     document.getElementById("processing").style.display = "none";
-    prefs = get_prefs();
-    if ( ! prefs['news'].hasOwnProperty("filter_words") ) {
-	prefs['news']['filter_words'] = "example1,example2";
-    }
 }
-
-
