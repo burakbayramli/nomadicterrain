@@ -16,12 +16,14 @@ function parse_fred(file) {
 }
 
 function init() {
-    url = "https://api.allorigins.win/raw?url=https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL";
+    //url = "https://api.allorigins.win/raw?url=https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL";
+    url = "https://api.allorigins.win/raw?url=https://fred.stlouisfed.org/graph/fredgraph.csv?id=AMZN";
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url = url, false ); 
     xmlHttp.send( null );
     result = xmlHttp.responseText;    
     r = parse_fred(result);
-    console.log(Object.keys(r));
-    console.log(r['WALCL'])
+    console.log(r)
+    //console.log(Object.keys(r));
+    //console.log(r['WALCL'])
 }

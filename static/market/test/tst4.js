@@ -23,3 +23,13 @@ res = pa.cumulativeReturn(portfolio);
 
 console.log(res);
 
+const e = m.matrix([[5, 6], [5, 6]]);
+
+const f = m.matrix([[10, 20], [10, 20]]);
+
+console.log(m.add(e,f));
+
+const x = m.matrix([[11, 12], [13, 14]]);
+
+console.log(m.eigs(x));
+
