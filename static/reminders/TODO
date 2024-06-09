@@ -1,0 +1,16 @@
+
+- "01/01/2024": "Reminder 1" - runs the reminder at specific date
+
+- "01/*/2024": "Reminder 2" - runs the reminder the first of every month
+
+- "24/04/*": "Reminder 3" - runs reminder at specific date every year (eg birthdays)
+
+
+
+
+
+
+
+
+
+
