@@ -19,9 +19,7 @@ console.log(b);
 
 console.log(portfolio);
 
-res = pa.cumulativeReturn(portfolio);
-
-console.log(res);
+console.log(pa.cumulativeReturn(portfolio));
 
 const e = m.matrix([[5, 6], [5, 6]]);
 
