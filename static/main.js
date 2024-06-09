@@ -7,6 +7,7 @@ function init() {
     const y1 = date.getFullYear();    
     console.log(rt);
     console.log(d1, m1, y1);
+    var s = "";
     if (rt != null) {
 	rt = JSON.parse(rt);
 	Object.keys(rt).forEach(function (x) {
@@ -14,13 +15,16 @@ function init() {
 	    console.log(x, rt[x]);
 	    var [d2,m2,y2] = x.split("/");
 	    console.log(d2,m2,y2);
-	    console.log(typeof(d1));
-	    console.log(typeof(d2));
+	    rtext = rt[x];
 	    if ( (d1==d2 | d2=="*") & (m1==m2|m2=="*") & (y1==y2 | y2=="*") ) {
 		console.log("match");
+		s += `<p><font color="red">- ${rtext}</font></p>`;
 	    }
 	});
     }
-    
+    if (s.length > 0) {
+	s += '<font size="1.5px"><a href="/static/reminders/index.html">Detail</a></font>';
+	document.getElementById('reminder').innerHTML = s;
+    }
 }
 
