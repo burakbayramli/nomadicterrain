@@ -16,14 +16,11 @@ function parse_fred(file) {
 }
 
 function init() {
-    //url = "https://api.allorigins.win/raw?url=https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL";
-    url = "https://api.allorigins.win/raw?url=https://fred.stlouisfed.org/graph/fredgraph.csv?id=AMZN";
+    url = "https://api.allorigins.win/raw?url=https%3A%2F%2Fquery1.finance.yahoo.com%2Fv7%2Ffinance%2Fdownload%2F%5EIXIC%3Fperiod1%3D1710235049%26period2%3D1718011049%26interval%3D1d%26events%3Dhistory%26includeAdjustedClose%3Dtrue"
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", url = url, false ); 
     xmlHttp.send( null );
     result = xmlHttp.responseText;    
     r = parse_fred(result);
     console.log(r)
-    //console.log(Object.keys(r));
-    //console.log(r['WALCL'])
 }
