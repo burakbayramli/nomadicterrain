@@ -5,10 +5,12 @@ var fs= require('fs');
 var resolution= 120;
 
 var dataFiles= [
+    // ...
     { name: 'g10g', latMin:     0, latMax:     50, lngMin:      0, lngMax:     90, elMin:   -407, elMax:    8752, columns:    10800, rows:   6000 }
+    // ...
 ];
 
-var dataPath;
+var baseDir = './all10';
 
 function findFile( lng, lat ) {
     for ( var i in dataFiles ) {
@@ -18,7 +20,6 @@ function findFile( lng, lat ) {
         }
     }
 }
-
 
 function fileIndex( lng, lat, fileEntry, resolution ) {
     var column= Math.floor(lng * resolution);
@@ -30,10 +31,8 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     return index;
 };
 
-var openFiles= {};
-
 function openFile( name ) {
-    return fs.openSync("all10/" + name , 'r');
+    return fs.openSync(baseDir + '/' + name , 'r');
 }
 
 function readNumberFromFile(name,position) {
