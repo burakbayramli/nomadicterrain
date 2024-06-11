@@ -11,7 +11,7 @@
   <script src="../plotly.js" charset="utf-8"></script>  
   <script src="elev.js"></script>
       
-  <body>
+  <body onload='init()'>
 
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
@@ -19,9 +19,8 @@
     </div>
 
     <div id="bbmain">
-      
+
       <p>
-        <button onclick="load()">Load</button>
         <button onclick="getLocation()">Get Location</button>
         &nbsp;
         Max Elevation:
@@ -45,6 +44,11 @@
         </select>        
         &nbsp;
         <button onclick="plot_elevation()">Show</button>
+      </p>
+      
+      <p>
+        <button  style="float: left"  onclick="load()">Load</button>
+        <div id="waiting">&nbsp;<img  height="20" src="waiting2.gif"/></div>
       </p>
       
       <div id="osmposition"></div>

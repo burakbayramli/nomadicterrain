@@ -1,4 +1,8 @@
 
+function init() {
+    document.getElementById("waiting").style.display = "none";
+}    
+
 function getLocation() {
     if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(showPosition);
@@ -37,24 +41,24 @@ var baseDir = './all10';
 var byteArray;
 
 function load() {
-    var url = "/static/elev2/all10/g10g";    
+    var url = "/static/elev/data/g10g";
+    document.getElementById("waiting").style.display = "block";
     fetch(url).then(res => res.arrayBuffer())
 	.then(arrayBuffer => {
 	    byteArray = new Uint8Array(arrayBuffer);
 	})
 	.then(function(done) {
 	    console.log('done');
-	    //console.log(byteArray);
 	    console.log(byteArray[33681360]);
 	    console.log(byteArray[33681361]);
-
 	    var buffer = new ArrayBuffer(2);
 	    var Uint8View = new Uint8Array(buffer);
 	    Uint8View[0] = byteArray[33681360];
 	    Uint8View[1] = byteArray[33681361]
 
 	    var Uint16View = new Uint16Array(buffer);
-	    console.log(Uint16View[0]);	    
+	    console.log(Uint16View[0]);
+	    document.getElementById("waiting").style.display = "none";
 	})
 	.catch(error => {
 	    console.log('error');	    
