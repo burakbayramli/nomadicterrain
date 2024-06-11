@@ -119,7 +119,7 @@ function plot_elevation () {
     var fileEntry= findFile(lon, lat);
     //var radius = 10;
     var radius = parseInt(document.getElementById("radius").value);
-    var S = 120;
+    var S = 300;
 
     var xmin = lon - (radius / S);
     var xmax = lon + (radius / S);
