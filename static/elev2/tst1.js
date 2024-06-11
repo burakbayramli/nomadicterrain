@@ -4,4 +4,3 @@ var elevation= require('./index');
 var res = elevation.getElevation([29,37]);
 
 console.log(res);
-
