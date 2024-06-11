@@ -1,22 +1,4 @@
 
-function init() {
-    document.getElementById("waiting").style.display = "none";
-}    
-
-function getLocation() {
-    if (navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(showPosition);
-    }
-}
-
-function showPosition(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    document.getElementById("osmposition").innerHTML = lat + " " + lon;
-}
-
-var resolution= 120;
-
 var dataFiles= [
     { name: 'a10g', latMin:    50, latMax:     90, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    6098, columns:    10800, rows:   4800 },
     { name: 'b10g', latMin:    50, latMax:     90, lngMin:    -90, lngMax:      0, elMin:      1, elMax:    3940, columns:    10800, rows:   4800 },
@@ -35,6 +17,13 @@ var dataFiles= [
     { name: 'o10g', latMin:   -90, latMax:    -50, lngMin:      0, lngMax:     90, elMin:      1, elMax:    4039, columns:    10800, rows:   4800 },
     { name: 'p10g', latMin:   -90, latMax:    -50, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4363, columns:    10800, rows:   4800 },
 ];
+
+
+function init() {
+    document.getElementById("waiting").style.display = "none";
+}    
+
+var resolution= 120;
 
 var baseDir = './all10';
 
@@ -86,30 +75,6 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     var columnIndex= column - fileEntry.lngMin * resolution;
     var index= ((fileEntry.rows - rowIndex - 1) * fileEntry.columns + columnIndex) * 2;
     return index;
-};
-
-function openFile( name ) {
-    return fs.openSync(baseDir + '/' + name , 'r');
-}
-
-function readNumberFromFile(name,position) {
-
-    var buffer= new Buffer(2);
-    var fd = openFile(name);
-    // fs.readSync(fd, buffer, offset, length[, position])
-    console.log('pos',position);
-    if ( fs.readSync(fd, buffer, 0, 2, position) !== 2 ) return new Error('Could not fetch value from file');
-
-    var int16= buffer.readInt16LE(0);
-    
-    // return 0 for oceans
-    return int16 === -500 ? 0 : int16;
-}
-
-function getElevation( lng, lat, onError ) {
-    var fileEntry= findFile(lng, lat);
-    var result= readNumberFromFile(fileEntry.name, fileIndex(lng, lat, fileEntry, resolution));
-    return result;
 };
 
 function plot_elevation () {
@@ -180,3 +145,16 @@ function plot_elevation () {
 
     Plotly.newPlot('myDiv', data, layout);    
 }
+
+function getLocation() {
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    document.getElementById("osmposition").innerHTML = lat + " " + lon;
+}
+
