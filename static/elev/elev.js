@@ -34,31 +34,6 @@ var dataFiles= [
 
 var baseDir = './all10';
 
-function load() {
-    var url = "/static/elev2/all10/g10g";    
-    fetch(url).then(res => res.arrayBuffer())
-	.then(arrayBuffer => {
-	    byteArray = new Uint8Array(arrayBuffer);
-	})
-	.then(function(done) {
-	    console.log('done');
-	    //console.log(byteArray);
-	    console.log(byteArray[33681360]);
-	    console.log(byteArray[33681361]);
-
-	    var buffer = new ArrayBuffer(2);
-	    var Uint8View = new Uint8Array(buffer);
-	    Uint8View[0] = byteArray[33681360];
-	    Uint8View[1] = byteArray[33681361]
-
-	    var Uint16View = new Uint16Array(buffer);
-	    console.log(Uint16View[0]);
-	})
-	.catch(error => {
-	    console.log('error');	    
-        });
-}
-
 var byteArray;
 
 function load() {
@@ -130,17 +105,17 @@ function readNumberFromFile(name,position) {
 function getElevation( lng, lat, onError ) {
     var fileEntry= findFile(lng, lat);
     var result= readNumberFromFile(fileEntry.name, fileIndex(lng, lat, fileEntry, resolution));
-
     return result;
 };
 
 function plot_elevation () {
 
-    var lat = 38.25;
-    var lon = 30;
+    //var lat = 38.25;
+    //var lon = 30;
     var fileEntry= findFile(lon, lat);
-    var radius = 10;
-    var S = 20;
+    //var radius = 10;
+    var radius = parseInt(document.getElementById("radius").value);
+    var S = 120;
 
     var xmin = lon - (radius / S);
     var xmax = lon + (radius / S);
@@ -150,6 +125,7 @@ function plot_elevation () {
     console.log(xmin,xmax,ymin,ymax);
 
     var M = 20;
+    var LIM = 7000;
     var XWIN = (xmax-xmin) / M;
     var YWIN = (ymax-ymin) / M;
 
@@ -167,7 +143,12 @@ function plot_elevation () {
 	    Uint8View[0] = byteArray[idx];
 	    Uint8View[1] = byteArray[idx+1]
 	    var Uint16View = new Uint16Array(buffer);
-	    z.push(Uint16View[0]);
+	    var e = Uint16View[0];	    
+	    if (e < LIM) {
+		z.push(Uint16View[0]);
+	    } else {
+		z.push(0);
+	    }
 	}
     }
 
