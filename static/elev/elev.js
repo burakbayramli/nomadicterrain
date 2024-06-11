@@ -11,68 +11,181 @@ function showPosition(position) {
     document.getElementById("osmposition").innerHTML = lat + " " + lon;
 }
 
-function in_tens(x) {
-    return parseInt(parseInt(parseFloat(parseInt(x)) / 10)*10);
+var resolution= 120;
+
+var dataFiles= [
+    { name: 'a10g', latMin:    50, latMax:     90, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    6098, columns:    10800, rows:   4800 },
+    { name: 'b10g', latMin:    50, latMax:     90, lngMin:    -90, lngMax:      0, elMin:      1, elMax:    3940, columns:    10800, rows:   4800 },
+    { name: 'c10g', latMin:    50, latMax:     90, lngMin:      0, lngMax:     90, elMin:    -30, elMax:    4010, columns:    10800, rows:   4800 },
+    { name: 'd10g', latMin:    50, latMax:     90, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4588, columns:    10800, rows:   4800 },
+    { name: 'e10g', latMin:     0, latMax:     50, lngMin:   -180, lngMax:    -90, elMin:    -84, elMax:    5443, columns:    10800, rows:   6000 },
+    { name: 'f10g', latMin:     0, latMax:     50, lngMin:    -90, lngMax:      0, elMin:    -40, elMax:    6085, columns:    10800, rows:   6000 },
+    { name: 'g10g', latMin:     0, latMax:     50, lngMin:      0, lngMax:     90, elMin:   -407, elMax:    8752, columns:    10800, rows:   6000 },
+    { name: 'h10g', latMin:     0, latMax:     50, lngMin:     90, lngMax:    180, elMin:    -63, elMax:    7491, columns:    10800, rows:   6000 },
+    { name: 'i10g', latMin:   -50, latMax:      0, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    2732, columns:    10800, rows:   6000 },
+    { name: 'j10g', latMin:   -50, latMax:      0, lngMin:    -90, lngMax:      0, elMin:   -127, elMax:    6798, columns:    10800, rows:   6000 },
+    { name: 'k10g', latMin:   -50, latMax:      0, lngMin:      0, lngMax:     90, elMin:      1, elMax:    5825, columns:    10800, rows:   6000 },
+    { name: 'l10g', latMin:   -50, latMax:      0, lngMin:     90, lngMax:    180, elMin:      1, elMax:    5179, columns:    10800, rows:   6000 },
+    { name: 'm10g', latMin:   -90, latMax:    -50, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    4009, columns:    10800, rows:   4800 },
+    { name: 'n10g', latMin:   -90, latMax:    -50, lngMin:    -90, lngMax:      0, elMin:      1, elMax:    4743, columns:    10800, rows:   4800 },
+    { name: 'o10g', latMin:   -90, latMax:    -50, lngMin:      0, lngMax:     90, elMin:      1, elMax:    4039, columns:    10800, rows:   4800 },
+    { name: 'p10g', latMin:   -90, latMax:    -50, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4363, columns:    10800, rows:   4800 },
+];
+
+var baseDir = './all10';
+
+function load() {
+    var url = "/static/elev2/all10/g10g";    
+    fetch(url).then(res => res.arrayBuffer())
+	.then(arrayBuffer => {
+	    byteArray = new Uint8Array(arrayBuffer);
+	})
+	.then(function(done) {
+	    console.log('done');
+	    //console.log(byteArray);
+	    console.log(byteArray[33681360]);
+	    console.log(byteArray[33681361]);
+
+	    var buffer = new ArrayBuffer(2);
+	    var Uint8View = new Uint8Array(buffer);
+	    Uint8View[0] = byteArray[33681360];
+	    Uint8View[1] = byteArray[33681361]
+
+	    var Uint16View = new Uint16Array(buffer);
+	    console.log(Uint16View[0]);
+	})
+	.catch(error => {
+	    console.log('error');	    
+        });
 }
+
+var byteArray;
+
+function load() {
+    var url = "/static/elev2/all10/g10g";    
+    fetch(url).then(res => res.arrayBuffer())
+	.then(arrayBuffer => {
+	    byteArray = new Uint8Array(arrayBuffer);
+	})
+	.then(function(done) {
+	    console.log('done');
+	    //console.log(byteArray);
+	    console.log(byteArray[33681360]);
+	    console.log(byteArray[33681361]);
+
+	    var buffer = new ArrayBuffer(2);
+	    var Uint8View = new Uint8Array(buffer);
+	    Uint8View[0] = byteArray[33681360];
+	    Uint8View[1] = byteArray[33681361]
+
+	    var Uint16View = new Uint16Array(buffer);
+	    console.log(Uint16View[0]);	    
+	})
+	.catch(error => {
+	    console.log('error');	    
+        });
+}
+
+function show() {
+    console.log(byteArray);
+}
+
+function findFile( lng, lat ) {
+    for ( var i in dataFiles ) {
+        var df= dataFiles[i];
+        if (df.latMin <= lat && df.latMax > lat && df.lngMin <= lng && df.lngMax > lng) {
+            return df;
+        }
+    }
+}
+
+function fileIndex( lng, lat, fileEntry, resolution ) {
+    var column= Math.floor(lng * resolution);
+    var row= Math.floor(lat * resolution);
+
+    var rowIndex= row - fileEntry.latMin * resolution;
+    var columnIndex= column - fileEntry.lngMin * resolution;
+    var index= ((fileEntry.rows - rowIndex - 1) * fileEntry.columns + columnIndex) * 2;
+    return index;
+};
+
+function openFile( name ) {
+    return fs.openSync(baseDir + '/' + name , 'r');
+}
+
+function readNumberFromFile(name,position) {
+
+    var buffer= new Buffer(2);
+    var fd = openFile(name);
+    // fs.readSync(fd, buffer, offset, length[, position])
+    console.log('pos',position);
+    if ( fs.readSync(fd, buffer, 0, 2, position) !== 2 ) return new Error('Could not fetch value from file');
+
+    var int16= buffer.readInt16LE(0);
+    
+    // return 0 for oceans
+    return int16 === -500 ? 0 : int16;
+}
+
+function getElevation( lng, lat, onError ) {
+    var fileEntry= findFile(lng, lat);
+    var result= readNumberFromFile(fileEntry.name, fileIndex(lng, lat, fileEntry, resolution));
+
+    return result;
+};
 
 function plot_elevation () {
 
-    latint = parseInt(lat);
-    lonint = parseInt(lon);
+    var lat = 38.25;
+    var lon = 30;
+    var fileEntry= findFile(lon, lat);
+    var radius = 10;
+    var S = 20;
 
-    tenslat = in_tens (latint);
-    tenslon = in_tens (lonint);
+    var xmin = lon - (radius / S);
+    var xmax = lon + (radius / S);
+    var ymin = lat - (radius / S);
+    var ymax = lat + (radius / S);
 
-    console.log(latint,lonint,tenslat,tenslon);
+    console.log(xmin,xmax,ymin,ymax);
+
+    var M = 20;
+    var XWIN = (xmax-xmin) / M;
+    var YWIN = (ymax-ymin) / M;
+
+    var x = [];
+    var y = [];
+    var z = [];
     
-    url = `/static/elev/data/out-${tenslat}-${tenslon}.json`;    
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url = url, false ); 
-    xmlHttp.send( null );
-    result = xmlHttp.responseText;
-
-    res = JSON.parse(result);
-
-    W = 1/120
-    x = [];
-    y = [];
-    for (var j=latint+1;j>latint+W;j-=W) {
-	y.push (j);
+    for (var i=xmin; i<xmax; i+=XWIN) {
+	for (var j=ymin; j<ymax; j+=YWIN) {
+	    x.push(i);
+	    y.push(j);
+	    var buffer = new ArrayBuffer(2);
+	    var Uint8View = new Uint8Array(buffer);
+	    var idx = fileIndex( i, j, fileEntry, resolution )
+	    Uint8View[0] = byteArray[idx];
+	    Uint8View[1] = byteArray[idx+1]
+	    var Uint16View = new Uint16Array(buffer);
+	    console.log(Uint16View[0]);
+	    z.push(Uint16View[0]);
+	}
     }
-    for (var i=lonint;i<lonint+1-W;i+=W) {
-	x.push (i);
-    }    
 
-    var key = `${latint}-${lonint}`;
     var data = [ {
 	x: x,
 	y: y,
-	z: res[key],
+	z: z,
 	colorscale: "Earth",
 	type: 'contour',
 	showlabels: true,
 	contours: {
 	    coloring: 'lines',
-	    showlabels: true,
-	    start: 0,
-	    end: 600,
-	    size: 100
+	    showlabels: true
 	} 
     } ];
-
-    var radius = parseInt(document.getElementById("radius").value);
-    console.log(radius);
-    console.log(lat);
-    console.log(lon);
-    var S = 20;
-    var xmin = lon - (radius / S);
-    var xmax = lon + (radius / S);
-    var ymin = lat - (radius / S);
-    var ymax = lat + (radius / S);
-    console.log(xmin,xmax,ymin,ymax);
     
     var layout = {
-	title: 'Basic Contour Plot',
 	xaxis: {
 	    range: [xmin, xmax]  
 	},
