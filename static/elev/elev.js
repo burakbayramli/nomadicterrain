@@ -167,7 +167,6 @@ function plot_elevation () {
 	    Uint8View[0] = byteArray[idx];
 	    Uint8View[1] = byteArray[idx+1]
 	    var Uint16View = new Uint16Array(buffer);
-	    console.log(Uint16View[0]);
 	    z.push(Uint16View[0]);
 	}
     }
