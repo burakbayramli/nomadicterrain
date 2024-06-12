@@ -54,10 +54,6 @@ function load() {
         });
 }
 
-function show() {
-    console.log(byteArray);
-}
-
 function findFile( lng, lat ) {
     for ( var i in dataFiles ) {
         var df= dataFiles[i];
