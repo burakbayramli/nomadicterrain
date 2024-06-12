@@ -165,14 +165,12 @@ function plot_elevation () {
 	    var buffer = new ArrayBuffer(2);
 	    var Uint8View = new Uint8Array(buffer);
 	    var idx = fileIndex( i, j, fileEntry, resolution )
-	    //Uint8View[0] = byteArray[idx];
-	    //Uint8View[1] = byteArray[idx+1]
 	    Uint8View[0] = fromChunk(idx);
 	    Uint8View[1] = fromChunk(idx+1);
 	    var Uint16View = new Uint16Array(buffer);
 	    var e = Uint16View[0];	    
 	    if (e < LIM) {
-		z.push(Uint16View[0]);
+		z.push(e);
 	    } else {
 		z.push(0);
 	    }

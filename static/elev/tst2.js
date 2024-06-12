@@ -34,7 +34,7 @@ function openFile( name ) {
     return fs.openSync(baseDir + '/' + name , 'r');
 }
 
-var position = 2000;
+var position = 33681360;
 console.log('pos',position);
 var buffer= new Buffer(2);
 
@@ -42,4 +42,6 @@ var fd = openFile("g10g");
 fs.readSync(fd, buffer, 0, 2, position);
 var int16= buffer.readInt16LE(0);
 console.log(buffer[0]);
+console.log(buffer[1]);
+console.log(int16);
 
