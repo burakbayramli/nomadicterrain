@@ -18,40 +18,93 @@ var dataFiles= [
     { name: 'p10g', latMin:   -90, latMax:    -50, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4363, columns:    10800, rows:   4800 },
 ];
 
-
 function init() {
     document.getElementById("waiting").style.display = "none";
 }    
 
 var resolution= 120;
 
-var byteArray;
+var byteArray = [undefined,undefined,undefined,undefined];
 
-function load() {
-    var fileEntry= findFile(lon, lat);
-    console.log(fileEntry);
-    var url = "/static/elev/data/" + fileEntry['name'];
-    document.getElementById("waiting").style.display = "block";
+var indexLimits ;
+
+function get_data(url,index) {
     fetch(url).then(res => res.arrayBuffer())
 	.then(arrayBuffer => {
-	    byteArray = new Uint8Array(arrayBuffer);
+	    piece = new Uint8Array(arrayBuffer);
 	})
 	.then(function(done) {
-	    console.log('done');
-	    console.log(33681360,byteArray[33681360]);
-	    console.log(33681361,byteArray[33681361]);
-	    var buffer = new ArrayBuffer(2);
-	    var Uint8View = new Uint8Array(buffer);
-	    Uint8View[0] = byteArray[33681360];
-	    Uint8View[1] = byteArray[33681361]
-
-	    var Uint16View = new Uint16Array(buffer);
-	    console.log(Uint16View[0]);
-	    document.getElementById("waiting").style.display = "none";
+	    byteArray[0] = piece;
 	})
 	.catch(error => {
 	    console.log('error');	    
         });
+}
+
+function load() {
+    var fileEntry= findFile(lon, lat);
+    console.log(fileEntry);
+    document.getElementById("waiting").style.display = "block";
+    //base_url = "https://raw.githubusercontent.com/burakbayramli/alldata/main/globe"
+    //var url = base_url + "/" + fileEntry['name'];
+    var url = "/static/elev/data/" + fileEntry['name'];
+    Promise.all([
+	fetch(url + "1").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[0] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
+
+	fetch(url + "2").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[1] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
+	
+	fetch(url + "3").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[2] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
+	
+	fetch(url + "4").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[3] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            })	
+    ]).then(function(done) {
+	document.getElementById("waiting").style.display = "none";
+
+	indexLimits = [0,
+		       byteArray[0].byteLength,
+     		       byteArray[0].byteLength*2,
+     		       byteArray[0].byteLength*3,
+		       byteArray[0].byteLength*4];
+	console.log(indexLimits);
+	
+	console.log('done');
+    })
+    
 }
 
 function findFile( lng, lat ) {
@@ -71,6 +124,14 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     var index= ((fileEntry.rows - rowIndex - 1) * fileEntry.columns + columnIndex) * 2;
     return index;
 };
+
+function fromChunk (idx) {
+    //var indexLimits = [0, 32400000, 64800000, 97200000, 129600000];
+    var index=indexLimits.findIndex(function(number) {
+	return number > idx;
+    });
+    return byteArray[index-1][idx-indexLimits[index-1]];
+}
 
 function plot_elevation () {
 
@@ -104,8 +165,10 @@ function plot_elevation () {
 	    var buffer = new ArrayBuffer(2);
 	    var Uint8View = new Uint8Array(buffer);
 	    var idx = fileIndex( i, j, fileEntry, resolution )
-	    Uint8View[0] = byteArray[idx];
-	    Uint8View[1] = byteArray[idx+1]
+	    //Uint8View[0] = byteArray[idx];
+	    //Uint8View[1] = byteArray[idx+1]
+	    Uint8View[0] = fromChunk(idx);
+	    Uint8View[1] = fromChunk(idx+1);
 	    var Uint16View = new Uint16Array(buffer);
 	    var e = Uint16View[0];	    
 	    if (e < LIM) {
