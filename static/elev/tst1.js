@@ -6,7 +6,7 @@ function init() {
     fetch(url, {
         headers: {
             'content-type': 'multipart/byteranges',
-            'range': 'bytes=2-2',
+            'range': 'bytes=2000-2000',
         },
     }).then(response => {
         if (response.ok) {
