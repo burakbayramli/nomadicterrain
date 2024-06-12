@@ -24,46 +24,88 @@ function init() {
 
 var resolution= 120;
 
-var byteArray = [];
+var byteArray = [undefined,undefined,undefined,undefined];
 
-function get_data(url) {
+var indexLimits ;
+
+function get_data(url,index) {
     fetch(url).then(res => res.arrayBuffer())
 	.then(arrayBuffer => {
 	    piece = new Uint8Array(arrayBuffer);
-	    console.log(piece.byteLength);
-	    console.log(piece[0]);
-	    byteArray.push(piece);
+	    //console.log(piece.byteLength);
+	    //console.log(piece[0]);
 	})
 	.then(function(done) {
-	    console.log('done');
+	    byteArray[0] = piece;
 	})
 	.catch(error => {
 	    console.log('error');	    
         });
 }
 
-async function load() {
+function load() {
+    var lat = 38.25;
+    var lon = 30;
     var fileEntry= findFile(lon, lat);
     console.log(fileEntry);
     document.getElementById("waiting").style.display = "block";
-    var idxs = [1,2,3,4];
-    var bar = new Promise((resolve, reject) => {
-	idxs.forEach((value, index, array) => {
-            console.log(value);
-	    var url = "/static/elev/data/" + fileEntry['name'] + value;	    
-            if (index === array.length -1) get_data(url);;
-	});
-    });
-    bar.then(() => {
-	console.log('All done!');
-	console.log(byteArray[0][0]);
-	console.log(byteArray[1][0]);
-	console.log(byteArray[2][0]);
-	console.log(byteArray[3][0]);
-	console.log(byteArray[3].byteLength);
-    });
+    var url = "/static/elev/data/" + fileEntry['name'];
+    Promise.all([
+	fetch(url + "1").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[0] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
 
-    document.getElementById("waiting").style.display = "none";
+	fetch(url + "2").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[1] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
+	
+	fetch(url + "3").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[2] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            }),
+	
+	fetch(url + "4").then(res => res.arrayBuffer())
+	    .then(arrayBuffer => {
+		piece = new Uint8Array(arrayBuffer);
+	    })
+	    .then(function(done) {
+		byteArray[3] = piece;
+	    })
+	    .catch(error => {
+		console.log('error');	    
+            })	
+    ]).then(function(done) {
+	document.getElementById("waiting").style.display = "none";
+
+	indexLimits = [0,
+		       byteArray[0].byteLength,
+     		       byteArray[0].byteLength*2,
+     		       byteArray[0].byteLength*3,
+		       byteArray[0].byteLength*4];
+	console.log(indexLimits);
+	
+	console.log('done');
+    })
     
 }
 
@@ -85,7 +127,24 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     return index;
 };
 
+function fromChunk (idx) {
+    //var indexLimits = [0, 32400000, 64800000, 97200000, 129600000];
+    var index=indexLimits.findIndex(function(number) {
+	return number > idx;
+    });
+    return index-1;
+    //console.log(index-1);
+}
+
+
 function test_elev() {
+    console.log(fromChunk(10));
+
+    console.log(fromChunk(32400001));
+
+    console.log(fromChunk(33681360));
+
+    console.log(fromChunk(97200001));
     
 }
 
