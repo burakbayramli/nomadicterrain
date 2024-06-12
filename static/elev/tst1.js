@@ -20,7 +20,7 @@ function init() {
         console.log(a[1]);
 	var res = new Uint16Array(response);
         console.log(res[0]);
-
     });
     
 }
+// 25386976 25386977

@@ -18,27 +18,11 @@ var dataFiles= [
     { name: 'p10g', latMin:   -90, latMax:    -50, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4363, columns:    10800, rows:   4800 },
 ];
 
-function init() {
-}    
+function init() { }    
 
 var resolution= 120;
 
-var byteArray = [undefined,undefined,undefined,undefined];
-
 var indexLimits ;
-
-function get_data(url,index) {
-    fetch(url).then(res => res.arrayBuffer())
-	.then(arrayBuffer => {
-	    piece = new Uint8Array(arrayBuffer);
-	})
-	.then(function(done) {
-	    byteArray[0] = piece;
-	})
-	.catch(error => {
-	    console.log('error');	    
-        });
-}
 
 function findFile( lng, lat ) {
     for ( var i in dataFiles ) {
@@ -58,12 +42,55 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     return index;
 };
 
-function get_data(x,y) {
+var indexLimits = [0, 32400000, 64800000, 97200000, 129600000];
 
+function chunk (idx) {
+    var index=indexLimits.findIndex(function(number) {
+	return number > idx;
+    });
+    return index-1;
+}
+
+function chunkByte (idx) {
+    var index=indexLimits.findIndex(function(number) {
+	return number > idx;
+    });
+    return idx-indexLimits[index-1];
+}
+
+function get_data(x,y) {
+    z = [];
     for (var i=0;i<x.length;i++) {
-	console.log(x[i],y[i]);
+	z.push(-100);
     }
-        
+    var fileEntry= findFile(lon, lat);
+    for (var i=0;i<x.length;i++) {
+	var idx = fileIndex(x[i],y[i],fileEntry,resolution);
+	chunkIdx = chunk(idx) + 1
+	console.log(x[i],y[i]);
+	var url = "/static/elev/data/" + fileEntry['name'] + chunkIdx;
+	console.log(url);
+	var loc1 = chunkByte(idx);
+	var loc2 = loc1 + 1;
+	console.log(chunkIdx, loc1,loc2);
+	fetch(url, {
+	    headers: {
+		'content-type': 'multipart/byteranges',
+		'range': `bytes=${loc1}-${loc2}`,
+	    },
+	}).then(response => {
+	    if (response.ok) {
+		return response.arrayBuffer();
+	    }
+	}).then(response => {
+	    var a = new Uint8Array(response);
+	    var res = new Uint16Array(response);
+	    z[i] = res[0];
+	    console.log('got',res[0]);
+	});
+    }
+
+    return z;    
 }
 
 function plot_elevation () {
@@ -98,6 +125,7 @@ function plot_elevation () {
     }
 
     var z = get_data(x,y);
+    console.log(z);
 
     var data = [ {
 	x: x,
