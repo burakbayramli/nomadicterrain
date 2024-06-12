@@ -64,6 +64,7 @@ function get_data(x,y) {
 	z.push(-100);
     }
     var fileEntry= findFile(lon, lat);
+    funcs = []
     for (var i=0;i<x.length;i++) {
 	var idx = fileIndex(x[i],y[i],fileEntry,resolution);
 	chunkIdx = chunk(idx) + 1
@@ -73,24 +74,18 @@ function get_data(x,y) {
 	var loc1 = chunkByte(idx);
 	var loc2 = loc1 + 1;
 	console.log(chunkIdx, loc1,loc2);
-	fetch(url, {
-	    headers: {
-		'content-type': 'multipart/byteranges',
-		'range': `bytes=${loc1}-${loc2}`,
-	    },
-	}).then(response => {
-	    if (response.ok) {
-		return response.arrayBuffer();
-	    }
-	}).then(response => {
-	    var a = new Uint8Array(response);
-	    var res = new Uint16Array(response);
-	    z[i] = res[0];
-	    console.log('got',res[0]);
-	});
+	funcs.push(
+	    fetch(url, {
+		headers: {
+		    'content-type': 'multipart/byteranges',
+		    'range': `bytes=${loc1}-${loc2}`,
+		}
+	    }));
     }
 
-    return z;    
+    Promise.all(funcs)
+	.then((responses) => Promise.all(responses.map((r) => console.log(r.arrayBuffer()) )))
+
 }
 
 function plot_elevation () {
@@ -125,7 +120,6 @@ function plot_elevation () {
     }
 
     var z = get_data(x,y);
-    console.log(z);
 
     var data = [ {
 	x: x,
