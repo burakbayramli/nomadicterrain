@@ -25,12 +25,12 @@ function init() {
 
 var resolution= 120;
 
-var baseDir = './all10';
-
 var byteArray;
 
 function load() {
-    var url = "/static/elev/data/g10g";
+    var fileEntry= findFile(lon, lat);
+    console.log(fileEntry);
+    var url = "/static/elev/data/" + fileEntry['name'];
     document.getElementById("waiting").style.display = "block";
     fetch(url).then(res => res.arrayBuffer())
 	.then(arrayBuffer => {
@@ -70,7 +70,6 @@ function findFile( lng, lat ) {
 function fileIndex( lng, lat, fileEntry, resolution ) {
     var column= Math.floor(lng * resolution);
     var row= Math.floor(lat * resolution);
-
     var rowIndex= row - fileEntry.latMin * resolution;
     var columnIndex= column - fileEntry.lngMin * resolution;
     var index= ((fileEntry.rows - rowIndex - 1) * fileEntry.columns + columnIndex) * 2;
