@@ -38,8 +38,8 @@ function load() {
 	})
 	.then(function(done) {
 	    console.log('done');
-	    console.log(byteArray[33681360]);
-	    console.log(byteArray[33681361]);
+	    console.log(33681360,byteArray[33681360]);
+	    console.log(33681361,byteArray[33681361]);
 	    var buffer = new ArrayBuffer(2);
 	    var Uint8View = new Uint8Array(buffer);
 	    Uint8View[0] = byteArray[33681360];

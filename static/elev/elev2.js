@@ -32,8 +32,6 @@ function get_data(url,index) {
     fetch(url).then(res => res.arrayBuffer())
 	.then(arrayBuffer => {
 	    piece = new Uint8Array(arrayBuffer);
-	    //console.log(piece.byteLength);
-	    //console.log(piece[0]);
 	})
 	.then(function(done) {
 	    byteArray[0] = piece;
@@ -44,8 +42,6 @@ function get_data(url,index) {
 }
 
 function load() {
-    var lat = 38.25;
-    var lon = 30;
     var fileEntry= findFile(lon, lat);
     console.log(fileEntry);
     document.getElementById("waiting").style.display = "block";
@@ -132,20 +128,7 @@ function fromChunk (idx) {
     var index=indexLimits.findIndex(function(number) {
 	return number > idx;
     });
-    return index-1;
-    //console.log(index-1);
-}
-
-
-function test_elev() {
-    console.log(fromChunk(10));
-
-    console.log(fromChunk(32400001));
-
-    console.log(fromChunk(33681360));
-
-    console.log(fromChunk(97200001));
-    
+    return byteArray[index-1][idx-indexLimits[index-1]];
 }
 
 function plot_elevation () {
@@ -180,8 +163,10 @@ function plot_elevation () {
 	    var buffer = new ArrayBuffer(2);
 	    var Uint8View = new Uint8Array(buffer);
 	    var idx = fileIndex( i, j, fileEntry, resolution )
-	    Uint8View[0] = byteArray[idx];
-	    Uint8View[1] = byteArray[idx+1]
+	    //Uint8View[0] = byteArray[idx];
+	    //Uint8View[1] = byteArray[idx+1]
+	    Uint8View[0] = fromChunk(idx);
+	    Uint8View[1] = fromChunk(idx+1);
 	    var Uint16View = new Uint16Array(buffer);
 	    var e = Uint16View[0];	    
 	    if (e < LIM) {
