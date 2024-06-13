@@ -18,94 +18,11 @@ var dataFiles= [
     { name: 'p10g', latMin:   -90, latMax:    -50, lngMin:     90, lngMax:    180, elMin:      1, elMax:    4363, columns:    10800, rows:   4800 },
 ];
 
-function init() {
-    document.getElementById("waiting").style.display = "none";
-}    
+function init() { }    
 
 var resolution= 120;
 
-var byteArray = [undefined,undefined,undefined,undefined];
-
 var indexLimits ;
-
-function get_data(url,index) {
-    fetch(url).then(res => res.arrayBuffer())
-	.then(arrayBuffer => {
-	    piece = new Uint8Array(arrayBuffer);
-	})
-	.then(function(done) {
-	    byteArray[0] = piece;
-	})
-	.catch(error => {
-	    console.log('error');	    
-        });
-}
-
-function load() {
-    var fileEntry= findFile(lon, lat);
-    console.log(fileEntry);
-    document.getElementById("waiting").style.display = "block";
-    //base_url = "https://raw.githubusercontent.com/burakbayramli/alldata/main/globe"
-    //var url = base_url + "/" + fileEntry['name'];
-    var url = "/static/elev/data/" + fileEntry['name'];
-    Promise.all([
-	fetch(url + "1").then(res => res.arrayBuffer())
-	    .then(arrayBuffer => {
-		piece = new Uint8Array(arrayBuffer);
-	    })
-	    .then(function(done) {
-		byteArray[0] = piece;
-	    })
-	    .catch(error => {
-		console.log('error');	    
-            }),
-
-	fetch(url + "2").then(res => res.arrayBuffer())
-	    .then(arrayBuffer => {
-		piece = new Uint8Array(arrayBuffer);
-	    })
-	    .then(function(done) {
-		byteArray[1] = piece;
-	    })
-	    .catch(error => {
-		console.log('error');	    
-            }),
-	
-	fetch(url + "3").then(res => res.arrayBuffer())
-	    .then(arrayBuffer => {
-		piece = new Uint8Array(arrayBuffer);
-	    })
-	    .then(function(done) {
-		byteArray[2] = piece;
-	    })
-	    .catch(error => {
-		console.log('error');	    
-            }),
-	
-	fetch(url + "4").then(res => res.arrayBuffer())
-	    .then(arrayBuffer => {
-		piece = new Uint8Array(arrayBuffer);
-	    })
-	    .then(function(done) {
-		byteArray[3] = piece;
-	    })
-	    .catch(error => {
-		console.log('error');	    
-            })	
-    ]).then(function(done) {
-	document.getElementById("waiting").style.display = "none";
-
-	indexLimits = [0,
-		       byteArray[0].byteLength,
-     		       byteArray[0].byteLength*2,
-     		       byteArray[0].byteLength*3,
-		       byteArray[0].byteLength*4];
-	console.log(indexLimits);
-	
-	console.log('done');
-    })
-    
-}
 
 function findFile( lng, lat ) {
     for ( var i in dataFiles ) {
@@ -125,22 +42,63 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     return index;
 };
 
-function fromChunk (idx) {
-    //var indexLimits = [0, 32400000, 64800000, 97200000, 129600000];
+function chunk (idx) {
     var index=indexLimits.findIndex(function(number) {
 	return number > idx;
     });
-    return byteArray[index-1][idx-indexLimits[index-1]];
+    return index-1;
 }
 
-function plot_elevation () {
+function chunkByte (idx) {
+    var index=indexLimits.findIndex(function(number) {
+	return number > idx;
+    });
+    return idx-indexLimits[index-1];
+}
 
-    //var lat = 38.25;
-    //var lon = 30;
+async function get_data(x,y) {
+    z = [];
     var fileEntry= findFile(lon, lat);
-    //var radius = 10;
+    var totalBytes = fileEntry.columns * fileEntry.rows * 2;
+    var pieceSize = totalBytes / 4;
+    indexLimits = [0, pieceSize, pieceSize*2, pieceSize*3, pieceSize*4];
+    console.log(totalBytes);
+    console.log(indexLimits);
+    promises = [];
+    
+    for (var i=0;i<x.length;i++) {
+	var idx = fileIndex(x[i],y[i],fileEntry,resolution);
+	chunkIdx = chunk(idx) + 1
+	var url = "/static/elev/data/" + fileEntry['name'] + chunkIdx;
+	var loc1 = chunkByte(idx);
+	var loc2 = loc1 + 1;
+	promises.push(
+	    fetch(url, {
+		headers: {
+		    'content-type': 'multipart/byteranges',
+		    'range': `bytes=${loc1}-${loc2}`,
+		},
+	    }));
+    }
+		     
+    const responses = await Promise.all(promises);
+    
+    const data1 = await Promise.all( responses.map(response => response.arrayBuffer() ));
+    
+    const data2 = await Promise.all( data1.map(response => new Uint16Array(response) ));
+
+    data2.forEach(function(x) {
+	z.push(x[0]);
+    });
+    return z;
+}
+
+async function plot_elevation () {
+
+    var fileEntry= findFile(lon, lat);
     var radius = parseInt(document.getElementById("radius").value);
     var S = 300;
+    var LIM = 7000;
 
     var xmin = lon - (radius / S);
     var xmax = lon + (radius / S);
@@ -149,38 +107,33 @@ function plot_elevation () {
 
     console.log(xmin,xmax,ymin,ymax);
 
-    var M = 20;
-    var LIM = 7000;
-    var XWIN = (xmax-xmin) / M;
-    var YWIN = (ymax-ymin) / M;
+    var M = 10;
+    var XWIN = (xmax-xmin) / M;    var YWIN = (ymax-ymin) / M;
 
     var x = [];
     var y = [];
-    var z = [];
     
     for (var i=xmin; i<xmax; i+=XWIN) {
 	for (var j=ymin; j<ymax; j+=YWIN) {
 	    x.push(i);
 	    y.push(j);
-	    var buffer = new ArrayBuffer(2);
-	    var Uint8View = new Uint8Array(buffer);
-	    var idx = fileIndex( i, j, fileEntry, resolution )
-	    Uint8View[0] = fromChunk(idx);
-	    Uint8View[1] = fromChunk(idx+1);
-	    var Uint16View = new Uint16Array(buffer);
-	    var e = Uint16View[0];	    
-	    if (e < LIM) {
-		z.push(e);
-	    } else {
-		z.push(0);
-	    }
 	}
     }
 
+    var z = await get_data(x,y);
+
+    var z2 = z.map(function(x) {
+	if (x<LIM) {
+	    return x;
+	} else {
+	    return 0;
+	}
+    });
+        
     var data = [ {
 	x: x,
 	y: y,
-	z: z,
+	z: z2,
 	colorscale: "Earth",
 	type: 'contour',
 	showlabels: true,
