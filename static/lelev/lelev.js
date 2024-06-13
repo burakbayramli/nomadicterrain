@@ -1,6 +1,8 @@
 
-function init() {
-}
+var KM_DEG = 0.009;
+var N = 30;
+
+function init() { }
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -27,9 +29,6 @@ function degToRad(deg) {
 }
 
 function goto(fr, a, d) {
-
-    var KM_DEG = 0.009;
-    var N = 30;
    
     var D = d*KM_DEG;
     var res = [];
@@ -56,9 +55,14 @@ function calc() {
     coords = goto([lat,lon],degToRad(deg),dist);    
     ys = [];
 
+    coords.forEach(function (x) {
+	console.log(x);
+    });
+
     // ........
     // ........
-    
+
+    /*
     result['results'].forEach(function(x){
 	ys.push(parseFloat(x['elevation']));
     });
@@ -67,6 +71,7 @@ function calc() {
     var layout = {
 	title: { text:'Elevation' }
     };
-    Plotly.newPlot( G, [{ x: xs, y: ys }], layout );    
+    Plotly.newPlot( G, [{ x: xs, y: ys }], layout );
+    */
 }
 
