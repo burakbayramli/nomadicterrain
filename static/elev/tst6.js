@@ -92,10 +92,7 @@ async function get_data(x,y) {
 
 async function plot_elevation () {
 
-    //var lat = 38.25;
-    //var lon = 30;
     var fileEntry= findFile(lon, lat);
-    //var radius = 10;
     var radius = parseInt(document.getElementById("radius").value);
     var S = 300;
 
