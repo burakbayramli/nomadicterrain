@@ -42,8 +42,6 @@ function fileIndex( lng, lat, fileEntry, resolution ) {
     return index;
 };
 
-var indexLimits = [0, 32400000, 64800000, 97200000, 129600000];
-
 function chunk (idx) {
     var index=indexLimits.findIndex(function(number) {
 	return number > idx;
@@ -61,6 +59,11 @@ function chunkByte (idx) {
 async function get_data(x,y) {
     z = [];
     var fileEntry= findFile(lon, lat);
+    var totalBytes = fileEntry.columns * fileEntry.rows * 2;
+    var pieceSize = totalBytes / 4;
+    indexLimits = [0, pieceSize, pieceSize*2, pieceSize*3, pieceSize*4];
+    console.log(totalBytes);
+    console.log(indexLimits);
     promises = [];
     
     for (var i=0;i<x.length;i++) {
