@@ -6,16 +6,16 @@
   <title>Arama</title>
 
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
-  <script src="sksearch.js"></script>
   </head>
   
+  <script src="sksearch.js"></script>
   <body>
     
     <p>
      <input type="text" name="search" id="search"/>
     </p>
     <p>
-      <button py-click="write_to_page()" id="manual">Search</button>
+      <button onclick="searchText()" id="manual">Search</button>
     </p>
 
     <div id="output"></div>    
