@@ -1,7 +1,5 @@
 
 var KM_DEG = 0.009;
-var ELEV_GRID_N = 30;
-var ELEV_LIM = 7000;
 
 function init() { }
 

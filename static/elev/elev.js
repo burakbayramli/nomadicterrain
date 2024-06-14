@@ -24,6 +24,10 @@ var resolution= 120;
 
 var indexLimits ;
 
+var ELEV_GRID_N = 30;
+
+var ELEV_LIM = 7000;
+
 function findFile( lng, lat ) {
     for ( var i in dataFiles ) {
         var df= dataFiles[i];
