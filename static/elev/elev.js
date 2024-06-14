@@ -98,8 +98,7 @@ async function plot_elevation () {
     var fileEntry= findFile(lon, lat);
     var radius = parseInt(document.getElementById("radius").value);
     var S = 300;
-    var LIM = 7000;
-
+    
     var xmin = lon - (radius / S);
     var xmax = lon + (radius / S);
     var ymin = lat - (radius / S);
@@ -123,7 +122,7 @@ async function plot_elevation () {
     var z = await get_data(x,y);
 
     var z2 = z.map(function(x) {
-	if (x<LIM) {
+	if (x<ELEV_LIM) {
 	    return x;
 	} else {
 	    return 0;

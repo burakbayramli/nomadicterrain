@@ -1,6 +1,7 @@
 
 var KM_DEG = 0.009;
-var N = 30;
+var ELEV_GRID_N = 30;
+var ELEV_LIM = 7000;
 
 function init() { }
 
@@ -32,8 +33,8 @@ function goto(fr, a, d) {
    
     var D = d*KM_DEG;
     var res = [];
-    var P  = D / N
-    for (var i=0;i<N; i++) {
+    var P  = D / ELEV_GRID_N;
+    for (var i=0;i<ELEV_GRID_N; i++) {
 	lat = fr[0] + (P*i)*Math.sin(a);
 	lon = fr[1] + (P*i)*Math.cos(a);
 	res.push([lat,lon]);
@@ -41,37 +42,38 @@ function goto(fr, a, d) {
     return res;
 }
 
-function calc() {
+async function calc() {
 
     var deg = document.getElementById("deg_id").value;
     var dist = parseFloat(document.getElementById("dist_id").value);
 
-    var P = dist /  N;
+    var P = dist / ELEV_GRID_N;
     var xs = [];
-    for (var i=0;i<N;i++){
+    for (var i=0;i<ELEV_GRID_N;i++){
 	xs.push(P*i);
     }
     
-    coords = goto([lat,lon],degToRad(deg),dist);    
-    ys = [];
-
-    coords.forEach(function (x) {
-	console.log(x);
+    coords = goto([lat,lon],degToRad(deg),dist);
+    x = []; y = [];
+    coords.forEach(function (item) {
+	x.push(item[1])
+	y.push(item[0]);
     });
 
-    // ........
-    // ........
-
-    /*
-    result['results'].forEach(function(x){
-	ys.push(parseFloat(x['elevation']));
+    var z = await get_data(x,y);
+    
+    var zs = z.map(function(x) {
+	if (x<ELEV_LIM) {
+	    return x;
+	} else {
+	    return 0;
+	}
     });
-
+    
     G = document.getElementById('elevgraph');
     var layout = {
 	title: { text:'Elevation' }
     };
-    Plotly.newPlot( G, [{ x: xs, y: ys }], layout );
-    */
+    Plotly.newPlot( G, [{ x: xs, y: zs }], layout );
 }
 
