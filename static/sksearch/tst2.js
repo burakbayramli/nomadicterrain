@@ -35,10 +35,6 @@ for (var key in stok_hits) {
 }
 
 keyValues.sort(function compare(kv1, kv2) {
-  // This comparison function has 3 return cases:
-  // - Negative number: kv1 should be placed BEFORE kv2
-  // - Positive number: kv1 should be placed AFTER kv2
-  // - Zero: they are equal, any order is ok between these 2 items
   return kv2[1] - kv1[1] 
 })
 
