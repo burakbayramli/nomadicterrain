@@ -1,4 +1,6 @@
 
+var BASE_ELEV_DATA_URL = "/static/elev/data/";
+
 var dataFiles= [
     { name: 'a10g', latMin:    50, latMax:     90, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    6098, columns:    10800, rows:   4800 },
     { name: 'b10g', latMin:    50, latMax:     90, lngMin:    -90, lngMax:      0, elMin:      1, elMax:    3940, columns:    10800, rows:   4800 },
@@ -73,7 +75,7 @@ async function get_data(x,y) {
     for (var i=0;i<x.length;i++) {
 	var idx = fileIndex(x[i],y[i],fileEntry,resolution);
 	chunkIdx = chunk(idx) + 1
-	var url = "/static/elev/data/" + fileEntry['name'] + chunkIdx;
+	var url = BASE_ELEV_DATA_URL + fileEntry['name'] + chunkIdx;
 	var loc1 = chunkByte(idx);
 	var loc2 = loc1 + 1;
 	promises.push(
