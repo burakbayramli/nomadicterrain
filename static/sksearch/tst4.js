@@ -1,7 +1,13 @@
 
 async function searchText() {
 
-    var stoks = ["oturum","baglanti"];
+    var s = document.getElementById("keywords").value;
+    s = s.toLowerCase().replace("ç","c").replace("ö","o").replace("ğ","g");
+    s = s.replace("ı","i").replace("ü","u").replace("ş","s");
+    var stoks = s;
+    
+    //var stoks = ["oturum","baglanti"];
+    var stoks = stoks.split(" ");
 
     var stok_hits = {}
     
@@ -15,7 +21,6 @@ async function searchText() {
 	    .then(data => letter_dict = data );
 	
 	if (letter_dict.hasOwnProperty(tok)) {
-	    console.log('has',tok);
 	    Object.keys(letter_dict[tok]).forEach(function(article) {
 		if (stok_hits.hasOwnProperty(article)) {
 		    stok_hits[article] = stok_hits[article] + letter_dict[tok][article];
@@ -36,7 +41,15 @@ async function searchText() {
 	return kv2[1] - kv1[1] 
     })
 
-    for (var i=0;i<10;i++) {
-	console.log(keyValues[i]);
+    N = Math.min(20,keyValues.length);
+    var out = ""
+    for (var i=0;i<N;i++) {
+	out +=
+	    '<p><a target="_blank" href="' +
+	    'https://burakbayramli.github.io' + keyValues[i][0] + '">' +
+	    keyValues[i][0] +
+	    '</a></p>';
+	
+	document.getElementById("output").innerHTML = out;
     }
 }
