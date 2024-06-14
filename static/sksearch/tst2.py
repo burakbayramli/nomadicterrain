@@ -2,7 +2,7 @@ from collections import defaultdict
 import json
 
 def write_to_page():
-   search = "oturum bağlantı web"
+   search = "oturum bağlantı"
    search = search.lower().replace("ç","c").replace("ö","o").replace("ğ","g")
    search = search.replace("ı","i").replace("ü","u").replace("ş","s")
    stok = search.split()
