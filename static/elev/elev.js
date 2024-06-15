@@ -1,5 +1,5 @@
 
-var BASE_ELEV_DATA_URL = "/static/elev/data/";
+var BASE_ELEV_DATA_URL = "/static/elev/elevdata/";
 
 var dataFiles= [
     { name: 'a10g', latMin:    50, latMax:     90, lngMin:   -180, lngMax:    -90, elMin:      1, elMax:    6098, columns:    10800, rows:   4800 },
