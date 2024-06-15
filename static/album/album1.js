@@ -50,7 +50,7 @@ function show_thumb_list() {
 function showall() {
     album = JSON.parse(fetch_album_json());
     imgs = Object.keys(album['photos']);
-    console.log(imgs);
+    //console.log(imgs);
     offset = 0;
     show_thumb_list();
     
