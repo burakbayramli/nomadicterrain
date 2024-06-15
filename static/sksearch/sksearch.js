@@ -6,7 +6,6 @@ async function searchText() {
     s = s.replace("ı","i").replace("ü","u").replace("ş","s");
     var stoks = s;
     
-    //var stoks = ["oturum","baglanti"];
     var stoks = stoks.split(" ");
 
     var stok_hits = {}
