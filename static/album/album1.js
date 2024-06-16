@@ -1,6 +1,6 @@
 var imgs = [];
 var offset = 0;
-var BATCH = 4;
+var BATCH = 9;
 
 function translit_tr(text){
     var Maps = {
@@ -58,14 +58,12 @@ function showall() {
 
 function next() {    
     if ((offset - BATCH) > imgs.length) return;
-    console.log('next');
     offset = offset + BATCH;
     show_thumb_list();
 }
 
 function previous() {
     if ((offset - BATCH) < 0) return;
-    console.log('prev');
     offset = offset - BATCH;
     show_thumb_list();
 }
