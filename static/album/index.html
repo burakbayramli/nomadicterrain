@@ -5,29 +5,30 @@
     <link rel="stylesheet" href="../bbmain.css">
 
   </head>
-
-  <script src="../common.js"></script>
+  <style>
+    #prev {
+       padding: 30px;
+    }
+  </style>
   <script src="album.js"></script>
       
-  <body onload='init()'>
+  <body onload='showall()'>
     
     <div class="bbheader">
       <h1><a href="..">BBApps</a></h1>
-      <p>News</p>
+      <p>Album</p>
     </div>
 
     <div id="bbmain">
-
-      <p>
-        Shows album
-      </p>
-
-
-
-
-
+      
+      <div style="margin-left: 100px">
+        <div id="output"></div>
+        <span id="prev"><a href="#" onclick="previous()">Previous</a></span>
+        <span id="next"><a href="#" onclick="next()">Next</a></span>      
+      </div>
       
       <div><br/><a href="../index.html">Up</a></div>
+
       
     </div>
     
