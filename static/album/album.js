@@ -2,14 +2,15 @@ var imgs = [];
 var offset = 0;
 var BATCH = 9;
 
-function translit_tr(text){
-    var Maps = {
+function translit_low_tr(text){
+    var chmap = {
         "İ":"I","Ş":"S","Ç":"C","Ğ":"G","Ü":"U","Ö":"O",
         "ı":"i","ş":"s","ç":"c","ğ":"g","ü":"u","ö":"o"
     };
-    Object.keys(Maps).forEach(function(Old){
-        text    = text.replace(Old,Maps[Old]);
+    Object.keys(chmap).forEach(function(old){
+        text = text.replace(old,chmap[old]);
     });
+    text = text.toLowerCase();
     return text;
 }
 
@@ -28,9 +29,9 @@ function show_thumb_list() {
     var out = "";
     out += "<table>";
     var i = offset;
-    while (i<offset+N) {
+    while (i < offset+N) {
 	out += "<tr>";
-	for (var j=0;j<3;j++) {
+	for (var j=0; j<3; j++) {
 	    if (i<imgs.length) {
 		out += "<td>";
 		out += "<a target='_blank' href='/static/album/photo.html?photo=" + imgs[i] + "'>";
