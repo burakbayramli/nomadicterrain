@@ -6,30 +6,15 @@ import re, time, os
 def strip_html(input):
     return BeautifulSoup(input, "lxml").text
 
-skip_words = ["Turk", "Türkiye", "Turkey","battery","Webb","Markle",
-              "electric", "lithium", "Elon", "Musk","Tesla", "SpaceX",
-              "Mars","black hole", "artificial intelligence", " AI ",
-              "AI","black hole", "EV","ChatGPT", "AI"]
+skip_words = ["Turkey", "Elon", "Musk","Tesla", "Mars","black hole","AI", "EV"]
 
 def getnews():
     feeds = [
         ("H2 Central","https://hydrogen-central.com/feed/",20),
         ("Politico.eu","https://www.politico.eu/feed/",5),
-#        ("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",10),
-#        ("France 24","https://www.france24.com/en/rss",10),
-#        ("Politico","https://www.politico.com/rss/politicopicks.xml",10),
-#        ("TDB","https://feeds.thedailybeast.com/summary/rss/articles",10),
-#        ("The Guardian","http://www.theguardian.com/world/rss",10),
-#        ('Al Monitor','https://www.al-monitor.com/rss',20),
-#        ("TASS","http://tass.com/rss/v2.xml",20),
-#        ("Arab News","https://www.arabnews.com/cat/3/rss.xml",10),
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
         ("Informed Comment","https://www.juancole.com/feed",10),
         ("The American Conservative","https://www.theamericanconservative.com/feed",10)
-#        ("Jane's Defence", "https://www.janes.com/feeds/news", 10),
-#        ('CNBC','https://www.cnbc.com/id/100727362/device/rss/rss.html',10),        
-#        ("NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",15),
-#        ("WION","https://www.wionews.com/feeds/world/rss.xml",20),
     ]
 
     content = ""
@@ -51,14 +36,6 @@ def getnews():
                 if lim > 0 and i==int(lim): break
                 link = post.link; title = post.title
                 summary = strip_html(post.summary)
-                summary = re.sub('\shttp.*?pic\.twitter.*?\<','<',summary)
-                summary = re.sub('\shttp.*?pic\.twitter.*?\s',' ',summary)
-                summary = re.sub('Shan Wang at swang@theatlantic.com','',summary)
-                summary = re.sub('appeared first on The Intercept','',summary)
-                summary = summary.replace(" appeared first on The Mandarin","")
-                title = re.sub('\shttp.*?pic\.twitter.*?\<','<',title)
-                title = re.sub('\shttp.*?pic\.twitter.*?\s',' ',title)
-                title = re.sub('\shttp.*?pic\.twitter.*?[$]','\n',title)
                 skip = False
                 for w in skip_words:
                     if len(re.findall(w, title, re.IGNORECASE)) > 0:
