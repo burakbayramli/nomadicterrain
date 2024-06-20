@@ -2,7 +2,7 @@
 import os; os.chdir(os.path.dirname(__file__))
 from flask import Flask, render_template, request, session, redirect, send_file
 from io import StringIO, BytesIO
-import pickle, polyline, util, os, uuid, glob, sys
+import pickle, polyline, util, os, glob, sys
 import json, random, base64, time as timelib
 import datetime, shutil, csv, io
 from urllib.request import urlopen
