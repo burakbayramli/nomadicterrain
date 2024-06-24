@@ -5,12 +5,16 @@
 
   <body onload='init()'>
 
-    <table>
       <tr>
         <td><input id="chosen_dir" type="text" name="chosen_dir" value="/tmp"/></td>
         <td><button onclick="listdir()">Go</button></td>
+        <td>
+          &nbsp;
+          Copy<input type="radio" id="copy" value="Copy" name="multiradio"/>
+          Move<input type="radio" id="move" value="Move" name="multiradio"/>
+          Delete<input type="radio" id="move" value="Delete" name="multiradio"/>
+        </td>
       </tr>
-    </table>
     <div id="output">
     </div>
   
