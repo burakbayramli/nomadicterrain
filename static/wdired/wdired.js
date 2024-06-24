@@ -4,6 +4,14 @@ function clicked_file(id) {
     console.log('clicked file', id);
 }
 
+function up() {
+    var dir = document.getElementById("chosen_dir").value;
+    var newdir = dir.substring(0,dir.lastIndexOf("/"));
+    console.log(newdir);
+    document.getElementById("chosen_dir").value = newdir;
+    listdir(newdir);    
+}
+
 function clicked_dir(id) {
 
     console.log('clicked dir', id);
