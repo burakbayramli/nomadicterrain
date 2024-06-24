@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os; os.chdir(os.path.dirname(__file__))
-from flask import Flask, render_template, request, session, redirect, send_file
+from flask import Flask, render_template, request, session, redirect, send_file, jsonify
 from io import StringIO, BytesIO
 import pickle, polyline, util, os, glob, sys
 import json, random, base64, time as timelib
@@ -142,6 +142,14 @@ def upload_file():
       f.save(fout)     
       return 'file uploaded successfully'
    return "OK"
+
+@app.route('/listdir', methods=["PUT", "POST"])
+def listdir():
+    # 📁  📄
+    data = request.get_json(force=True)   
+    dir_par = data['dir']
+    res = {"dirs": ["aa","bb"], "files": ["xxx","yyy"]}
+    return jsonify(res)
 
 
 if __name__ == '__main__':

@@ -1,11 +1,6 @@
 
 
 
-
-
-
-
-
 import Pil 
 import Image
 im = Image.open("test.jpg")
