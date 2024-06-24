@@ -1,7 +1,38 @@
 
-function clicked_item(id) {
+function clicked_file(id) {
 
-    console.log('clicked', id);
+    console.log('clicked file', id);
+}
+
+function clicked_dir(id) {
+
+    console.log('clicked dir', id);
+    url = "/listdir";
+    var dir = document.getElementById("chosen_dir").value;
+    var subdir = atob(id);
+    var newdir = dir + "/" + subdir;
+    console.log(newdir);
+    document.getElementById("chosen_dir").value = newdir;
+    listdir(newdir);
+}
+
+function main_page_string(response) {
+    var out = "";
+    for (var i=0;i<response['dirs'].length;i++) {
+	var chbx = `<input type='checkbox' id='d-${i}'/>`;
+	var item = response['dirs'][i];
+	var encoded = btoa(response['dirs'][i]);
+	var link = `<div onclick='clicked_dir("${encoded}");'>${chbx} 📁 ${item}</div>`;
+	out += link;
+    }	    
+    for (var i=0;i<response['files'].length;i++) {
+	var chbx = `<input type='checkbox' id='d-${i}'/>`;
+	var item = response['files'][i];
+	var encoded = btoa(response['files'][i]);
+	var link = `<div onclick='clicked_file("${encoded}");'>${chbx} 📄 ${item}</div>`;
+	out += link;
+    }
+    return out;
 }
 
 function listdir(dir) {
@@ -13,21 +44,8 @@ function listdir(dir) {
 	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
-	    var out = "";
-	    for (var i=0;i<response['dirs'].length;i++) {
-		var chbx = `<input type='checkbox' id='d-${i}'/>`;
-		var item = response['dirs'][i];
-		var encoded = btoa(response['dirs'][i]);
-		var link = `<div onclick='clicked_item("${encoded}");'>${chbx} 📁 ${item}</div>`;
-		out += link;
-	    }	    
-	    for (var i=0;i<response['files'].length;i++) {
-		var chbx = `<input type='checkbox' id='d-${i}'/>`;
-		var item = response['files'][i];
-		var encoded = btoa(response['files'][i]);
-		var link = `<div onclick='clicked_item("${encoded}");'>${chbx} 📄 ${item}</div>`;
-		out += link;
-	    }
+	    var out = main_page_string(response);
+
 	    document.getElementById("output").innerHTML = out;
 	}
     }
@@ -38,9 +56,6 @@ function listdir(dir) {
 }
 
 function init() {
-    //res = listdir("/tmp");
-    //console.log(res);
     var res = atob("L2hvbWUvYnVyYWsvaWFzbGZhamxzZGtmYXNkLTM0Mg==\n");
     console.log(res);    
 }
-
