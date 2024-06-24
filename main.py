@@ -145,10 +145,11 @@ def upload_file():
 
 @app.route('/listdir', methods=["PUT", "POST"])
 def listdir():
-    # 📁  📄
     data = request.get_json(force=True)   
     dir_par = data['dir']
-    res = {"dirs": ["aa","bb"], "files": ["xxx","yyy"]}
+    subdirs = [x for x in os.listdir(dir_par) if os.path.isdir(os.path.join(dir_par, x))]
+    subfiles = [x for x in os.listdir(dir_par) if os.path.isfile(os.path.join(dir_par, x))]
+    res = {"dirs": subdirs, "files": subfiles}
     return jsonify(res)
 
 
