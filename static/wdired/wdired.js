@@ -1,6 +1,11 @@
 
+function clicked_item(id) {
+
+    console.log('clicked', id);
+}
+
 function listdir(dir) {
-    //sessionStorage.set("curr_dir",dir);
+
     url = "/listdir";
     dir = document.getElementById("chosen_dir").value;
     const xhr = new XMLHttpRequest()
@@ -9,14 +14,19 @@ function listdir(dir) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
 	    var out = "";
-	    //<input type='checkbox' id='subscribeNews'>
-	    for (var i=0;i<response['files'].length;i++) {
-		chbx = `<input type='checkbox' id='d-${i}'/>`
-		out += "<p>" + chbx + "📁 " + response['files'][i] + "</p>";
-	    }
 	    for (var i=0;i<response['dirs'].length;i++) {
-		chbx = `<input type='checkbox' id='f-${i}'/>`
-		out += "<p>" + chbx + "📄 " + response['dirs'][i] + "</p>";
+		var chbx = `<input type='checkbox' id='d-${i}'/>`;
+		var item = response['dirs'][i];
+		var encoded = btoa(response['dirs'][i]);
+		var link = `<div onclick='clicked_item("${encoded}");'>${chbx} 📁 ${item}</div>`;
+		out += link;
+	    }	    
+	    for (var i=0;i<response['files'].length;i++) {
+		var chbx = `<input type='checkbox' id='d-${i}'/>`;
+		var item = response['files'][i];
+		var encoded = btoa(response['files'][i]);
+		var link = `<div onclick='clicked_item("${encoded}");'>${chbx} 📄 ${item}</div>`;
+		out += link;
 	    }
 	    document.getElementById("output").innerHTML = out;
 	}
@@ -30,5 +40,7 @@ function listdir(dir) {
 function init() {
     //res = listdir("/tmp");
     //console.log(res);
+    var res = atob("L2hvbWUvYnVyYWsvaWFzbGZhamxzZGtmYXNkLTM0Mg==\n");
+    console.log(res);    
 }
 
