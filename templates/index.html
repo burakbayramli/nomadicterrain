@@ -4,39 +4,9 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-<script>
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } 
-}
-function setLocOnPage(lat,lon){
-  document.getElementById("locpos").innerHTML = lat  + "," + lon;
-  document.getElementById("elev5").href = "/elev_line_main/" + lat  + ";" + lon+"/20";
-
-}
-function readLocInput() {
-  var pos = document.getElementById("locValue").value;
-  var lat = pos.split(",")[0];
-  var lon = pos.split(",")[1];
-  lat = lat.replace(" ","")
-  lon = lon.replace(" ","")
-  setLocOnPage(lat,lon);
-}
-function showPosition(position) {
-  setLocOnPage(position.coords.latitude,position.coords.longitude);
-}
-</script>
-    
   <body>
-
     <div class="navmenu">
-      <nav>
-        
-        <div id="locpos">
-           
-        </div>
-        
+      <nav>                
         <ul>          
           <p><button onclick="getLocation()">Get Location</button></p>
           <li><a href="/edit_tweet">Edit</a></li>
@@ -51,10 +21,9 @@ function showPosition(position) {
              <a href="/static/trgeo.html">Camps, Parks</a>
           </li>
           <li><a id="upload" href="/upload_main">Upload</a></li>
-          <p>
-            <p><button onclick="readLocInput()">Enter Location</button></p>
-            <p><input type="text" id="locValue" ></input></p>
-          </p>
+          <li>
+            <a href="/static/wdired/index.html">Dired</a>
+          </li>
         </ul>
       </nav>
     </div>

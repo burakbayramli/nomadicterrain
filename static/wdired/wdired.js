@@ -30,14 +30,14 @@ function main_page_string(response) {
 	var chbx = `<input type='checkbox' id='d-${i}'/>`;
 	var item = response['dirs'][i];
 	var encoded = btoa(response['dirs'][i]);
-	var link = `<div onclick='clicked_dir("${encoded}");'>${chbx} 📁 ${item}</div>`;
+	var link = `<div ondblclick='clicked_dir("${encoded}");'>${chbx} 📁 ${item}</div>`;
 	out += link;
     }	    
     for (var i=0;i<response['files'].length;i++) {
 	var chbx = `<input type='checkbox' id='d-${i}'/>`;
 	var item = response['files'][i];
 	var encoded = btoa(response['files'][i]);
-	var link = `<div onclick='clicked_file("${encoded}");'>${chbx} 📄 ${item}</div>`;
+	var link = `<div ondblclick='clicked_file("${encoded}");'>${chbx} 📄 ${item}</div>`;
 	out += link;
     }
     return out;
