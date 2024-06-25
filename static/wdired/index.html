@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+        
   <script src="wdired.js"></script>  
 
   <body onload='init()'>
 
-      <tr>
-        <td><input id="chosen_dir" type="text" name="chosen_dir" value="/tmp"/></td>
-        <td><button onclick="listdir()">Go</button></td>
+    <tr>
+      <td><input id="chosen_dir" type="text" name="chosen_dir" value="/tmp"/></td>
+      <td><button onclick="listdir()">Go</button></td>
+      &nbsp;
+      <td><button onclick="up()">⬆</button></td>        
+      <td>
         &nbsp;
-        <td><button onclick="up()">⬆</button></td>        
-        <td>
-          &nbsp;
-          Copy<input type="radio" id="copy" value="Copy" name="multiradio"/>
-          Move<input type="radio" id="move" value="Move" name="multiradio"/>
-          Delete<input type="radio" id="move" value="Delete" name="multiradio"/>
-        </td>
-      </tr>
+        Copy<input type="radio" id="copy" value="Copy" name="multiradio"/>
+        Move<input type="radio" id="move" value="Move" name="multiradio"/>
+        Delete<input type="radio" id="move" value="Delete" name="multiradio"/>
+      </td>
+    </tr>
+
     <div id="output">
     </div>
   
