@@ -1,4 +1,8 @@
 
+function getit() {
+    console.log('sdfsdfsdf');
+}
+
 function clicked_file(id) {
 
     console.log('clicked file', id);
@@ -9,7 +13,7 @@ function up() {
     var newdir = dir.substring(0,dir.lastIndexOf("/"));
     console.log(newdir);
     document.getElementById("chosen_dir").value = newdir;
-    listdir(newdir);    
+    listdir(newdir); 
 }
 
 function clicked_dir(id) {
@@ -27,15 +31,15 @@ function clicked_dir(id) {
 function main_page_string(response) {
     var out = "";
     for (var i=0;i<response['dirs'].length;i++) {
-	var chbx = `<input type='checkbox' id='d-${i}'/>`;
 	var item = response['dirs'][i];
+	var chbx = `<input class='dcheck' type='checkbox' id='${item}'/>`;
 	var encoded = btoa(response['dirs'][i]);
 	var link = `<div ondblclick='clicked_dir("${encoded}");'>${chbx} 📁 ${item}</div>`;
 	out += link;
     }	    
     for (var i=0;i<response['files'].length;i++) {
-	var chbx = `<input type='checkbox' id='d-${i}'/>`;
 	var item = response['files'][i];
+	var chbx = `<input class='dcheck' type='checkbox' id='${item}'/>`;
 	var encoded = btoa(response['files'][i]);
 	var link = `<div ondblclick='clicked_file("${encoded}");'>${chbx} 📄 ${item}</div>`;
 	out += link;
@@ -63,7 +67,36 @@ function listdir(dir) {
     xhr.send(JSON.stringify({"dir": dir}))
 }
 
+function done() {
+    var coll = document.getElementsByClassName("dcheck");
+    for (var i=0;i<coll.length;i++){
+	var x = coll[i];
+	if (coll[i].checked) {
+	    console.log('checked',x.id);	    
+	}
+    }    	
+}
+
 function init() {
-    var res = atob("L2hvbWUvYnVyYWsvaWFzbGZhamxzZGtmYXNkLTM0Mg==\n");
-    console.log(res);    
+    var rad = document.getElementById("browse");
+    rad.addEventListener('change', function() {
+        console.log(this.value)
+    });
+    rad = document.getElementById("copy");
+    rad.addEventListener('change', function() {
+        console.log(this.value);
+	var coll = document.getElementsByClassName("dcheck");
+	for (var i=0;i<coll.length;i++){
+	    coll[i].disabled = true;
+	}    		
+    });
+    rad = document.getElementById("move");
+    rad.addEventListener('change', function() {
+        console.log(this.value)
+    });
+    rad = document.getElementById("delete");
+    rad.addEventListener('change', function() {
+        console.log(this.value)
+    });
+    
 }
