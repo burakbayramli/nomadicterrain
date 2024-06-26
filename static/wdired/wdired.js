@@ -67,7 +67,6 @@ function listdir(dir) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
 	    var out = main_page_string(response);
-
 	    document.getElementById("output").innerHTML = out;
 	}
     }
@@ -85,6 +84,27 @@ function copy_to(fromDir, checkedItems, toDir) {
 	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
+	    listdir(toDir)	    
+	}
+    }
+
+    xhr.open('POST', url)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(JSON.stringify({"fromDir": fromDir,
+			     "checkedItems": checkedItems,
+			     "toDir": toDir}))
+        
+}
+
+function move_to(fromDir, checkedItems, toDir) {
+
+    url = "/wdired_move";
+    const xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+	if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+	    console.log(response);
+	    listdir(toDir)	    
 	}
     }
 
@@ -105,6 +125,9 @@ function done() {
 
     if (chosenAction == "copy") {
 	copy_to(fromDir, checkedItems, toDir);
+    }    
+    if (chosenAction == "move") {
+	move_to(fromDir, checkedItems, toDir);
     }    
     chosenAction = null;
     fromDir = null;

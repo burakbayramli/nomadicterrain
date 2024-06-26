@@ -168,6 +168,19 @@ def wdired_copy():
             
     return jsonify("ok")
 
+@app.route('/wdired_move', methods=["PUT", "POST"])
+def wdired_move():
+    data = request.get_json(force=True)   
+    fromDir = data['fromDir']
+    checkedItems = data['checkedItems']
+    toDir = data['toDir']
+    print (fromDir, checkedItems, toDir)
+    for item in checkedItems:
+        fr_curr = fromDir + "/" + item
+        shutil.move(fr_curr, toDir)
+            
+    return jsonify("ok")
+
 
 if __name__ == '__main__':
     app.debug = True
