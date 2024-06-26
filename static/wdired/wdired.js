@@ -59,7 +59,7 @@ function main_page_string(response) {
 
 function listdir(dir) {
 
-    url = "/listdir";
+    url = "/wdired_listdir";
     dir = document.getElementById("chosen_dir").value;
     const xhr = new XMLHttpRequest()
     xhr.onload = () => {
@@ -77,12 +77,35 @@ function listdir(dir) {
     xhr.send(JSON.stringify({"dir": dir}))
 }
 
+function copy_to(fromDir, checkedItems, toDir) {
+
+    url = "/wdired_copy";
+    const xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+	if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+	    console.log(response);
+	}
+    }
+
+    xhr.open('POST', url)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(JSON.stringify({"fromDir": fromDir,
+			     "checkedItems": checkedItems,
+			     "toDir": toDir}))
+        
+}
+
 function done() {
     toDir = document.getElementById("chosen_dir").value;    
     console.log(fromDir);
     console.log(toDir);
     console.log(checkedItems);
     console.log(chosenAction);
+
+    if (chosenAction == "copy") {
+	copy_to(fromDir, checkedItems, toDir);
+    }    
     chosenAction = null;
     fromDir = null;
     checkedItems = [];    

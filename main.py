@@ -143,7 +143,7 @@ def upload_file():
       return 'file uploaded successfully'
    return "OK"
 
-@app.route('/listdir', methods=["PUT", "POST"])
+@app.route('/wdired_listdir', methods=["PUT", "POST"])
 def listdir():
     data = request.get_json(force=True)   
     dir_par = data['dir']
@@ -151,6 +151,22 @@ def listdir():
     subfiles = [x for x in os.listdir(dir_par) if os.path.isfile(os.path.join(dir_par, x))]
     res = {"dirs": subdirs, "files": subfiles}
     return jsonify(res)
+
+@app.route('/wdired_copy', methods=["PUT", "POST"])
+def wdired_copy():
+    data = request.get_json(force=True)   
+    fromDir = data['fromDir']
+    checkedItems = data['checkedItems']
+    toDir = data['toDir']
+    print (fromDir, checkedItems, toDir)
+    for item in checkedItems:
+        fr_curr = fromDir + "/" + item
+        if os.path.isdir(fr_curr):
+            shutil.copytree(fr_curr, toDir + "/" + item)
+        if os.path.isfile(fr_curr):
+            shutil.copy(fr_curr, toDir)
+            
+    return jsonify("ok")
 
 
 if __name__ == '__main__':
