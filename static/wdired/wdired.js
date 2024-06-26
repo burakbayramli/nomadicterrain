@@ -1,4 +1,8 @@
 
+var chosenAction = null;
+var fromDir = null;
+var checkedItems = [];
+
 function getit() {
     console.log('sdfsdfsdf');
 }
@@ -68,35 +72,65 @@ function listdir(dir) {
 }
 
 function done() {
+    toDir = document.getElementById("chosen_dir").value;
+    console.log(fromDir);
+    console.log(toDir);
+    console.log(checkedItems);
+    console.log(chosenAction);
+}
+
+function enable_allchecks() {
+    var coll = document.getElementsByClassName("dcheck");
+    for (var i=0;i<coll.length;i++){
+	coll[i].disabled = false;
+    } 
+}
+
+function prep_post_multi() {
+    // disable the checkboxes
+    var coll = document.getElementsByClassName("dcheck");
+    for (var i=0;i<coll.length;i++){
+	coll[i].disabled = true;
+    }
+    // enable the done button
+    document.getElementById("done").style.display = "block";
+
+    // stash from dir, checked item in var
     var coll = document.getElementsByClassName("dcheck");
     for (var i=0;i<coll.length;i++){
 	var x = coll[i];
 	if (coll[i].checked) {
-	    console.log('checked',x.id);	    
+	    console.log('checked',x.id);
+	    checkedItems.push(x.id);
 	}
-    }    	
+    }
+
+    fromDir = document.getElementById("chosen_dir").value;
 }
 
 function init() {
     var rad = document.getElementById("browse");
     rad.addEventListener('change', function() {
         console.log(this.value)
+	enable_allchecks();
     });
     rad = document.getElementById("copy");
     rad.addEventListener('change', function() {
+	chosenAction = "copy";
         console.log(this.value);
-	var coll = document.getElementsByClassName("dcheck");
-	for (var i=0;i<coll.length;i++){
-	    coll[i].disabled = true;
-	}    		
+	prep_post_multi();	
     });
     rad = document.getElementById("move");
     rad.addEventListener('change', function() {
+	chosenAction = "move";
         console.log(this.value)
+	prep_post_multi();
     });
     rad = document.getElementById("delete");
     rad.addEventListener('change', function() {
+	chosenAction = "delete";
         console.log(this.value)
+	prep_post_multi();
     });
     
 }
