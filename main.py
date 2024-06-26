@@ -181,6 +181,23 @@ def wdired_move():
             
     return jsonify("ok")
 
+@app.route('/wdired_delete', methods=["PUT", "POST"])
+def wdired_delete():
+    data = request.get_json(force=True)   
+    fromDir = data['fromDir']
+    checkedItems = data['checkedItems']
+    print (fromDir, checkedItems)
+    for item in checkedItems:
+        fr_curr = fromDir + "/" + item
+        if os.path.isdir(fr_curr):
+            print ("removing dir", fr_curr)
+            shutil.rmtree(fr_curr)
+        if os.path.isfile(fr_curr):
+            print ("removing file", fr_curr)
+            os.remove(fr_curr)
+            
+    return jsonify("ok")
+
 
 if __name__ == '__main__':
     app.debug = True

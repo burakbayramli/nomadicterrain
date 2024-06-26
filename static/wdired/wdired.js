@@ -84,7 +84,7 @@ function copy_to(fromDir, checkedItems, toDir) {
 	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
-	    listdir(toDir)	    
+	    listdir(toDir);	    
 	}
     }
 
@@ -92,7 +92,26 @@ function copy_to(fromDir, checkedItems, toDir) {
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({"fromDir": fromDir,
 			     "checkedItems": checkedItems,
-			     "toDir": toDir}))
+			     "toDir": toDir}));
+        
+}
+
+function delete_checked(fromDir, checkedItems) {
+
+    url = "/wdired_delete";
+    const xhr = new XMLHttpRequest()
+    xhr.onload = () => {
+	if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+	    console.log(response);
+	    listdir(fromDir);
+	}
+    }
+
+    xhr.open('POST', url)
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(JSON.stringify({ "fromDir": fromDir,
+			      "checkedItems": checkedItems }));
         
 }
 
@@ -104,7 +123,7 @@ function move_to(fromDir, checkedItems, toDir) {
 	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
 	    console.log(response);
-	    listdir(toDir)	    
+	    listdir(toDir) ;
 	}
     }
 
@@ -112,7 +131,7 @@ function move_to(fromDir, checkedItems, toDir) {
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({"fromDir": fromDir,
 			     "checkedItems": checkedItems,
-			     "toDir": toDir}))
+			     "toDir": toDir}));
         
 }
 
@@ -128,6 +147,9 @@ function done() {
     }    
     if (chosenAction == "move") {
 	move_to(fromDir, checkedItems, toDir);
+    }    
+    if (chosenAction == "delete") {
+	delete_checked(fromDir, checkedItems);
     }    
     chosenAction = null;
     fromDir = null;
