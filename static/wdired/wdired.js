@@ -8,8 +8,11 @@ function getit() {
 }
 
 function clicked_file(id) {
-
-    console.log('clicked file', id);
+    var dir = document.getElementById("chosen_dir").value;
+    console.log('clicked file', atob(id));
+    var full_path = dir + "/" + atob(id);
+    console.log(full_path);
+    window.location.href = "/get_file/" + btoa(full_path);
 }
 
 function up() {

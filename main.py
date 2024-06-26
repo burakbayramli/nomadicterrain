@@ -9,12 +9,11 @@ from urllib.request import urlopen
 import urllib, requests, re
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
+from flask import Response
 
 app = Flask(__name__)
 
 params = json.loads(open(os.environ['HOME'] + "/.nomterr.conf").read())
-
-travel_url = "http://localhost:5000/static/travel"
 
 TMPDIR = params['tmpdir']
     
@@ -36,7 +35,6 @@ def index():
 def extnews():
     import news
     content = news.getnews()
-    from flask import Response
     def generate():
         yield content
     return Response(generate(), mimetype='text/html')
@@ -45,7 +43,6 @@ def extnews():
 def extvids():
     import vids
     content = vids.getvids()
-    from flask import Response
     def generate():
         yield content
     return Response(generate(), mimetype='text/html')
@@ -54,7 +51,6 @@ def extvids():
 def extmasto():
     import masto
     content = masto.getrss()
-    from flask import Response
     def generate():
         yield content
     return Response(generate(), mimetype='text/html')
@@ -198,6 +194,12 @@ def wdired_delete():
             
     return jsonify("ok")
 
+@app.route('/get_file/<farg>')
+def get_file(farg):
+    filename = base64.decodestring(bytes(farg,'utf-8')).decode('utf-8')
+    print ('read file',filename)
+    if (".txt" in filename):
+        return Response(open(filename).read(), mimetype='text/plain')
 
 if __name__ == '__main__':
     app.debug = True
