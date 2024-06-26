@@ -36,6 +36,9 @@ function main_page_string(response) {
     var out = "";
     for (var i=0;i<response['dirs'].length;i++) {
 	var item = response['dirs'][i];
+	if (item.substring(0,1) == ".") {
+	    continue;
+	}
 	var chbx = `<input class='dcheck' type='checkbox' id='${item}'/>`;
 	var encoded = btoa(response['dirs'][i]);
 	var link = `<div ondblclick='clicked_dir("${encoded}");'>${chbx} 📁 ${item}</div>`;
@@ -43,6 +46,9 @@ function main_page_string(response) {
     }	    
     for (var i=0;i<response['files'].length;i++) {
 	var item = response['files'][i];
+	if (item.substring(0,1) == ".") {
+	    continue;
+	}
 	var chbx = `<input class='dcheck' type='checkbox' id='${item}'/>`;
 	var encoded = btoa(response['files'][i]);
 	var link = `<div ondblclick='clicked_file("${encoded}");'>${chbx} 📄 ${item}</div>`;
@@ -72,18 +78,24 @@ function listdir(dir) {
 }
 
 function done() {
-    toDir = document.getElementById("chosen_dir").value;
+    toDir = document.getElementById("chosen_dir").value;    
     console.log(fromDir);
     console.log(toDir);
     console.log(checkedItems);
     console.log(chosenAction);
+    chosenAction = null;
+    fromDir = null;
+    checkedItems = [];    
 }
 
 function enable_allchecks() {
     var coll = document.getElementsByClassName("dcheck");
     for (var i=0;i<coll.length;i++){
 	coll[i].disabled = false;
-    } 
+    }
+    chosenAction = null;
+    fromDir = null;
+    checkedItems = [];
 }
 
 function prep_post_multi() {
