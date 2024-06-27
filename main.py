@@ -9,7 +9,7 @@ from urllib.request import urlopen
 import urllib, requests, re
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
-from flask import Response, make_response
+from flask import Response, make_response, current_app
 
 app = Flask(__name__)
 
@@ -191,7 +191,7 @@ def wdired_delete():
         if os.path.isfile(fr_curr):
             print ("removing file", fr_curr)
             os.remove(fr_curr)
-            
+                        
     return jsonify("ok")
 
 @app.route('/get_file/<farg>')
@@ -209,7 +209,16 @@ def get_file(farg):
         response = make_response(binary_pdf)
         response.headers['Content-Type'] = 'application/pdf'
         response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
-        return response    
+        return response
+    elif (".mp4" in filename):
+
+        binary_vid = open(filename,"rb").read()
+        response = make_response(binary_vid)
+        response.headers['Content-Type'] = 'video/mp4'
+        response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
+        return response
+        
+    
 
 @app.route('/test')
 def test():
