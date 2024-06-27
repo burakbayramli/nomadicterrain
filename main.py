@@ -2,7 +2,7 @@
 import os; os.chdir(os.path.dirname(__file__))
 from flask import Flask, render_template, request, session, redirect, send_file, jsonify
 from io import StringIO, BytesIO
-import pickle, polyline, util, os, glob, sys
+import pickle, polyline, util, glob, sys
 import json, random, base64, time as timelib
 import datetime, shutil, csv, io
 from urllib.request import urlopen
@@ -217,13 +217,6 @@ def get_file(farg):
         response.headers['Content-Type'] = 'video/mp4'
         response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
         return response
-        
-    
-
-@app.route('/test')
-def test():
-     response = send_file("/home/burak/Documents/Dropbox/Photos/2024/album/20240517_111121.jpg", mimetype='image/jpg')
-     return response
 
     
 if __name__ == '__main__':
