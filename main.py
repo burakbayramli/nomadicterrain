@@ -134,7 +134,7 @@ def upload_main():
 def upload_main2(dir):
     dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
     session['upload_dir'] = dir
-    return render_template("/upload2.html")
+    return render_template("/upload2.html",upload_dir=dir)
 
 @app.route('/upload', methods = ['GET', 'POST'])
 def upload_file():
