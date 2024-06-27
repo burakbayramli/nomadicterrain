@@ -3,10 +3,6 @@ var chosenAction = null;
 var fromDir = null;
 var checkedItems = [];
 
-function getit() {
-    console.log('sdfsdfsdf');
-}
-
 function clicked_file(id) {
     var dir = document.getElementById("chosen_dir").value;
     console.log('clicked file', atob(id));
