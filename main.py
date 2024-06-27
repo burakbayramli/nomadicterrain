@@ -216,6 +216,8 @@ def get_file(farg):
     print ('read file',filename)
     if (".txt" in filename or ".md" in filename):
         return Response(open(filename).read(), mimetype='text/plain')
+    if (".html" in filename):
+        return Response(open(filename).read(), mimetype='text/html')
     elif (".jpg" in filename):
         return send_file(filename, mimetype='image/jpg')
     elif (".png" in filename):
@@ -227,7 +229,6 @@ def get_file(farg):
         response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
         return response
     elif (".mp4" in filename):
-
         binary_vid = open(filename,"rb").read()
         response = make_response(binary_vid)
         response.headers['Content-Type'] = 'video/mp4'
