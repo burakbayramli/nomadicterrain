@@ -216,7 +216,7 @@ def get_file(farg):
     print ('read file',filename)
     if (".txt" in filename or ".md" in filename):
         return Response(open(filename).read(), mimetype='text/plain')
-    if (".html" in filename):
+    elif (".html" in filename):
         return Response(open(filename).read(), mimetype='text/html')
     elif (".jpg" in filename):
         return send_file(filename, mimetype='image/jpg')
