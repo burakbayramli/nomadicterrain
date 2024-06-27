@@ -130,11 +130,27 @@ def submit_search():
 def upload_main():
     return render_template("/upload.html")
 
+@app.route('/upload_main2/<dir>')
+def upload_main2(dir):
+    dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
+    session['upload_dir'] = dir
+    return render_template("/upload2.html")
+
 @app.route('/upload', methods = ['GET', 'POST'])
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       fout =  "/tmp/" + f.filename
+      f.save(fout)     
+      return 'file uploaded successfully'
+   return "OK"
+
+@app.route('/upload2', methods = ['GET', 'POST'])
+def upload_file2():
+   if request.method == 'POST':
+      f = request.files['file']
+      print ("uploading", session['upload_dir'] + "/" + f.filename)
+      fout =  session['upload_dir'] + "/" + f.filename
       f.save(fout)     
       return 'file uploaded successfully'
    return "OK"
