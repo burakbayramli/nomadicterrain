@@ -9,7 +9,7 @@ from urllib.request import urlopen
 import urllib, requests, re
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
-from flask import Response
+from flask import Response, make_response
 
 app = Flask(__name__)
 
@@ -198,9 +198,25 @@ def wdired_delete():
 def get_file(farg):
     filename = base64.decodestring(bytes(farg,'utf-8')).decode('utf-8')
     print ('read file',filename)
-    if (".txt" in filename):
+    if (".txt" in filename or ".md" in filename):
         return Response(open(filename).read(), mimetype='text/plain')
+    elif (".jpg" in filename):
+        return send_file(filename, mimetype='image/jpg')
+    elif (".png" in filename):
+        return send_file(filename, mimetype='image/png')
+    elif (".pdf" in filename):
+        binary_pdf = open(filename,"rb").read()
+        response = make_response(binary_pdf)
+        response.headers['Content-Type'] = 'application/pdf'
+        response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
+        return response    
 
+@app.route('/test')
+def test():
+     response = send_file("/home/burak/Documents/Dropbox/Photos/2024/album/20240517_111121.jpg", mimetype='image/jpg')
+     return response
+
+    
 if __name__ == '__main__':
     app.debug = True
     app.secret_key = "aksdfkasf"
