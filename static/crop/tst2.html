@@ -1,0 +1,33 @@
+<script>
+var reader1 = new FileReader();
+
+reader1.addEventListener('load', e => {
+  document.querySelector('#img').src = e.target.result;
+  document.getElementById("dload").href = e.target.result;
+});
+
+document.addEventListener('DOMContentLoaded', e => {
+  document.forms.pickfile.file.addEventListener('change', e => {
+    reader1.readAsDataURL(e.target.files[0]);
+  });
+});
+
+function xy_click(event) {
+    let x = event.clientX;
+    let y = event.clientY;
+    elem = document.getElementById('img');
+    let o1 = elem.getBoundingClientRect().left
+    let o2 = elem.getBoundingClientRect().top;
+    console.log(x + " " + y, o1, o2);
+}
+
+</script>
+
+<img onclick='xy_click(event)' id="img" />
+
+<form name="pickfile">
+  <input name="file" type="file" />
+</form>
+
+<a download="out.jpg" id="dload" href="">Download</a>
+
