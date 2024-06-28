@@ -235,16 +235,6 @@ def get_file(farg):
         response.headers['Content-Type'] = 'video/mp4'
         response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
         return response
-
-@app.route('/crop', methods=["PUT", "POST"])
-def crop():
-    print ('in crop')
-    data = request.get_json(force=True)   
-    img = data['img'].replace('data:image/jpeg;base64,', '')
-    #print (img)
-    with open("/tmp/cropped.jpg", "wb") as fh:
-        fh.write( base64.b64decode(img)  )
-    return jsonify("ok")
     
 @app.route('/rotate', methods=["PUT", "POST"])
 def rotate():
@@ -255,13 +245,10 @@ def rotate():
     img = Image.open(io.BytesIO(imgdata))    
     im_rotate = img.rotate(90)
     im_rotate.save("/tmp/rotated.jpg")
-
     with open("/tmp/rotated.jpg", "rb") as image_file:
-        encoded_string = str(base64.b64encode(image_file.read()),'utf-8')
-    
+        encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
     res = {"output": encoded_string}
     return jsonify(res)
-    #return jsonify({"ok":"3"})
     
     
 if __name__ == '__main__':
