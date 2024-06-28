@@ -14,4 +14,6 @@ im1 = img.crop((50, 20, 150, 100))
 img.save("/tmp/out1.jpg")
 im1.save("/tmp/out2.jpg")
 
+im_rotate = img.rotate(90)
+im_rotate.save("/tmp/out3.jpg")
 
