@@ -46,3 +46,15 @@ function crop() {
     }));
 }
 
+function xy_click(event) {
+    let x = event.clientX;
+    let y = event.clientY;
+    lastCoords.push([x,y]);
+    elem = document.getElementById('img');
+    let o1 = elem.getBoundingClientRect().left
+    let o2 = elem.getBoundingClientRect().top;
+    console.log(x + " " + y, o1, o2);
+    var cs = "" + lastCoords[lastCoords.length-2] + " " +
+                  lastCoords[lastCoords.length-1];
+    document.getElementById("crop_text").value = cs;
+}
