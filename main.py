@@ -235,6 +235,16 @@ def get_file(farg):
         response.headers['Content-Disposition'] = 'inline; filename=%s.pdf' % 'yourfilename'
         return response
 
+@app.route('/crop', methods=["PUT", "POST"])
+def crop():
+    print ('in crop')
+    data = request.get_json(force=True)   
+    img = data['img'].replace('data:image/jpeg;base64,', '')
+    print (img)
+    with open("/tmp/cropped.jpg", "wb") as fh:
+        fh.write( base64.b64decode(img)  )
+    return jsonify("ok")
+    
     
 if __name__ == '__main__':
     app.debug = True
