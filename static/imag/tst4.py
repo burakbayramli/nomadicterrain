@@ -17,3 +17,6 @@ im1.save("/tmp/out2.jpg")
 im_rotate = img.rotate(90)
 im_rotate.save("/tmp/out3.jpg")
 
+with open("/tmp/out3.jpg", "rb") as image_file:
+    es = base64.b64encode(image_file.read())
+    print (str(es,'utf-8'))

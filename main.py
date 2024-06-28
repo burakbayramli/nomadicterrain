@@ -10,6 +10,7 @@ import urllib, requests, re
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
 from flask import Response, make_response, current_app
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -240,10 +241,27 @@ def crop():
     print ('in crop')
     data = request.get_json(force=True)   
     img = data['img'].replace('data:image/jpeg;base64,', '')
-    print (img)
+    #print (img)
     with open("/tmp/cropped.jpg", "wb") as fh:
         fh.write( base64.b64decode(img)  )
     return jsonify("ok")
+    
+@app.route('/rotate', methods=["PUT", "POST"])
+def rotate():
+    print ('in crop')
+    data = request.get_json(force=True)   
+    img = data['img'].replace('data:image/jpeg;base64,', '')
+    imgdata = base64.b64decode(img)
+    img = Image.open(io.BytesIO(imgdata))    
+    im_rotate = img.rotate(90)
+    im_rotate.save("/tmp/rotated.jpg")
+
+    with open("/tmp/rotated.jpg", "rb") as image_file:
+        encoded_string = str(base64.b64encode(image_file.read()),'utf-8')
+    
+    res = {"output": encoded_string}
+    return jsonify(res)
+    #return jsonify({"ok":"3"})
     
     
 if __name__ == '__main__':
