@@ -238,7 +238,6 @@ def get_file(farg):
     
 @app.route('/rotate', methods=["PUT", "POST"])
 def rotate():
-    print ('in crop')
     data = request.get_json(force=True)   
     img = data['img'].replace('data:image/jpeg;base64,', '')
     imgdata = base64.b64decode(img)
@@ -246,6 +245,21 @@ def rotate():
     im_rotate = img.rotate(90)
     im_rotate.save("/tmp/rotated.jpg")
     with open("/tmp/rotated.jpg", "rb") as image_file:
+        encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
+    res = {"output": encoded_string}
+    return jsonify(res)
+    
+@app.route('/crop', methods=["PUT", "POST"])
+def crop():
+    data = request.get_json(force=True)   
+    img = data['img'].replace('data:image/jpeg;base64,', '')
+    imgdata = base64.b64decode(img)
+    img = Image.open(io.BytesIO(imgdata))    
+
+    im_crop = img.crop((50, 20, 150, 100))    
+    
+    im_crop.save("/tmp/crop.jpg")
+    with open("/tmp/crop.jpg", "rb") as image_file:
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
     res = {"output": encoded_string}
     return jsonify(res)
