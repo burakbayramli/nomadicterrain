@@ -1,54 +1,6 @@
-<script>
-var reader1 = new FileReader();
-var lastCoords = [];
 
-reader1.addEventListener('load', e => {
-  document.querySelector('#img').src = e.target.result;
-});
-
-document.addEventListener('DOMContentLoaded', e => {
-  document.forms.pickfile.file.addEventListener('change', e => {
-    reader1.readAsDataURL(e.target.files[0]);
-  });
-});
-
-function rotate() {
-    url = "/rotate";
-    const xhr = new XMLHttpRequest()
-    xhr.onload = () => {
-      	if (xhr.status >= 200 && xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-	          //console.log(response);
-            document.getElementById("img").src = 'data:image/jpeg;base64,'+response['output'];
-         }
-    } 
-    xhr.open('POST', url)
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.send(JSON.stringify({
-       "img": document.getElementById("img").src,
-       "rotate": 90
-    }));
-}
-
-function crop() {
-    url = "/crop";
-    const xhr = new XMLHttpRequest()
-    xhr.onload = () => {
-      	if (xhr.status >= 200 && xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-            document.getElementById("img").src = 'data:image/jpeg;base64,'+response['output'];
-         }
-    } 
-    xhr.open('POST', url)
-    xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.send(JSON.stringify({
-       "img": document.getElementById("img").src,
-       "rotate": [50, 20, 150, 100]
-    }));
-}
-
-</script>
-
+<script src="tst6.js"></script>
+  
 <img id="img" />
 
 <br/>
@@ -57,9 +9,15 @@ function crop() {
 <td>
   <form name="pickfile"> <input name="file" type="file" /> </form>
 </td>
+<p>
 <td>
-  <input type="text"></input>
+  <input id="rotate_text" type="text"></input>
   <button onclick='rotate()' id="rotate">Rotate</button>
+</td>
+</p>
+<p>
+<td>
+  <input id="crop_text" type="text"></input>
   <button onclick='crop()' id="crop">Crop</button>
 </td>
-
+</p>
