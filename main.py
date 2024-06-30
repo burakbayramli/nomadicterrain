@@ -127,24 +127,11 @@ def submit_search():
 
     return render_template("/book.html",results=results)
 
-@app.route('/upload_main')
-def upload_main():
-    return render_template("/upload.html")
-
 @app.route('/upload_main2/<dir>')
 def upload_main2(dir):
     dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
     session['upload_dir'] = dir
     return render_template("/upload2.html",upload_dir=dir)
-
-@app.route('/upload', methods = ['GET', 'POST'])
-def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      fout =  "/tmp/" + f.filename
-      f.save(fout)     
-      return 'file uploaded successfully'
-   return "OK"
 
 @app.route('/upload2', methods = ['GET', 'POST'])
 def upload_file2():
