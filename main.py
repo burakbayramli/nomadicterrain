@@ -242,9 +242,12 @@ def crop():
     data = request.get_json(force=True)   
     img = data['img'].replace('data:image/jpeg;base64,', '')
     imgdata = base64.b64decode(img)
-    img = Image.open(io.BytesIO(imgdata))    
+    img = Image.open(io.BytesIO(imgdata))
 
-    im_crop = img.crop((50, 20, 150, 100))    
+    c1 = data['crop'][0]
+    c2 = data['crop'][1]
+
+    im_crop = img.crop((  int(c1[0]), int(c1[1]), int(c2[0]), int(c2[1])  ))    
     
     im_crop.save("/tmp/crop.jpg")
     with open("/tmp/crop.jpg", "rb") as image_file:
