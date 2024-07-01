@@ -19,8 +19,9 @@ function rotate() {
     xhr.onload = () => {
       	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
-	          //console.log(response);
-            document.getElementById("img").src = 'data:image/jpeg;base64,'+response['output'];
+	    var imgres = 'data:image/jpeg;base64,'+response['output'];
+            document.getElementById("img").src = imgres;
+	    document.getElementById("dload").href = imgres;
          }
     } 
     xhr.open('POST', url)
@@ -40,7 +41,9 @@ function crop() {
     xhr.onload = () => {
       	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
-            document.getElementById("img").src = 'data:image/jpeg;base64,'+response['output'];
+	    var imgres = 'data:image/jpeg;base64,'+response['output'];
+            document.getElementById("img").src = imgres;
+	    document.getElementById("dload").href = imgres;
          }
     } 
     xhr.open('POST', url)
