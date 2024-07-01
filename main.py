@@ -244,8 +244,13 @@ def crop():
     imgdata = base64.b64decode(img)
     img = Image.open(io.BytesIO(imgdata))
 
+    wx, wy = img.size
+    
     c1 = data['crop'][0]
     c2 = data['crop'][1]
+
+    c1 = [ int((wx/400)*c1[0]), int((wy/400)*c1[1]) ]
+    c2 = [ int((wx/400)*c2[0]), int((wy/400)*c2[1]) ]
 
     im_crop = img.crop((  int(c1[0]), int(c1[1]), int(c2[0]), int(c2[1])  ))    
     
@@ -254,6 +259,7 @@ def crop():
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
     res = {"output": encoded_string}
     return jsonify(res)
+
     
     
 if __name__ == '__main__':

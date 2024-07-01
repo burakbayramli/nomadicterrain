@@ -60,8 +60,9 @@ function xy_click(event) {
     let y = event.clientY;
     let o1 = elem.getBoundingClientRect().left
     let o2 = elem.getBoundingClientRect().top;    
-
-    console.log(x + " " + y, "offset", o1, o2);
+    o1 = 8;
+    o2 = 8;
+    //console.log(x + " " + y, "offset", o1, o2);
 
     let x2 = x - o1;
     let y2 = y - o2;
