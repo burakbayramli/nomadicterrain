@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', e => {
 });
 
 function rotate() {
-    url = "/rotate";
+    var url = "/rotate";
+    var rval = document.getElementById('rotate_text').value;
+    console.log(rval);
     const xhr = new XMLHttpRequest()
     xhr.onload = () => {
       	if (xhr.status >= 200 && xhr.status < 300) {
@@ -25,7 +27,7 @@ function rotate() {
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify({
        "img": document.getElementById("img").src,
-       "rotate": 90
+       "rotate": rval
     }));
 }
 

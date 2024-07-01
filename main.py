@@ -227,9 +227,10 @@ def get_file(farg):
 def rotate():
     data = request.get_json(force=True)   
     img = data['img'].replace('data:image/jpeg;base64,', '')
+    rval = int(data['rotate'])
     imgdata = base64.b64decode(img)
     img = Image.open(io.BytesIO(imgdata))    
-    im_rotate = img.rotate(90)
+    im_rotate = img.rotate(rval)
     im_rotate.save("/tmp/rotated.jpg")
     with open("/tmp/rotated.jpg", "rb") as image_file:
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
