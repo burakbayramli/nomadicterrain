@@ -230,7 +230,7 @@ def rotate():
     rval = int(data['rotate'])
     imgdata = base64.b64decode(img)
     img = Image.open(io.BytesIO(imgdata))    
-    im_rotate = img.rotate(rval)
+    im_rotate = img.rotate(rval,resample=Image.BICUBIC, expand=True)
     im_rotate.save("/tmp/rotated.jpg")
     with open("/tmp/rotated.jpg", "rb") as image_file:
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
@@ -243,14 +243,18 @@ def crop():
     img = data['img'].replace('data:image/jpeg;base64,', '')
     imgdata = base64.b64decode(img)
     img = Image.open(io.BytesIO(imgdata))
-
+    
     wx, wy = img.size
+
+    CONSTANT_W = 400
+
+    CONSTANT_H = wy / (wx / CONSTANT_W)
     
     c1 = data['crop'][0]
     c2 = data['crop'][1]
 
-    c1 = [ int((wx/400)*c1[0]), int((wy/400)*c1[1]) ]
-    c2 = [ int((wx/400)*c2[0]), int((wy/400)*c2[1]) ]
+    c1 = [ int((wx/CONSTANT_W)*c1[0]), int((wy/CONSTANT_H)*c1[1]) ]
+    c2 = [ int((wx/CONSTANT_W)*c2[0]), int((wy/CONSTANT_H)*c2[1]) ]
 
     im_crop = img.crop((  int(c1[0]), int(c1[1]), int(c2[0]), int(c2[1])  ))    
     
