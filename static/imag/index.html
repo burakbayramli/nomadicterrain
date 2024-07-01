@@ -1,0 +1,29 @@
+
+<script src="imag.js"></script>
+  
+<img onclick='xy_click(event)' id="img" />
+
+<p>
+  Image Editor: Rotation degree is counterclockwise. For crop define a
+  box by clicking on the top-left and bottom-right corners. You can
+  click on continuously, the app will take only the last two clicks.  
+  
+</p>
+
+<td>
+  <form name="pickfile"> <input name="file" type="file" /> </form>
+</td>
+<p>
+<td>
+  <input size="3" id="rotate_text" type="text"></input>
+  <button onclick='rotate()' id="rotate">Rotate</button>
+</td>
+</p>
+<p>
+<td>
+  <input id="crop_text" type="text"></input>
+  <button onclick='crop()' id="crop">Crop</button>
+</td>
+</p>
+
+<a download="out.jpeg" id="dload" href="">Download</a>
