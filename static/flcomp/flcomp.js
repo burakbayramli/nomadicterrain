@@ -1,10 +1,9 @@
 
 function plot_map() {
-    map = L.map('map').setView([48,37], 6);
+    map = L.map('map').setView([16.1, 30.7], 6);
     
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: '<a href="https://www.google.com/maps/d/viewer?mid=1V8NzjQkzMOhpuLhkktbiKgodOQ27X6IV">Suriyak Maps</a>'
+	maxZoom: 19, attribution: 'OSM'
     }).addTo(map);
 
     var b = document.getElementById("before").value;
@@ -54,14 +53,3 @@ function plot(before,after) {
 
        
 }
-
-function init() {
-    map = L.map('map').setView([48,37], 6);    
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: 'OSM'
-    }).addTo(map);
-
-}
-
-
