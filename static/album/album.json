@@ -1267,7 +1267,8 @@
 	"Tahsin Kurul": {
 	    "father": "Hüseyin Avni Kurul",
 	    "mother": "Şaziye Kurul",
-	    "stories": ["Nahiye Müdürü"]
+	    "stories": ["Nahiye Müdürü. Nahiyeler 1871 yılında kurulmuş olup kaza ve köy arasında bölümlerdi.",
+		       "TK cüsseli bir yapıya sahipti."]
 	},
 	"Hüseyin Avni Kurul": {	    
 	    "stories": ["Dava vekili (avukat)"]
