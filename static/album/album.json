@@ -1151,11 +1151,9 @@
 		"Meltem Bayramlı": [],
 		"Füsun Bayramlı": [],
 		"Pınar Bayramlı": [],
-		"P1": [],
-		"P2": ["Mustafa Kemal Akın"],
-		"Uğurcan Bayramlı": [],
-		"P3": [],
-		"P4": []
+		"Neslihan Akın": [],
+		"Mustafa Kemal Akın": [],
+		"Uğurcan Bayramlı": []
 	    }
 	},
 	"IMG-20240526-WA0000.jpg": {
@@ -1285,7 +1283,12 @@
 	},
 	"Jale Akın": {	    
 	    "father": "Şükrü Akın",
-	    "spouse": "Lütfü Akın"
+	    "spouse": "Lütfü Akın",
+	    "stories": ["2022'de vefat etti"]
+	},
+	"Hüseyin Akın": {
+	    "mother": "Jale Akın",
+	    "father": "Lütfü Akın"
 	},
 	"Durmuş Aşkın Akın": {
 	    "mother": "Jale Akın",
@@ -1297,7 +1300,8 @@
 	},
 	"Mustafa Kemal Akın": {
 	    "mother": "Jale Akın",
-	    "father": "Lütfü Akın"
+	    "father": "Lütfü Akın",
+	    "stories": ["Elektrik mühendisi idi, 2022'de kalp krizinden yaşamını yitirdi"]
 	},
 	"Saadet Kurul": {	    
 	    "father": "Hüseyin Avni Kurul"
