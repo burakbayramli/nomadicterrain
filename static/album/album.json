@@ -1387,7 +1387,20 @@
 	},
 	"Ahmet Kurul": {	    
 	    "father": "Tahsin Kurul",
-	    "mother": "Hatice Nimet Kurul"	    
+	    "mother": "Hatice Nimet Kurul",
+	    "spouse": ["Muazzez Kurul"]
+	},
+	"Selma Kurul": {
+	    "mother": "Muazzez Kurul",
+	    "father": "Ahmet Kurul"
+	},
+	"Yeşim Kurul": {
+	    "mother": "Muazzez Kurul",
+	    "father": "Ahmet Kurul"
+	},
+	"İlkim Kurul": {
+	    "mother": "Muazzez Kurul",
+	    "father": "Ahmet Kurul"
 	},
 	"Salih Türker": {
 	    "spouse": ["Besime Türker","Melahat Türker"]
