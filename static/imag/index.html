@@ -1,30 +1,40 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../bbmain.css">
+  </head>
 
-<script src="imag.js"></script>
+  <script src="imag.js"></script>
 
+  <body>
+    
+  <img style="image-orientation: none" width="400" onclick='xy_click(event)' id="img" />
 
-<img style="image-orientation: none" width="400" onclick='xy_click(event)' id="img" />
+  <p>
+    Image Editor: Rotation degree is counterclockwise. For crop define a
+    box by clicking on the top-left and bottom-right corners. You can
+    click on continuously, the app will take only the last two clicks.  
+    
+  </p>
 
-<p>
-  Image Editor: Rotation degree is counterclockwise. For crop define a
-  box by clicking on the top-left and bottom-right corners. You can
-  click on continuously, the app will take only the last two clicks.  
+  <td>
+    <form name="pickfile"> <input name="file" type="file" /> </form>
+  </td>
+  <p>
+    <td>
+      <input size="3" id="rotate_text" type="text"></input>
+      <button onclick='rotate()' id="rotate">Rotate</button>
+    </td>
+  </p>
+  <p>
+    <td>
+      <input id="crop_text" type="text"></input>
+      <button onclick='crop()' id="crop">Crop</button>
+    </td>
+  </p>
+
+  <a download="out.jpeg" id="dload" href="">Download</a>
+
+  </body>
   
-</p>
-
-<td>
-  <form name="pickfile"> <input name="file" type="file" /> </form>
-</td>
-<p>
-<td>
-  <input size="3" id="rotate_text" type="text"></input>
-  <button onclick='rotate()' id="rotate">Rotate</button>
-</td>
-</p>
-<p>
-<td>
-  <input id="crop_text" type="text"></input>
-  <button onclick='crop()' id="crop">Crop</button>
-</td>
-</p>
-
-<a download="out.jpeg" id="dload" href="">Download</a>
+</html>
