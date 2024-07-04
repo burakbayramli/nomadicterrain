@@ -1,6 +1,6 @@
 
 function plot_map() {
-    map = L.map('map').setView([16.1, 30.7], 6);
+    map = L.map('map').setView([48,37], 6);
     
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
 	maxZoom: 19, attribution: 'OSM'
