@@ -600,7 +600,7 @@ function getLocationFromPicker() {
 function fetchForecast() {
     var key = localStorage.getItem('owm_key');
     var endpoint = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=${key}`;
-    
+    console.log(endpoint);
     fetch(endpoint)
 	.then(function (response) {
 	    if (200 !== response.status) {
