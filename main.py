@@ -139,9 +139,9 @@ def submit_tubedl():
     f = os.path.basename(dload)
     print (dload, rad, f)
     if rad == "Audio":
-        os.system("youtube-dl --output /tmp/%s -f 140 %s.m4a" % (f, dload))
+        os.system("youtube-dl --output /tmp/%s.m4a -f 140 %s" % (f, dload))
     if rad == "Video":
-        os.system("youtube-dl --output /tmp/%s -f 18 %s.m4a" % (f, dload))
+        os.system("youtube-dl --output /tmp/%s.mp4 -f 18 %s" % (f, dload))
     return "OK"
     
 
