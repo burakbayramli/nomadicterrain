@@ -6,17 +6,12 @@ def getvids():
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [
         ("always", "UCBS7ypf4ccm6e_bu35EiAAA",5),
-        ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
-        ("kelly hays","UCfMHF8GPio8NAeP0loK1VmA",5),
-        ("eli", "UCc3a1REv31FQzun8yXtXBqw",5),
         ("weeb",     "UCy-p2WfI1exR0yrmNFRfcag",5),
         ("due",      "UC743NEuMiqYOaUHO4oPhI2Q",5),
         ("alice",    "UCrCTC5_t-HaVJ025DbYITiw",5),
         ("baklykov", "UC13grFkpvC315pZWUHBTFlw",5),
         ("histleg",  "UCHqqf2BwNM4Oih-a_ikbWww",5),
-        ("blackout", "UCV_q52WAPdc90WudBqyGSFw",5),
         ("vanguard", "UC98DCNPM9B3ZP4TiDANonIA",5),
-        ("dore",     "UC3M7l8ved_rYQ45AVzS0RGA",5),
         ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5)
     ]
 

@@ -127,6 +127,25 @@ def submit_search():
 
     return render_template("/book.html",results=results)
 
+
+@app.route('/youtubedl_main')
+def youtubedl_main():
+    return render_template("/youtubedl.html")
+
+@app.route('/submit_tubedl', methods=['POST'])
+def submit_tubedl():
+    dload = request.form['dload']
+    rad = request.form['multiradio']
+    f = os.path.basename(dload)
+    print (dload, rad, f)
+    if rad == "Audio":
+        os.system("youtube-dl --output /tmp/%s -f 140 %s.m4a" % (f, dload))
+    if rad == "Video":
+        os.system("youtube-dl --output /tmp/%s -f 18 %s.m4a" % (f, dload))
+    return "OK"
+    
+
+
 @app.route('/upload_main2/<dir>')
 def upload_main2(dir):
     dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
@@ -270,7 +289,6 @@ def crop():
     res = {"output": encoded_string}
     return jsonify(res)
 
-    
     
 if __name__ == '__main__':
     app.debug = True
