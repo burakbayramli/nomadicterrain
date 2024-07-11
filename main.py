@@ -222,6 +222,12 @@ def get_file(farg):
         response.headers['Content-Type'] = 'video/mp4'
         response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
         return response
+    elif (".m4a" in filename):
+        binary_vid = open(filename,"rb").read()
+        response = make_response(binary_vid)
+        response.headers['Content-Type'] = 'audio/mp4'
+        response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
+        return response
     
 @app.route('/rotate', methods=["PUT", "POST"])
 def rotate():
