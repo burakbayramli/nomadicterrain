@@ -1796,6 +1796,10 @@
 			"Uzun yıllar teyzesi Didar ve eniştesi Kazım Aksoy'a anne/baba olarak hitap etmiştir, fakat bir süre sonra asıl annesinin Nigar Çolpan olduğunu öğrendi.",
 			"İkizoğlu'ları ile akrabalık ilişkisi Şerefnur İkizoğlu ile 'kardeş çocuklarının çocukları' olduğu olarak biliniyor." ]
 	}
+	"Enver Çolpan": {
+	    "spouse": "Nigar Çolpan",
+	    "stories": ["Mustafakemalpaşa'da bir fabrika sahibi olduğu biliniyor, eşi Nigar ile Bursa'da oturuyorlardı"]
+	}
     }
 }
 
