@@ -24,25 +24,15 @@ the server. Communication between client and server is via Ajax.
 
 ### TODO
 
+- HTML view needs to translate img references to local images in the
+  same directory with proper /get_file references, otherwise images
+  will not be shown.
+
 - Dot files are filtered out, toggling that permission to view can be useful
 
 - Multiselect and zip, then download feature.
-
-- "Favorites" folders to quickly jump between directories, the fav list
-  can be read from a config file by flask, or stored on `localStorage`,
-  specific to each user.
 
 - Support for peacemeal reading of video, currently video viewing does
   not allow to skipping to any location, that feature would require
   using the range request feature of web transfers.
 
-- Add img editing,
-
-```
-import Pil 
-import Image
-im = Image.open("test.jpg")
-crop_rectangle = (50, 50, 200, 200)
-cropped_im = im.crop(crop_rectangle)
-cropped_im.show()
-```
