@@ -1457,6 +1457,11 @@
 	    "father": "Tevfik İkizoğlu",	    
 	    "birth": "1928"
 	},
+	"Şerefnur İkizoğlu": {
+	    "spouse": ["Sabahattin İkizoğlu"],
+	    "father": "Salih Türker",
+	    "mother": "Besime Türker"
+	},
 	"Tevfik İkizoğlu": {
 	    "stories": ["Uzun boylu, heybetli yapısı olan Tevfik'in bazı örtülü askeri işlere karıştığı anlaşılıyor. Tahminle bu sebeplerle bazı karışıklık yaşayarak memleketi Sinop'tan kaçmak zorunda kalmıştır, ardından ona İstanbul'da bir paşayı suikast etmesi için görev verilir, fakat o görevi yerine getiremez. Bu sebeple İstanbul'dan da kaçarak Tekirdağ'ın İnecik ilçesine gelir, sonra Tekirdağ merkeze gelir. Oraya yerleşir.",
 			"Restoran işletmecisi olur, kendisinin meze/içkiyi sevdiği söylenir.",
