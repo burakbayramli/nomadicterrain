@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../bbmain.css">
   </head>
 
-  <script src="radio.js"></script>
+  <script src="rad.js"></script>
       
   <body onload='init()'>
     
@@ -16,6 +16,21 @@
 
     <div id="bbmain">
 
+      <select id="station_id" name="station_name" method="POST">
+        <option value= "SomaFM: Groove Salad">SomaFM: Groove Salad</option>"
+        <option value= "SomaFM: Secret Agent">SomaFM: Secret Agent</option>"
+        <option value= "Big Blue Swing">Big Blue Swing</option>"
+        <option value= "Radio Paradise">Radio Paradise</option>"
+        <option value= "Gold Instrumental">Gold Instrumental</option>"
+        <option value= "SomaFM: Covers">SomaFM: Covers</option>"
+        <option value= "KCRW">KCRW</option>"
+      </select>
+      &nbsp;
+      <button onclick="play()">Play</button>      
+      
+      <div id="station">
+        
+      </div>
       
     </div>
 
