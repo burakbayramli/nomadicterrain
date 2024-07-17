@@ -1605,13 +1605,13 @@
 	    "mother": "Rabia Bayramlı II"
 	},	
 	"Saffet Bayramlı": {
+	    "spouse": ["Mahmut Bayramlı"],
+	    "father": "Tahsin Kurul",
+	    "mother": "Hatice Nimet Kurul",
 	    "stories": ["Bursa Kız Öğretmen okulundan mezun oldu, önce Giresun ve en son Ankara'da uzun süre ilkokul öğretmenliği yaptı. Ankara Bahçelievler'deki evde yaşadı. Aile olarak pek çok akrabanın okumasına yardımcı oldular.",
 			"Zor şartlarda okuduğunu anlatır, çok seyahat etti, tanıdık akraba yardımı ile eğitime devam etti.",
 			"Dedesinin, dedesinin, dedesi İspir Erzurum'dan Ordu'ya gelmişler. Babaannesinin annesinin annesi Çerkez imiş.",
 			"Aile hakkında kendi yazdıkları şu dokümanda https://tinyurl.com/n7nu4khb"]
-	    "spouse": ["Mahmut Bayramlı"],
-	    "father": "Tahsin Kurul",
-	    "mother": "Hatice Nimet Kurul"
 	},
 	"Hüseyin Avni Kurul": {	    
 	    "stories": ["Dava vekili (avukat)"]
@@ -1630,12 +1630,12 @@
 	},	
 	"Seniha Akın": {	    
 	    "father": "Hüseyin Avni Kurul",
-	    "spouse": "Şükrü Akın",
+	    "spouse": ["Şükrü Akın"],
 	    "stories": ["1974 yılında Ercan,Füsun Ordu'ya gittiklerinde 'Saniye Hala'nın evinde kaldılar."]
 	},
 	"Jale Akın": {	    
 	    "father": "Şükrü Akın",
-	    "spouse": "Lütfü Akın",
+	    "spouse": ["Lütfü Akın"],
 	    "stories": ["2022'de vefat etti"]
 	},
 	"Hüseyin Akın": {
@@ -1663,7 +1663,7 @@
 	    "mother": "Hatice Nimet Kurul"	    
 	},
 	"Cemile Kurul": {	    
-	    "spouse": "Avni Kurul"
+	    "spouse": ["Avni Kurul"]
 	},
 	"Güler Kurul": {	    
 	    "mother": "Cemile Kurul",
@@ -1695,7 +1695,7 @@
 	    "father": "Ahmet Kurul"
 	},
 	"Mehmet": {
-	    "spouse": "Şerif",
+	    "spouse": ["Şerif"],
 	    "stories": ["Cüsseli, haybetli biri olarak bilinirdi."]
 	},
 	"Salih Gürler": {
@@ -1794,20 +1794,20 @@
 	"Füsun Bayramlı": {
 	    "mother": "Şerefnur İkizoğlu",
 	    "father": "Sabahattin İkizoğlu",
-	    "spouse": "Ercan Bayramlı",
+	    "spouse": ["Ercan Bayramlı"],
 	    "stories": ["Ortaokul ve Kız Meslek Lisesini Tekirdağ'da okudu, ardından Kız Teknik Yüksek Öğretim Okulu için Ankara'ya gitti. Akseki'de ögretmenliğe başladı ardından Mustafakemalpaşa Bursa'da Kız Meslek Lisesi'nde giyim öğretmeni olarak görev yaptı."]
 	},
 	"Coşkun İkizoğlu": {
 	    "mother": "Şerefnur İkizoğlu",
 	    "father": "Sabahattin İkizoğlu",
-	    "spouse": "Sevgi İkizoğlu",
+	    "spouse": ["Sevgi İkizoğlu"],
 	    "stories": ["Kütahya'da muhasebe eğitiminden sonra ANKA, ardından Koç Grubu'nda çalıştı. Amatör ligde futbolcu, baterist.",
 		       "Ortaokul sırasında dayısı Ünal'ın nalburiye dükkanında yardımcısı olarak çalıştı"]
 	},
 	"Şengün Timur": {
 	    "mother": "Şerefnur İkizoğlu",
 	    "father": "Sabahattin İkizoğlu",
-	    "spouse": "Sevgi İkizoğlu"
+	    "spouse": ["Sevgi İkizoğlu"]
 	},
 	"Mehmet Timur": {
 	    "stories": ["ODTÜ matematik bölümü mezunu, uzun yıllar matematik öğretmenliği yaptı.",
@@ -1824,7 +1824,7 @@
 			"İkizoğlu'ları ile akrabalık ilişkisi Şerefnur İkizoğlu ile 'kardeş çocuklarının çocukları' olarak biliniyor." ]
 	},
 	"Enver Çolpan": {
-	    "spouse": "Nigar Çolpan",
+	    "spouse": ["Nigar Çolpan"],
 	    "stories": ["Mustafakemalpaşa'da bir fabrika sahibi olduğu biliniyor, eşi Nigar ile Bursa'da oturuyorlardı, fakat genç yaşta ayrıldılar."]
 	},
 	"Didar Çolpan": {
