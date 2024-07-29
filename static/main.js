@@ -11,13 +11,9 @@ function init() {
     if (rt != null) {
 	rt = JSON.parse(rt);
 	Object.keys(rt).forEach(function (x) {
-	    console.log('------------------------');
-	    console.log(x, rt[x]);
-	    var [d2,m2,y2] = x.split("/");
-	    console.log(d2,m2,y2);
-	    rtext = rt[x];
+	    var [d2,m2,y2] = rt[x].split("/");
+	    rtext = x;
 	    if ( (d1==d2 | d2=="*") & (m1==m2|m2=="*") & (y1==y2 | y2=="*") ) {
-		console.log("match");
 		s += `<p><font color="red">- ${rtext}</font></p>`;
 	    }
 	});
