@@ -1,4 +1,8 @@
 
+// The wind direction is in meteorological degrees where 0 and 360
+// corresponds to wind coming from North, 90 for wind from East, 180
+// for wind from South, and 270 from West.
+
 function Psychrometrics() {
 
   // Standard functions
@@ -621,6 +625,7 @@ function fetchToday() {
 		var descr = x.weather[0]['description']
 		var temp = x.main.temp;
 		var hum = x.main.humidity;
+		var wind = x.wind.deg + "/" + x.wind.speed;
 		var wbt = psychrolib.GetTWetBulbFromRelHum(temp, hum/100.0, pressure);
 		wbt = Number(wbt.toFixed(2));
 		var d = new Date(parseInt(x.dt)*1000);
@@ -630,6 +635,7 @@ function fetchToday() {
 		res += `<p>Status: ${descr}, ${p2}</p>`;
 		res += `<p>Temperature ${temp} C</p>`;
 		res += `<p>Humidity: ${hum}</p>`;
+		res += `<p>Wind: ${wind}</p>`;
 		res += `<p>Wet Bulb: ${wbt}</p>`;
 		document.getElementById('tdout').innerHTML = res;
 	    });
@@ -660,21 +666,23 @@ function fetchForecast() {
 
 		var res = "";
 		res += "<table>";
-		res += "<tr><td>Day</td><td>Type</td><td>Temperature</td><td>Humidity</td><td>Wet Bulb</td><td>Date</td></tr>";
+		res += "<tr><td>Day</td><td>Type</td><td>Temperature</td><td>Humidity</td><td>Wind</td><td>Wet Bulb</td><td>Date</td></tr>";
 		data.list.forEach( function (x) {
+		    console.log(x);
 		    var dayname = new Date(x.dt * 1000).toLocaleDateString("en", {
 			weekday: "long",
 		    });
 		    var descr = x.weather[0]['description']
 		    var temp = x.main.temp;
 		    var hum = x.main.humidity;
+		    var wind = x.wind.deg + "/" + x.wind.speed;
 		    var wbt = psychrolib.GetTWetBulbFromRelHum(temp, hum/100.0, pressure);
 		    wbt = Number(wbt.toFixed(2));
 		    var d = new Date(parseInt(x.dt)*1000);
 		    var p1 = d.toLocaleDateString().slice(0,5);
 		    var p2 = d.toLocaleTimeString('en-US',{ hour12: false });
 		    var dt = p1 + " " + p2 ;
-		    res += `<tr><td>${dayname}</><td>${descr}</td><td>${temp}</td><td>${hum}</td><td>${wbt}</td><td>${dt}</td></tr>`;		    		    
+		    res += `<tr><td>${dayname}</><td>${descr}</td><td>${temp}</td><td>${hum}</td><td>${wind}</td><td>${wbt}</td><td>${dt}</td></tr>`;
 		});
 		res += "</table>";
 		document.getElementById('fcout').innerHTML = res;
