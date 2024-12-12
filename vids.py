@@ -7,11 +7,9 @@ def getvids():
     feeds = [
         ("always", "UCBS7ypf4ccm6e_bu35EiAAA",5),
         ("weeb",     "UCy-p2WfI1exR0yrmNFRfcag",5),
-        ("due",      "UC743NEuMiqYOaUHO4oPhI2Q",5),
         ("alice",    "UCrCTC5_t-HaVJ025DbYITiw",5),
         ("baklykov", "UC13grFkpvC315pZWUHBTFlw",5),
         ("histleg",  "UCHqqf2BwNM4Oih-a_ikbWww",5),
-        ("vanguard", "UC98DCNPM9B3ZP4TiDANonIA",5),
         ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5)
     ]
 
