@@ -2,7 +2,7 @@
 import os; os.chdir(os.path.dirname(__file__))
 from flask import Flask, render_template, request, session, redirect, send_file, jsonify
 from io import StringIO, BytesIO
-import pickle, polyline, util, glob, sys
+import pickle, polyline, util, glob, sys, subprocess
 import json, random, base64, time as timelib
 import datetime, shutil, csv, io
 from urllib.request import urlopen
@@ -266,8 +266,10 @@ def vedic():
     # these two jars are needed for Vedic Java call
     os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
                               pydir + "/lib/commons-lang3-3.13.0.jar"
-    print (pydir)
-    os.system("java swisseph.Vedic")
+    #os.system("java swisseph.Vedic")
+    p = subprocess.Popen(['java','swisseph.Vedic'], stdout=subprocess.PIPE)
+    res = p.stdout.read()
+    print ('in python', res)    
     res = {"output": "blah"}
     return jsonify(res)    
 
