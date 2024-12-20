@@ -5,15 +5,13 @@ function calculate() {
     const xhr = new XMLHttpRequest()
     xhr.onload = () => {
       	if (xhr.status >= 200 && xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-	    console.log(xhr.responseText);
-	    console.log(typeof(xhr.responseText));
-	    console.log(Object.keys(response));
-	    console.log('received');
-	    console.log(response);
-	    console.log(response['Ascending']);
-	    console.log(response['Sun']);
-	    console.log(response['Moon']);
+          var res = xhr.responseText
+          res = res.replaceAll("'",'"');
+          console.log(res);
+          res = JSON.parse(res);	    
+          console.log(res['Ascending']);
+          console.log(res['Sun']);
+          console.log(res['Moon']);
          }
     } 
     xhr.open('POST', url)

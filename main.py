@@ -304,7 +304,9 @@ def vedic():
                           stdout=subprocess.PIPE)
     res = p.stdout.read().decode().strip()
     print (res)
-    return jsonify(res)
+    #jres = jsonify(res)
+    #print (jres['Sun'])
+    return res
 
 
 if __name__ == '__main__':
