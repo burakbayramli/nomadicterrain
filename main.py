@@ -262,6 +262,11 @@ def rotate():
 
 @app.route('/vedic', methods=["PUT", "POST"])
 def vedic():
+    pydir = os.path.dirname(os.path.abspath(__file__))
+    # these two jars are needed for Vedic Java call
+    os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
+                              pydir + "/lib/commons-lang3-3.13.0.jar"
+    print (pydir)
     os.system("java swisseph.Vedic")
     res = {"output": "blah"}
     return jsonify(res)    
