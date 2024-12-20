@@ -20,14 +20,6 @@ TMPDIR = params['tmpdir']
     
 headers = { 'User-Agent': 'UCWEB/2.0 (compatible; Googlebot/2.1; +google.com/bot.html)'}
 
-def clean_dir():
-    files = glob.glob("static/out-*.png")
-    for f in files: os.remove(f)
-
-def my_curr_location():
-    lat,lon = session['geo']
-    return lat,lon
-
 @app.route('/')
 def index():
     return render_template('/index.html')
@@ -144,8 +136,6 @@ def submit_tubedl():
         os.system("youtube-dl --output /tmp/%s.mp4 -f 18 %s" % (f, dload))
     return "OK"
     
-
-
 @app.route('/upload_main2/<dir>')
 def upload_main2(dir):
     dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
@@ -275,22 +265,15 @@ def crop():
     data = request.get_json(force=True)   
     img = data['img'].replace('data:image/jpeg;base64,', '')
     imgdata = base64.b64decode(img)
-    img = Image.open(io.BytesIO(imgdata))
-    
+    img = Image.open(io.BytesIO(imgdata))    
     wx, wy = img.size
-
     CONSTANT_W = 400
-
-    CONSTANT_H = wy / (wx / CONSTANT_W)
-    
+    CONSTANT_H = wy / (wx / CONSTANT_W)    
     c1 = data['crop'][0]
     c2 = data['crop'][1]
-
     c1 = [ int((wx/CONSTANT_W)*c1[0]), int((wy/CONSTANT_H)*c1[1]) ]
     c2 = [ int((wx/CONSTANT_W)*c2[0]), int((wy/CONSTANT_H)*c2[1]) ]
-
-    im_crop = img.crop((  int(c1[0]), int(c1[1]), int(c2[0]), int(c2[1])  ))    
-    
+    im_crop = img.crop((  int(c1[0]), int(c1[1]), int(c2[0]), int(c2[1])  ))        
     im_crop.save("/tmp/crop.jpg")
     with open("/tmp/crop.jpg", "rb") as image_file:
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
