@@ -6,8 +6,14 @@ function calculate() {
     xhr.onload = () => {
       	if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
+	    console.log(xhr.responseText);
+	    console.log(typeof(xhr.responseText));
+	    console.log(Object.keys(response));
 	    console.log('received');
 	    console.log(response);
+	    console.log(response['Ascending']);
+	    console.log(response['Sun']);
+	    console.log(response['Moon']);
          }
     } 
     xhr.open('POST', url)
@@ -20,5 +26,5 @@ function calculate() {
 	"lat": document.getElementById("lat").value,
 	"lon": document.getElementById("lon").value
     }));
-        
+    
 }
