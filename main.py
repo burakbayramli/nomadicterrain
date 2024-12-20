@@ -259,7 +259,13 @@ def rotate():
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
     res = {"output": encoded_string}
     return jsonify(res)
-    
+
+@app.route('/vedic', methods=["PUT", "POST"])
+def vedic():
+    os.system("java swisseph.Vedic")
+    res = {"output": "blah"}
+    return jsonify(res)    
+
 @app.route('/crop', methods=["PUT", "POST"])
 def crop():
     data = request.get_json(force=True)   
