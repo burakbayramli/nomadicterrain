@@ -3,8 +3,10 @@
 ```python
 from datetime import datetime
 from pytz import timezone, utc
+from timezonefinder import TimezoneFinder
 
 def get_offset(*, lat, lng):
+    tf = TimezoneFinder() 
     today = datetime.now()
     tz_target = timezone(tf.certain_timezone_at(lng=lng, lat=lat))
     today_target = tz_target.localize(today)
@@ -21,6 +23,7 @@ print (minute_offset / 60)
 ```text
 3.0
 ```
+
 
 
 

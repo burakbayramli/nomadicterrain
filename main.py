@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 import urllib.request as urllib2
 from flask import Response, make_response, current_app
 from PIL import Image
+from timezonefinder import TimezoneFinder
+from pytz import timezone, utc
 
 app = Flask(__name__)
 
@@ -262,12 +264,24 @@ def rotate():
 
 @app.route('/vedic', methods=["PUT", "POST"])
 def vedic():
-    pydir = os.path.dirname(os.path.abspath(__file__))
+    data = request.get_json(force=True)
+    print ('data',data)
+
+    tf = TimezoneFinder() 
+    today = datetime.datetime.now()
+    tz_target = timezone(tf.certain_timezone_at(lng=32.94905410633718, lat=39.774503259632304))
+    today_target = tz_target.localize(today)
+    today_utc = utc.localize(today)
+    offset = (today_utc - today_target).total_seconds() / 3600
+    offset = str(offset)
+    
+    pydir = os.path.dirname(os.path.abspath(__file__))    
     # these two jars are needed for Vedic Java call
     os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
                               pydir + "/lib/commons-lang3-3.13.0.jar"
-    #os.system("java swisseph.Vedic")
-    p = subprocess.Popen(['java','swisseph.Vedic'], stdout=subprocess.PIPE)
+    #os.system("java swisseph.Vedic")    
+    p = subprocess.Popen(['java','swisseph.Vedic',data['day'],data['mon'],data['year'],data['hour'],data['lat'],data['lon'],offset],
+                          stdout=subprocess.PIPE)
     res = p.stdout.read()
     print ('in python', res)    
     res = {"output": "blah"}
