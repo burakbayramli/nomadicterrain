@@ -12,7 +12,8 @@ function calculate() {
           console.log(res['Ascending']);
           console.log(res['Sun']);
           console.log(res['Moon']);
-         }
+	  document.getElementById("results").innerHTML = JSON.stringify(res);
+        }
     } 
     xhr.open('POST', url)
     xhr.setRequestHeader('Content-Type', 'application/json')
@@ -24,5 +25,5 @@ function calculate() {
 	"lat": document.getElementById("lat").value,
 	"lon": document.getElementById("lon").value
     }));
-    
+       
 }
