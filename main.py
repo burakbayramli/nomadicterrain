@@ -153,6 +153,32 @@ def upload_file2():
       f.save(fout)     
       return 'file uploaded successfully'
    return "OK"
+@app.route('/vedic', methods=["PUT", "POST"])
+def vedic():
+    data = request.get_json(force=True)
+    print ('data',data)
+
+    tf = TimezoneFinder() 
+    today = datetime.datetime.now()
+    tz_target = timezone(tf.certain_timezone_at(lng=32.94905410633718, lat=39.774503259632304))
+    today_target = tz_target.localize(today)
+    today_utc = utc.localize(today)
+    offset = (today_utc - today_target).total_seconds() / 3600
+    offset = str(offset)
+    
+    pydir = os.path.dirname(os.path.abspath(__file__))    
+    # these two jars are needed for Vedic Java call
+    os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
+                              pydir + "/lib/commons-lang3-3.13.0.jar"
+    p = subprocess.Popen(['java','swisseph.Vedic',data['day'],data['mon'],data['year'],data['hour'],data['lat'],data['lon'],offset],
+                          stdout=subprocess.PIPE)
+    res = p.stdout.read().decode().strip()
+    print (res)
+    return res
+
+##########################################################################
+# Webfilebrowser
+#########################################################################
 
 @app.route('/wdired_listdir', methods=["PUT", "POST"])
 def listdir():
@@ -247,6 +273,10 @@ def get_file(farg):
         response.headers['Content-Type'] = 'audio/mp4'
         response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
         return response
+
+##########################################################################
+# Image Editor
+#########################################################################
     
 @app.route('/rotate', methods=["PUT", "POST"])
 def rotate():
@@ -281,33 +311,6 @@ def crop():
         encoded_string = str(base64.b64encode(image_file.read()),'utf-8')    
     res = {"output": encoded_string}
     return jsonify(res)
-
-@app.route('/vedic', methods=["PUT", "POST"])
-def vedic():
-    data = request.get_json(force=True)
-    print ('data',data)
-
-    tf = TimezoneFinder() 
-    today = datetime.datetime.now()
-    tz_target = timezone(tf.certain_timezone_at(lng=32.94905410633718, lat=39.774503259632304))
-    today_target = tz_target.localize(today)
-    today_utc = utc.localize(today)
-    offset = (today_utc - today_target).total_seconds() / 3600
-    offset = str(offset)
-    
-    pydir = os.path.dirname(os.path.abspath(__file__))    
-    # these two jars are needed for Vedic Java call
-    os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
-                              pydir + "/lib/commons-lang3-3.13.0.jar"
-    #os.system("java swisseph.Vedic")    
-    p = subprocess.Popen(['java','swisseph.Vedic',data['day'],data['mon'],data['year'],data['hour'],data['lat'],data['lon'],offset],
-                          stdout=subprocess.PIPE)
-    res = p.stdout.read().decode().strip()
-    print (res)
-    #jres = jsonify(res)
-    #print (jres['Sun'])
-    return res
-
 
 if __name__ == '__main__':
     app.debug = True
