@@ -158,14 +158,15 @@ def vedic():
     data = request.get_json(force=True)
     print ('data',data)
 
+    lat,lon = float(data['lat']),float(data['lon'])
     tf = TimezoneFinder() 
     today = datetime.datetime.now()
-    tz_target = timezone(tf.certain_timezone_at(lng=32.94905410633718, lat=39.774503259632304))
+    tz_target = timezone(tf.certain_timezone_at(lng=lon, lat=lat))
     today_target = tz_target.localize(today)
     today_utc = utc.localize(today)
     offset = (today_utc - today_target).total_seconds() / 3600
     offset = str(offset)
-    
+    print ('offset',offset)
     pydir = os.path.dirname(os.path.abspath(__file__))    
     # these two jars are needed for Vedic Java call
     os.environ['CLASSPATH'] = pydir + "/lib/astromaestro.jar:" + \
