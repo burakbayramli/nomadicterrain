@@ -124,7 +124,6 @@ def index(crawl_dir,index_db,new_index=False):
         if rel_file in existing_paths:
             print (rel_file, "already there")
             continue
-        print ("Rel",rel_file)
         print ('Indexing ', file)
         filename_as_content = os.path.basename(file).replace("_"," ").replace("-"," ")
         filename_as_content = filename_as_content[0:filename_as_content.rfind(".")]
@@ -163,7 +162,7 @@ def search(s, index_db):
     res = c.fetchall()
     return res
 
-def index_nomadic():
+def index_books():
     params = json.loads(open(os.environ['HOME'] + "/.nomterr.conf").read())
     #index(params['book_dir'], params['book_index_db'],new_index=True)
     index(params['book_dir'], params['book_index_db'])
@@ -178,4 +177,4 @@ def test_search():
     
 if __name__ == "__main__": 
  
-    index_nomadic()
+    index_books()
