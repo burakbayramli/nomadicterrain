@@ -120,7 +120,11 @@ function show_plan(mainurl) {
     });
             
     Object.keys(main['cafes']).forEach(function(key) {
-    	L.marker([main['cafes'][key][0], main['cafes'][key][1]],{icon: redIcon}).bindPopup(key).openPopup().addTo(map);
+    	//L.marker([main['cafes'][key][0], main['cafes'][key][1]],{icon: redIcon}).bindPopup(key).openPopup().addTo(map);
+	c = L.circleMarker([main['cafes'][key][0], main['cafes'][key][1]], {
+	    radius: 6,
+	    color: "red"
+	}).bindPopup(key).openPopup().addTo(map);	
     });
             
     Object.keys(main['points']).forEach(function(key) {
