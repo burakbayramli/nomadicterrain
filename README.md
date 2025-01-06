@@ -1,7 +1,9 @@
 # Nomadic Terrain
 
-A Flask application that has useful features for campers, on-the-go
-travelers. To start simply run `main.py`.
+A Flask web app that carries features that could not be placed in BBApps, on
+https://burakbayramli.github.io. BBApps runs on pure HTML/Javascript, it has
+not server side functionality. What could not be placed there is in
+Nomadicterrain. To start simply run `main.py`.
 
 ### Features
 
