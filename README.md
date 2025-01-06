@@ -44,8 +44,6 @@ An example `nomterr.conf` file looks like
 }
 ```
 
-Offline name lookup requires `geolitecity.zip` file under `osm_dir`, file is [here](https://drive.google.com/uc?export=view&id=1pkhBQcax7tjtWHdV3E2xOqheJmz__PTw).
-
 ### Contributors
 
 Please feel free to submit bug reports, enhancements. 
