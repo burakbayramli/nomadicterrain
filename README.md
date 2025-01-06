@@ -8,9 +8,6 @@ be placed there is served via nomadicterrain. To start simply run
 
 ### Features
 
-For the current location (either received from phone, or manually set),
-it can supply
-
 * Most recent messages from Mastodon follows (via RSS)
 * Digital book library indexing and search (point to a any pdf directory it will index it)
 * Image processing for basic crop, rotate functions.
