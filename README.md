@@ -3,8 +3,9 @@
 A Flask web app that carries features that could not be placed in
 BBApps, on https://burakbayramli.github.io. BBApps runs on pure
 HTML/Javascript, it has no server side functionality. What could not
-be placed there is served via nomadicterrain. To start simply run
-`main.py`.
+be placed there is served via nomadicterrain. It is also the testbed
+for BBApps, its client-only code can be tested via the files under
+`static`.  To start simply run `main.py`.
 
 ### Features
 
