@@ -7,7 +7,9 @@ def getvids():
     feeds = [
         ("alice",    "UCrCTC5_t-HaVJ025DbYITiw",5),
         ("niki",     "UCNmv0SUwrOkEqadKneNRwHg",5),
-        ("ssoberry", "UCSZQK43hJ422otti5D3iNgA",5)
+        ("ssoberry", "UCSZQK43hJ422otti5D3iNgA",5),
+        ("ameinavan","UCMoXBV0j3BZAMKqm42vpYtg",5),
+        ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5)
     ]
 
     content = ""
