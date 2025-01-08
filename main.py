@@ -34,10 +34,10 @@ def extnews():
         yield content
     return Response(generate(), mimetype='text/html')
 
-@app.route('/extvids')
-def extvids():
+@app.route('/extvids/<daysago>')
+def extvids(daysago):
     import vids
-    content = vids.getvids()
+    content = vids.getvids(int(daysago))
     def generate():
         yield content
     return Response(generate(), mimetype='text/html')
