@@ -38,12 +38,12 @@ def getvids(daysago):
                 post_date = pd.to_datetime(post.published).to_pydatetime()
                 if post_date < week_ago: continue
                 v = post.link.replace("https://www.youtube.com/watch?v=","")
-                summary = "<br><br>" + post.summary[:400]
+                summary = "<p>" + post.summary[:400] + "</p>"
                 vimg = "http://img.youtube.com/vi/%s/0.jpg" % v
-                content += "<a href='%s'>%s</a><br/><br/>\n" % (post.link, post.title)
-                content += "<img width='200' src='%s'>\n" % (vimg)
-                content += "%s<br/><br/>\n" % (summary)
-                content += "<h4>%s</h4><br/><br/>\n" % (post_date)
+                content += "<p><a href='%s'>%s</a></p>" % (post.link, post.title)
+                content += "<p><img width='200' src='%s'></p>" % (vimg)
+                content += "<p>%s</p>" % (summary)
+                content += "<p><h4>%s</h4></p>" % (post_date)
                 if i>lim: break
         except Exception as e:
             print (repr(e))
