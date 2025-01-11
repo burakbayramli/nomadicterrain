@@ -5,7 +5,7 @@ import time, os, datetime, pandas as pd
 def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [
-        ("daniel davis","UCWDN5zr5ttctoIAhZwW6tcQ",5)
+        ("daniel davis","UCWDN5zr5ttctoIAhZwW6tcQ",5),
         ("hedges","UCEATT6H3U5lu20eKPuHVN8A",5),
         ("ameinavan","UCMoXBV0j3BZAMKqm42vpYtg",5),
         ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
