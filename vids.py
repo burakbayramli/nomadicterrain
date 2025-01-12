@@ -2,6 +2,8 @@ import feedparser, sys, codecs, pytz
 import re, requests, random, os
 import time, os, datetime, pandas as pd
 
+skip_words = ["empire","deep state"]
+
 def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [
@@ -32,12 +34,17 @@ def getvids(daysago):
     '''
     week_ago = datetime.datetime.today().replace(tzinfo=pytz.UTC) - datetime.timedelta(days=daysago)
     for name,url,lim in feeds:
+        print (name)
         content += "<h2>" + name + "</h2>\n"
+        skip = False
         try:
             d = feedparser.parse(vbase + url)
             for i,post in enumerate(d.entries):
                 post_date = pd.to_datetime(post.published).to_pydatetime()
                 if post_date < week_ago: continue
+                for w in skip_words:
+                    if w in post.title.lower() or w in post.summary.lower(): skip = True
+                if skip: continue
                 v = post.link.replace("https://www.youtube.com/watch?v=","")
                 summary = "<p>" + post.summary[:400] + "</p>"
                 vimg = "http://img.youtube.com/vi/%s/0.jpg" % v
