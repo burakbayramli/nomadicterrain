@@ -12,7 +12,7 @@ def getvids(daysago):
         ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
         ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
         ("ssoberry","UCSZQK43hJ422otti5D3iNgA",5),
-        ("tibees","UC52kszkc08-acFOuogFl5jw,5),
+        ("tibees","UC52kszkc08-acFOuogFl5jw",5),
         ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
         ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
         ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
