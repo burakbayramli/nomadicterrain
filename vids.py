@@ -2,13 +2,14 @@ import feedparser, sys, codecs, pytz
 import re, requests, random, os
 import time, os, datetime, pandas as pd
 
-skip_words = ["empire","deep state"]
+skip_words = ["empire","deep state","wolff"]
 
 def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [
         ("daniel davis","UCWDN5zr5ttctoIAhZwW6tcQ",5),
         ("hedges","UCEATT6H3U5lu20eKPuHVN8A",5),
+        ("owen","UCSYCo8uRGF39qDCxF870K5Q",5),
         ("ameinavan","UCMoXBV0j3BZAMKqm42vpYtg",5),
         ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
         ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
@@ -18,6 +19,8 @@ def getvids(daysago):
         ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
         ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
         ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
+        ("patry","UCzQ5JiuXVX3enojkU3Plalw",5),
+        ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),
         ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),
         ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
         ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5)
