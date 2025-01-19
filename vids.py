@@ -17,10 +17,12 @@ def getvids(daysago):
         ("ssoberry","UCSZQK43hJ422otti5D3iNgA",5),
         ("tibees","UC52kszkc08-acFOuogFl5jw",5),
         ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
+        ("status coup","UC0pCsHlEEmCfxllZSlRB2Og",5),
         ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
         ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
         ("patry","UCzQ5JiuXVX3enojkU3Plalw",5),
         ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),
+        ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
         ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),
         ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
         ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5)
