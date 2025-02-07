@@ -25,8 +25,7 @@ def getvids(daysago):
               ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
               ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),
               ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
-              ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5),
-              ("enkamp","UCRIeMHsEdzA9RroG19kXdYg",5)
+              ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5)
     ]
 
     content = ""
