@@ -23,15 +23,44 @@ function plot(before,after) {
     xmlHttp.send( null );
     result = xmlHttp.responseText;
     blocks = JSON.parse(result);
+    
     hts = blocks["HTS"];
     bef = []
-    hts.forEach(function(x) {
+    hts[0].forEach(function(x) {
 	bef.push([x[1],x[0]]);
     });
-    var linebef = new L.Polyline(bef, {
-	color: 'darkblue', weight: 2, dashArray: '3, 3', dashOffset: '0'
+    var linebef1 = new L.Polyline(bef, {
+	color: 'green', weight: 2, dashArray: '3, 3', dashOffset: '0'
     });
-    linebef.addTo(map);
+    linebef1.addTo(map);
+    bef = []
+    hts[1].forEach(function(x) {
+	bef.push([x[1],x[0]]);
+    });
+    var linebef1 = new L.Polyline(bef, {
+	color: 'green', weight: 2, dashArray: '3, 3', dashOffset: '0'
+    });
+    linebef1.addTo(map);
+    
+    tr = blocks["TR"];
+    bef = []
+    tr[0].forEach(function(x) {
+	bef.push([x[1],x[0]]);
+    });
+    var linebef2 = new L.Polyline(bef, {
+	color: 'lightgreen', weight: 2, dashArray: '3, 3', dashOffset: '0'
+    });
+    linebef2.addTo(map);
+    
+    tr = blocks["TR"];
+    bef = []
+    tr[1].forEach(function(x) {
+	bef.push([x[1],x[0]]);
+    });
+    var linebef2 = new L.Polyline(bef, {
+	color: 'lightgreen', weight: 2, dashArray: '3, 3', dashOffset: '0'
+    });
+    linebef2.addTo(map);
     
 
        
