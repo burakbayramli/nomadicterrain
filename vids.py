@@ -7,13 +7,12 @@ skip_words = ["empire","deep state","wolff"]
 def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [ ("daniel davis","UCWDN5zr5ttctoIAhZwW6tcQ",5),
-              ("hedges","UCEATT6H3U5lu20eKPuHVN8A",2),
               ("willem","UCF1fG3gT44nGTPU2sVLoFWg",5),
               ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
               ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
               ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
               ("unicamp","UCs0T96Tx2oPuGjRXs7h8OAA",5),
-              ("stanton","UC67gfx2Fg7K2NSHqoENVgwA",5),
+              ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
               ("tibees","UC52kszkc08-acFOuogFl5jw",5),
               ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
               ("status coup","UC0pCsHlEEmCfxllZSlRB2Og",5),
@@ -21,6 +20,7 @@ def getvids(daysago):
               ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
               ("patry","UCzQ5JiuXVX3enojkU3Plalw",5),
               ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),
+              ("mattkim","UC4rC0QxBD1eRPKMHIIpL0vA",2),
               ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
               ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),
               ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
