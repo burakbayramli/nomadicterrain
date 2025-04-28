@@ -9,10 +9,16 @@ function calculate() {
           res = res.replaceAll("'",'"');
           console.log(res);
           res = JSON.parse(res);	    
-          console.log(res['Ascending']);
-          console.log(res['Sun']);
-          console.log(res['Moon']);
+          //console.log(res['Ascending']);
+          //console.log(res['Sun']);
+          //console.log(res['Moon']);
 	  document.getElementById("results").innerHTML = JSON.stringify(res);
+	  var asc = res['Ascending'][0].toLowerCase();
+	  var links = `<a target="_blank" href="https://www.indastro.com/lagna/${asc}-ascendant.html">Asc 1</a>,`;
+	  links += `<a target="_blank" href="https://astrobix.com/horoscope/lagnapredi/${asc}">Asc 2</a>&nbsp;`;
+	  links += "<br>";
+	    
+	  document.getElementById("links").innerHTML = links;
         }
     } 
     xhr.open('POST', url)

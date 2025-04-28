@@ -153,6 +153,7 @@ def upload_file2():
       f.save(fout)     
       return 'file uploaded successfully'
    return "OK"
+
 @app.route('/vedic', methods=["PUT", "POST"])
 def vedic():
     data = request.get_json(force=True)
