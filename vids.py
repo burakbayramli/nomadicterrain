@@ -10,6 +10,7 @@ def getvids(daysago):
               ("willem","UCF1fG3gT44nGTPU2sVLoFWg",5),
               ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
               ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
+              ("cappy","UCwrpo8z3IgJln2ZidqBUiMA",5),
               ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
               ("unicamp","UCs0T96Tx2oPuGjRXs7h8OAA",5),
               ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
