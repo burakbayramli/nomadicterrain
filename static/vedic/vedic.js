@@ -1,4 +1,8 @@
 
+function capitalizeFirstLetter(val) {
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+
 function calculate() {
 
     var url = "/vedic";
@@ -13,11 +17,17 @@ function calculate() {
           //console.log(res['Sun']);
           //console.log(res['Moon']);
 	  document.getElementById("results").innerHTML = JSON.stringify(res);
-	  var asc = res['Ascending'][0].toLowerCase();
-	  var links = `<a target="_blank" href="https://www.indastro.com/lagna/${asc}-ascendant.html">Asc 1</a>,`;
-	  links += `<a target="_blank" href="https://astrobix.com/horoscope/lagnapredi/${asc}">Asc 2</a>&nbsp;`;
-	  links += "<br>";
 	    
+	  var links = "<p>Ascending</p>";
+	  var asc = res['Ascending'][0].toLowerCase();
+	  links += `<a target="_blank" href="https://www.indastro.com/lagna/${asc}-ascendant.html">Asc 1</a>,`;
+	  links += `<a target="_blank" href="https://astrobix.com/horoscope/lagnapredi/${asc}">Asc 2</a>&nbsp;`;	    
+	  links += "<p>North Node</p>";
+	  var north = res['true Node'][0].toLowerCase();
+	  var north2 = capitalizeFirstLetter(north);
+	  links += `<a target="_blank" href="https://vedicsiddhanta.in/2023/09/north-node-in-astrology.html#North_Node_or_Rahu_in_${north2}">NN 1</a>,`;
+	  links += `<a target="_blank" href="https://advanced-astrology.com/north-node-in-${north}/">NN 2</a>,`;
+	  links += `<a target="_blank" href="https://astrostyle.com/astrology/gemini-north-node-${north}-north-node/">NN 3</a>`;
 	  document.getElementById("links").innerHTML = links;
         }
     } 
