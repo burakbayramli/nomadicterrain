@@ -20,5 +20,3 @@ df1[['Food','Type']].to_csv('out.csv',index=None)
 
 
 
-
-
