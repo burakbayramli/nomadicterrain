@@ -56,8 +56,9 @@ function calculate() {
 	  var north2 = capitalizeFirstLetter(north);
 	  var south = res['Ketu (true)'][0].toLowerCase();
 	  links += `<a target="_blank" href="https://vedicsiddhanta.in/2023/09/north-node-in-astrology.html#North_Node_or_Rahu_in_${north2}">NN 1</a>,`;
-	  links += `<a target="_blank" href="https://advanced-astrology.com/north-node-in-${north}/">NN 2</a>,`;
-	  links += `<a target="_blank" href="https://astrostyle.com/astrology/${south}-north-node-${north}-north-node/">NN 3</a>`;
+	  links += `<a target="_blank" href="https://advanced-astrology.com/north-node-in-${north}/">NN 2</a>,`
+	  links += `<a target="_blank" href="https://astrostyle.com/astrology/${south}-north-node-${north}-north-node/">NN 3</a>,`
+	  links += `<a target="_blank" href="/static/reading/details/vedic/northbraha/${north2}.html">NN 4</a>`;
 	  document.getElementById("links").innerHTML = links;
         }
     } 
