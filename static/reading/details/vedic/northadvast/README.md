@@ -1,10 +1,6 @@
 
-https://advanced-astrology.com/north-node-in-libra/
+https://advanced-astrology.com/north-node-in-virgo/
 
-Pisces.html
-Scorpio.html
-Taurus.html
-Virgo.html
 
 
 
