@@ -4,9 +4,9 @@ from flask import Flask, render_template, request, session, redirect, send_file,
 from io import StringIO, BytesIO
 import pickle, polyline, util, glob, sys, subprocess
 import json, random, base64, time as timelib
-import datetime, shutil, csv, io
+import datetime, shutil, csv, io, numpy as np
 from urllib.request import urlopen
-import urllib, requests, re
+import urllib, requests, re, pandas as pd
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
 from flask import Response, make_response, current_app
@@ -175,7 +175,7 @@ def vedic():
     p = subprocess.Popen(['java','swisseph.Vedic',data['day'],data['mon'],data['year'],data['hour'],data['lat'],data['lon'],offset],
                           stdout=subprocess.PIPE)
     res = p.stdout.read().decode().strip()
-    print (res)
+
     return res
 
 ##########################################################################

@@ -1,11 +1,6 @@
 
-https://advanced-astrology.com/north-node-in-aries/
+https://advanced-astrology.com/north-node-in-libra/
 
-Cancer.html
-Capricorn.html
-Gemini.html
-Leo.html
-Libra.html
 Pisces.html
 Scorpio.html
 Taurus.html
