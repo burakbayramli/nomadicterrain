@@ -55,9 +55,10 @@ function calculate() {
 	  var north = res['true Node'][0].toLowerCase();
 	  var north2 = capitalizeFirstLetter(north);
 	  var south = res['Ketu (true)'][0].toLowerCase();
+	  var south2 = capitalizeFirstLetter(south);
 	  links += `<a target="_blank" href="/static/reading/details/vedic/northsidd/doc.html">NN 1</a>,`;
 	    links += `<a target="_blank" href="/static/reading/details/vedic/northadvast/${north2}.html">NN 2</a>,`
-	  links += `<a target="_blank" href="https://astrostyle.com/astrology/${south}-north-node-${north}-north-node/">NN 3</a>,`
+	  links += `<a target="_blank" href="/static/reading/details/vedic/astrosty/${north2}.html">NN 3</a>,`
 	  links += `<a target="_blank" href="/static/reading/details/vedic/northbraha/${north2}.html">NN 4</a>`;
 	  document.getElementById("links").innerHTML = links;
         }
