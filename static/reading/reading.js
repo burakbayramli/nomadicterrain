@@ -44,12 +44,12 @@ function get_data(birth_date) {
 
     step = diff / (1000*60*60*24);
 
+    console.log('line' + step);
+
     return data[step];
 }
 
 function calculate_cycle(birth_date) {
-
-    res = get_data(birth_date)
 
     var now_year = String(new Date().getFullYear());
 
@@ -65,7 +65,7 @@ function calculate_cycle(birth_date) {
 
     res = get_data(dt);
 
-    res = String(res[2][0]);
+    res = String(res[3][0]);
         
     total = 0;
     if (res.length == 2) {
@@ -94,25 +94,33 @@ function calculate() {
     console.log(birth_date);
     res = get_data(birth_date);
 
-    spiller = res[0]; // global variable
+    spiller = res[0]; 
+    vedic_nn = res[2];
+    console.log(vedic_nn);
     
     if (year == "1973") {
 	spiller = "Gemini"
     }
+    
     out = "";
     out += `<p>Spiller</p>`;
     out += `<p><a href="details/spiller/${spiller}.html" target="_blank">${spiller}</a></p>`;
     copy_links += `${base_url}/details/spiller/${spiller}.html\n`;
     
+    out += "";
+    out += `<p>Vedic North Node</p>`;
+    out += `<p><a href="details/vedic/northadvast/${vedic_nn}.html" target="_blank">${vedic_nn}</a></p>`;
+    copy_links += `${base_url}/details/vedic/northadvast/${vedic_nn}.html\n`;
+    
     out += `<p>Chinese</p>`;
     out += `<p><a href="details/chinese/${res[1]}.html" target="_blank">${res[1]}</a></p>`;
     copy_links += `${base_url}/details/chinese/${res[1]}.html\n`;
 
-    mil1 = String(res[2][0]) + String(res[2][1]);
+    mil1 = String(res[3][0]) + String(res[3][1]);
     
     out += `<p>Lewi</p>`;
-    for (var i=0;i<res[3].length;i++) {
-	var lewi = res[3][i];
+    for (var i=0;i<res[4].length;i++) {
+	var lewi = res[4][i];
 	out += `<a href="details/lewi/${lewi}.html" target="_blank">${lewi}</a>&nbsp;&nbsp;`;
 	copy_links += `${base_url}/details/lewi/${lewi}.html\n`;
     }
@@ -132,8 +140,8 @@ function calculate() {
     out += `<p><a href="details/millman/${mil1}.html" target="_blank">${mil1}</a>&nbsp;&nbsp;`;
     copy_links += `${base_url}/details/millman/${mil1}.html\n`;
 
-    for (var i=2;i<res[2].length;i++) {
-	var mil2 = res[2][i];
+    for (var i=2;i<res[3].length;i++) {
+	var mil2 = res[3][i];
 	out += `<a href="details/millman/${mil2}.html" target="_blank">${mil2}</a>&nbsp;&nbsp;`;
 	copy_links += `${base_url}/details/millman/${mil2}.html\n`;
     }
