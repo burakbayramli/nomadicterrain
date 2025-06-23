@@ -96,7 +96,6 @@ function calculate() {
 
     spiller = res[0]; 
     vedic_nn = res[2];
-    console.log(vedic_nn);
     
     if (year == "1973") {
 	spiller = "Gemini"
