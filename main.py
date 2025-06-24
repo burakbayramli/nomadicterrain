@@ -140,7 +140,7 @@ def submit_tubedl():
     
 @app.route('/upload_main2/<dir>')
 def upload_main2(dir):
-    dir = base64.decodestring(bytes(dir,'utf-8')).decode('utf-8')
+    dir = base64.decodebytes(bytes(dir,'utf-8')).decode('utf-8')
     session['upload_dir'] = dir
     return render_template("/upload2.html",upload_dir=dir)
 
@@ -239,7 +239,7 @@ def wdired_delete():
 
 @app.route('/get_file/<farg>')
 def get_file(farg):
-    filename = base64.decodestring(bytes(farg,'utf-8')).decode('utf-8')
+    filename = base64.decodebytes(bytes(farg,'utf-8')).decode('utf-8')
     print ('read file',filename)
     if (".txt" in filename or ".md" in filename):
         return Response(open(filename).read(), mimetype='text/plain')
@@ -327,7 +327,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1]=="pi":
         app.run(host="192.168.43.89",port=5000)
     elif len(sys.argv) == 2 and sys.argv[1]=="acer":
-        app.run(host="192.168.43.49",port=5000)        
+        app.run(host="192.168.43.180",port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="brs":
         app.run(host="192.168.1.102",port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="nano":
