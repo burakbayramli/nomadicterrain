@@ -7,6 +7,10 @@ be placed there is served via nomadicterrain. It is also the testbed
 for BBApps, its client-only code can be tested via the files under
 `static`.  To start simply run `main.py`.
 
+### Python
+
+Written on Python 3.12.3
+
 ### Features
 
 * Most recent messages from Mastodon follows (via RSS)
