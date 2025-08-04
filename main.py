@@ -269,18 +269,20 @@ def get_file(farg):
         response.headers['Content-Type'] = 'application/pdf'
         response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
         return response
-    elif (".mp4" in filename):
+    elif (".mp4" in filename or ".m4a" in filename):
         binary_vid = open(filename,"rb").read()
         response = make_response(binary_vid)
         response.headers['Content-Type'] = 'video/mp4'
         response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
         return response
-    elif (".m4a" in filename):
-        binary_vid = open(filename,"rb").read()
-        response = make_response(binary_vid)
-        response.headers['Content-Type'] = 'audio/mp4'
-        response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
+    elif filename.lower().endswith('.zip'):
+        with open(filename, "rb") as f:
+            binary_data = f.read()
+        response = make_response(binary_data)
+        response.headers['Content-Type'] = 'application/zip'
+        response.headers['Content-Disposition'] = f'attachment; filename={os.path.basename(filename)}'
         return response
+    
 
 ##########################################################################
 # Image Editor
