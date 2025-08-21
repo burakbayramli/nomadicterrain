@@ -22,16 +22,15 @@
         you can get one for free from <a href="https://home.openweathermap.org/users/sign_up">this link</a>,
         enter the key below.
       </p>
-
       
       <p>
-        <button onclick="getLocation()">Get Location</button>
+        <button onclick="getLocation()">Current</button>
         &nbsp;
         <button onclick="getLocationFromPicker()">Picker</button>
         &nbsp;
         <button onclick="getWeatherData()">Weather</button>
         &nbsp;
-        <button onclick="getPollution()">Pollution</button>
+        <button onclick="getPollution()">AQI</button>
       </p>
       
       <div id="weatherposition"></div>
@@ -39,10 +38,17 @@
       <div id='tdout'></div><br/>
 
       <div id='fcout'></div><br/>
-      
+            
       <input id="owm_key" type="text" name="owmkey"/>
+
+      <p>
+        <a href="#" onclick="hardCodePosition(40.20525328267196, 29.00177170590449)">Bursa</a>,
+        <a href="#" onclick="hardCodePosition(40.97180738437777, 29.067579924011557)">Istanbul</a>
+      </p>
       
       <button onclick="set_owm_key()">Set</button>
+      
+      <div id="container-d84f574876e65b2d8f0c7bae784c22b3"></div>
       
       <div><br/><a href="../index.html">Up</a></div>
       

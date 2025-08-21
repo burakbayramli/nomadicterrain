@@ -2,5 +2,5 @@
 
 https://raw.githubusercontent.com/burakbayramli/kod/master/travdata/urla/index.json
 
-http://localhost:5000/static/travdata/fethiye/index.json
+http://192.168.43.180:5000/static/travdata/fethiye/index.json
 
