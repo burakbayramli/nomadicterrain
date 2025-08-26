@@ -19,14 +19,13 @@ Requirements
 Python packages
 
 `textract`
-`sqlite3`
 
 Programs
 
 `pdftotext`
 `djvutxt`
 
-Install with `apt-get install djulibre-bin  poppler-utils`
+Install with `apt install djvulibre-bin  poppler-utils`
 """
 import os, io, codecs, sqlite3, json, sys
 
