@@ -329,9 +329,9 @@ if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1]=="pi":
         app.run(host="192.168.43.89",port=5000)
     elif len(sys.argv) == 2 and sys.argv[1]=="acer":
-        app.run(host="192.168.43.180",port=5000)        
+        app.run(host="192.168.246.102",port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="tableta9":
-        app.run(host="192.168.43.20",port=5000)        
+        app.run(host="192.168.246.193",port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="brs":
         app.run(host="192.168.1.102",port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="nano":
