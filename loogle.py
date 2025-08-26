@@ -131,7 +131,7 @@ def index(crawl_dir,index_db,new_index=False):
         try:
             content += " " + process(file)
         except Exception as e:
-            print ("Error")
+            print ("Error", e)
             print ("Indexing only ", content)
         content = content.replace("'","").replace("\x00", "")
         c.execute('''INSERT INTO BOOKS(path,content,size) VALUES('%s','%s','%s'); ''' % (rel_file,content,size))
