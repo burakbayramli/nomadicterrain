@@ -21,11 +21,10 @@ def getnews():
 	("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",5),
 	("WION","https://www.wionews.com/feeds/world/rss.xml",5),
 	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
-        ("H2 Central","https://hydrogen-central.com/feed/",20),
         ("Politico.eu","https://www.politico.eu/feed/",5),
         ("The Lever","https://www.levernews.com/rss/",5),
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
-        #("The American Conservative","https://www.theamericanconservative.com/feed",5),
+        ("The American Conservative","https://www.theamericanconservative.com/feed",5),
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
         ("Informed Comment","https://www.juancole.com/feed",10),
         ("H2 GN","https://news.google.com/rss/search?q=intitle:hydrogen+when:24h&hl=en-US&gl=US&ceid=US:en",5)

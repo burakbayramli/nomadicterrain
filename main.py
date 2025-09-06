@@ -17,8 +17,6 @@ from pytz import timezone, utc
 app = Flask(__name__)
 
 params = json.loads(open(os.environ['HOME'] + "/.nomterr.conf").read())
-
-TMPDIR = params['tmpdir']
     
 headers = { 'User-Agent': 'UCWEB/2.0 (compatible; Googlebot/2.1; +google.com/bot.html)'}
 
@@ -327,18 +325,15 @@ if __name__ == '__main__':
     app.secret_key = "aksdfkasf"
     print (len(sys.argv))
     if len(sys.argv) == 2 and sys.argv[1]=="acer1":
-        app.run(host="192.168.246.50",port=5000)        
-    if len(sys.argv) == 2 and sys.argv[1]=="acer":
-        app.run(host="192.168.246.102",port=5000)        
+        app.run(host=params["ips"]["acer1"],port=5000)        
+    if len(sys.argv) == 2 and sys.argv[1]=="acer2":
+        app.run(host=params["ips"]["acer2"],port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="tableta9":
-        app.run(host="192.168.246.193",port=5000)        
+        app.run(host=params["ips"]["tableta9"],port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="nano":
-        app.run(host="192.168.43.34",port=5000)        
+        app.run(host=params["ips"]["nano"],port=5000)        
     elif len(sys.argv) == 2 and sys.argv[1]=="local":
         app.run(host="localhost",port=5000)        
     else: 
         app.run(host="localhost",port=5000)
-
-
-
 
