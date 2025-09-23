@@ -15,6 +15,7 @@ def getvids(daysago):
               ("cappy","UCwrpo8z3IgJln2ZidqBUiMA",5),
               ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
               ("unicamp","UCs0T96Tx2oPuGjRXs7h8OAA",5),
+              ("BlackScoutSurvival","UC4YOBmzRey4X3lLCjhw3UaQ",5),
               ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
               ("tibees","UC52kszkc08-acFOuogFl5jw",5),              
               ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
