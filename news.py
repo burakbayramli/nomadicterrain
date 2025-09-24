@@ -6,7 +6,8 @@ import re, time, os
 def strip_html(input):
     return BeautifulSoup(input, "lxml").text
 
-skip_words = ["Pope Leo","Turkey", "Elon", "Musk","Tesla", "Mars","battery","electric"]
+skip_words = ["Pope Leo","Turkey", "Elon", "Musk","Tesla",
+              "Mars","battery","electric", "radical left"]
 
 def getnews():
     feeds = [
