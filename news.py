@@ -21,7 +21,7 @@ def getnews():
 	("TASS", "http://tass.com/rss/v2.xml",5),
 	("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",5),
 	("WION","https://www.wionews.com/feeds/world/rss.xml",5),
-	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
+#	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
         ("Politico.eu","https://www.politico.eu/feed/",5),
         ("The Lever","https://www.levernews.com/rss/",5),
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
