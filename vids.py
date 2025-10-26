@@ -19,7 +19,6 @@ def getvids(daysago):
               ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
               ("tibees","UC52kszkc08-acFOuogFl5jw",5),              
               ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
-              ("patry","UCzQ5JiuXVX3enojkU3Plalw",5),
               ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),
               ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
               ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),

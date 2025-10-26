@@ -1,13 +1,17 @@
 from bs4 import BeautifulSoup 
 import feedparser, sys, codecs
 import re, requests, random, os
-import re, time, os
+import re, time, os, datetime
 
 def strip_html(input):
     return BeautifulSoup(input, "lxml").text
 
 skip_words = ["Pope Leo","Turkey", "Elon", "Musk","Tesla",
               "Mars","battery","electric", "radical left"]
+
+dnow = datetime.datetime.now()
+dago = dnow - datetime.timedelta(days=3)
+h2search = "https://news.google.com/rss/search?q=intitle:hydrogen+after:%s&hl=en-US&gl=US&ceid=US:en" % dago.strftime('%Y-%m-%d')
 
 def getnews():
     feeds = [
@@ -22,13 +26,14 @@ def getnews():
 	("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",5),
 	("WION","https://www.wionews.com/feeds/world/rss.xml",5),
 #	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
-        ("Politico.eu","https://www.politico.eu/feed/",5),
+        ("Politico.eu","https://www.politico.eu/feed/",5),        
         ("The Lever","https://www.levernews.com/rss/",5),
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
         ("The American Conservative","https://www.theamericanconservative.com/feed",5),
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
+        ("The Eoch Times","https://feed.theepochtimes.com/china/regime/feed",5),
         ("Informed Comment","https://www.juancole.com/feed",10),
-        ("H2 GN","https://news.google.com/rss/search?q=intitle:hydrogen+when:24h&hl=en-US&gl=US&ceid=US:en",5)
+        ("H2 GN",h2search,5)
     ]
 
     content = ""
