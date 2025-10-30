@@ -6,12 +6,10 @@ skip_words = ["empire","deep state","wolff"]
 
 def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
-    feeds = [ ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
-              ("status coup","UC0pCsHlEEmCfxllZSlRB2Og",5),
-              ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
+    feeds = [ ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
               ("willem","UCF1fG3gT44nGTPU2sVLoFWg",5),
               ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
-              ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
+              #("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
               ("cappy","UCwrpo8z3IgJln2ZidqBUiMA",5),
               ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
               ("unicamp","UCs0T96Tx2oPuGjRXs7h8OAA",5),
@@ -23,7 +21,9 @@ def getvids(daysago):
               ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
               ("bouris","UCPX01K1JgNS5pyzUtwtCtsQ",5),
               ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
-              ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5)
+              ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5),
+              ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
+              ("status coup","UC0pCsHlEEmCfxllZSlRB2Og",5),              
     ]
 
     content = ""
