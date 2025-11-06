@@ -268,10 +268,11 @@ def get_file(farg):
         response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
         return response
     elif (".mp4" in filename or ".m4a" in filename):
-        binary_vid = open(filename,"rb").read()
-        response = make_response(binary_vid)
+        with open(filename, "rb") as f:
+            binary_data = f.read()
+        response = make_response(binary_data)
         response.headers['Content-Type'] = 'video/mp4'
-        response.headers['Content-Disposition'] = 'inline; filename=%s' % os.path.basename(filename)
+        response.headers['Content-Disposition'] = f'attachement; filename=%s' % os.path.basename(filename)
         return response
     elif filename.lower().endswith('.zip'):
         with open(filename, "rb") as f:

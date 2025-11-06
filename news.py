@@ -31,7 +31,7 @@ def getnews():
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
         ("The American Conservative","https://www.theamericanconservative.com/feed",5),
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
-        ("The Eoch Times","https://feed.theepochtimes.com/china/regime/feed",5),
+        ("The Epoch Times","https://feed.theepochtimes.com/china/regime/feed",5),
         ("Informed Comment","https://www.juancole.com/feed",10),
         ("H2 GN",h2search,5)
     ]
