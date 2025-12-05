@@ -8,7 +8,6 @@ def getvids(daysago):
     vbase = "https://www.youtube.com/feeds/videos.xml?channel_id="
     feeds = [ ("neutrality","UCHdLVKdAeG6zAeZMGZh91bg",5),
               ("clysdale","UCqpNHx_gjAV70G-H1jZMpOg",5),
-              ("alice","UCrCTC5_t-HaVJ025DbYITiw",5),
               ("scottish","UCzCi3Vxl5RPlHZtKJDo2Y9Q",5),
               ("cappy","UCwrpo8z3IgJln2ZidqBUiMA",5),
               ("niki","UCNmv0SUwrOkEqadKneNRwHg",5),
