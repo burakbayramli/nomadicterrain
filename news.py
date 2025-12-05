@@ -25,13 +25,12 @@ def getnews():
 	("TASS", "http://tass.com/rss/v2.xml",5),
 	("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",5),
 	("WION","https://www.wionews.com/feeds/world/rss.xml",5),
-#	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
+	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
         ("Politico.eu","https://www.politico.eu/feed/",5),        
         ("The Lever","https://www.levernews.com/rss/",5),
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
         ("The American Conservative","https://www.theamericanconservative.com/feed",5),
         ("Hindustan Times World","https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml",10),
-        ("The Epoch Times","https://feed.theepochtimes.com/china/regime/feed",5),
         ("Informed Comment","https://www.juancole.com/feed",10),
         ("H2 GN",h2search,5)
     ]
