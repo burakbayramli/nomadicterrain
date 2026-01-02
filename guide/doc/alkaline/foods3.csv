@@ -1,0 +1,267 @@
+Food Category;Food;r1;r2;r3;r4;r5;r6;r7;rank
+Breads;Corn Tortillas;;;x;;;;;3
+Breads;Rye bread;;;;x;;;;4
+Breads;Sourdough bread;;;x;;;;;3
+Breads;White biscuit;;;;x;;;;4
+Breads;White bread;;;x;;;;;3
+Breads;Whole-grain bread;;;;x;;;;4
+Breads;Whole-meal bread;;;;x;;;;4
+Condiments;Ketchup;;;x;;;;;3
+Condiments;Mayonnaise;;;x;;;;;3
+Condiments;Miso;;;x;;;;;3
+Condiments;Mustard;;;x;;;;;3
+Condiments;Soy sauce;;;x;;;;;3
+Dairy;Buttermilk;;;;;x;;;5
+Dairy;Cheese (all varieties, from all milks);;;x;;;;;3
+Dairy;Cream;;;;x;;;;4
+Dairy;Egg whites;;;x;;;;;3
+Dairy;Eggs (whole);;;x;;;;;3
+Dairy;Homogenized milk;;;;x;;;;4
+Dairy;Milk (not pasteurized);;;;x;;;;4
+Dairy;Milk (pasteurized);;;x;;;;;3
+Dairy;Paneer (cheese);;;x;;;;;3
+Dairy;Quark;;;x;;;;;3
+Dairy;Yoghurt (sweetened);;;x;;;;;3
+Dairy;Yoghurt (unsweetened);;;;x;;;;4
+Beverages & Drinks;Beer;;x;;;;;;2
+Beverages & Drinks;Coffee;;x;;;;;;2
+Beverages & Drinks;Coffee substitue drinks;;;;x;;;;4
+Beverages & Drinks;Fruit juice (natural);;;;x;;;;4
+Beverages & Drinks;Fruit juice (sweetened);;x;;;;;;2
+Beverages & Drinks;Liquor;;x;;;;;;2
+Beverages & Drinks;Soda/Pop;;;x;;;;;3
+Beverages & Drinks;Tea (black);;x;;;;;;2
+Beverages & Drinks;Tea (herbal, green);;;;;x;;;5
+Beverages & Drinks;Water (Fiji, Hawaiian, Evian);;;;;x;;;5
+Beverages & Drinks;Water (sparkling);;;x;;;;;3
+Beverages & Drinks;Water (spring);;;;x;;;;4
+Beverages & Drinks;Wine;;;x;;;;;3
+Fats & Oils;Borage oil;;;;;x;;;5
+Fats & Oils;Butter;;;;x;;;;4
+Fats & Oils;Coconut Oil (raw);;;;;x;;;5
+Fats & Oils;Cod liver oil;;;;x;;;;4
+Fats & Oils;Corn oil;;;;x;;;;4
+Fats & Oils;Evening Primrose oil;;;;;x;;;5
+Fats & Oils;Flax seed oil;;;;;x;;;5
+Fats & Oils;Margarine;;;;x;;;;4
+Fats & Oils;Marine lipids;;;;;x;;;5
+Fats & Oils;Olive Oil;;;;;x;;;5
+Fats & Oils;Sesame oil;;;;;x;;;5
+Fats & Oils;Sunflower oil;;;;x;;;;4
+Fruits;Acai Berry;;;;x;;;;4
+Fruits;Apples;;;;x;;;;4
+Fruits;Apricot;;;;x;;;;4
+Fruits;Apricots;;;;x;;;;4
+Fruits;Apricots (dried);;;;x;;;;4
+Fruits;Avocado (protein);;;;;;x;;6
+Fruits;Banana (ripe);;;;;x;;;5
+Fruits;Banana (unripe);;;;x;;;;4
+Fruits;Black currant;;;;x;;;;4
+Fruits;Blackberries;;;;x;;;;4
+Fruits;Blueberry;;;;x;;;;4
+Fruits;Cantaloupe;;;;x;;;;4
+Fruits;Cherry, sour;;;;;x;;;5
+Fruits;Cherry, sweet;;;;x;;;;4
+Fruits;Clementines;;;;x;;;;4
+Fruits;Coconut, fresh;;;;;x;;;5
+Fruits;Cranberry;;;;x;;;;4
+Fruits;Currant;;;;x;;;;4
+Fruits;Dates;;;;x;;;;4
+Fruits;Dates (dried);;;;x;;;;4
+Fruits;Fig juice powder;;;;x;;;;4
+Fruits;Figs (dried);;;;;x;;;5
+Fruits;Figs (raw);;;;;x;;;5
+Fruits;Fresh lemon;;;;;x;;;5
+Fruits;Goji berries;;;;x;;;;4
+Fruits;Gooseberry, ripe;;;;x;;;;4
+Fruits;Grapefruit;;;;x;;;;4
+Fruits;Grapes (ripe);;;;x;;;;4
+Fruits;Italian plum;;;;x;;;;4
+Fruits;Limes;;;;;x;;;5
+Fruits;Mandarin orange;;;x;;;;;3
+Fruits;Mango;;;;x;;;;4
+Fruits;Nectarine;;;;x;;;;4
+Fruits;Orange;;;;x;;;;4
+Fruits;Papaya;;;;x;;;;4
+Fruits;Peach;;;;x;;;;4
+Fruits;Pear;;;;x;;;;4
+Fruits;Pineapple;;;x;;;;;3
+Fruits;Pomegranate;;;x;;;;;3
+Fruits;Rasberry;;;x;;;;;3
+Fruits;Red currant;;;;x;;;;4
+Fruits;Rose hips;;;x;;;;;3
+Fruits;Strawberries;;;;x;;;;4
+Fruits;Strawberry;;;;x;;;;4
+Fruits;Tangerine;;;;x;;;;4
+Fruits;Tomato;;;;;x;;;5
+Fruits;Watermelon;;;;x;;;;4
+Fruits;Yellow plum;;;;x;;;;4
+Grains & Legumes;Basmati rice;;;;x;;;;4
+Grains & Legumes;Brown rice;;;x;;;;;3
+Grains & Legumes;Buckwheat;;;;;x;;;5
+Grains & Legumes;Bulgar wheat;;;;x;;;;4
+Grains & Legumes;Couscous;;;;x;;;;4
+Grains & Legumes;Granulated soy (cooked, ground);;;;;;x;;6
+Grains & Legumes;kamut;;;;;x;;;5
+Grains & Legumes;Lentils;;;;;x;;;5
+Grains & Legumes;Lima beans;;;;;;x;;6
+Grains & Legumes;Oats;;;;x;;;;4
+Grains & Legumes;Rye bread;;;;x;;;;4
+Grains & Legumes;Soy flour;;;;;x;;;5
+Grains & Legumes;Soy lecithin, pure;;;;;;;x;7
+Grains & Legumes;Soy nuts (soaked soy beans, then dried);;;;;;;x;7
+Grains & Legumes;Soybeans, fresh;;;;;;x;;6
+Grains & Legumes;Spelt;;;;;x;;;5
+Grains & Legumes;Tofu;;;;;x;;;5
+Grains & Legumes;Wheat;;;x;;;;;3
+Grains & Legumes;white (navy) beans;;;;;;x;;6
+Meat, Poultry & Fish;Beef;;x;;;;;;2
+Meat, Poultry & Fish;Buffalo;;;x;;;;;3
+Meat, Poultry & Fish;Chicken;;;x;;;;;3
+Meat, Poultry & Fish;Duck;;;x;;;;;3
+Meat, Poultry & Fish;Fresh water fish;;;x;;;;;3
+Meat, Poultry & Fish;Liver;;;;x;;;;4
+Meat, Poultry & Fish;Ocean fish;;;x;;;;;3
+Meat, Poultry & Fish;Organ meats;;;;x;;;;4
+Meat, Poultry & Fish;Oysters;;;;x;;;;4
+Meat, Poultry & Fish;Pork;;x;;;;;;2
+Meat, Poultry & Fish;sardines (canned);;x;;;;;;2
+Meat, Poultry & Fish;Tuna (canned);;x;;;;;;2
+Meat, Poultry & Fish;Veal;;x;;;;;;2
+Meat, Poultry & Fish;Wild salmon,;;;x;;;;;3
+Misc;Apple Cider Vinegar;;;;x;;;;4
+Misc;Baking soda;;;;;;x;;6
+Misc;Bee pollen;;;;;x;;;5
+Misc;Canned foods;;;x;;;;;3
+Misc;cereals (like Kelloggs etc);;;x;;;;;3
+Misc;Hummus;;;;x;;;;4
+Misc;Microwaved foods;;;x;;;;;3
+Misc;POPCORN;;;;x;;;;4
+Misc;Rice milk;;;;x;;;;4
+Misc;Royal Jelly;;;;;x;;;5
+Misc;Soy Protein Powder;;;;x;;;;4
+Misc;Tempeh;;;;x;;;;4
+Misc;Whey protein powder;;;;x;;;;4
+Nuts;Almond;;;;;x;;;5
+Nuts;Almond butter (raw);;;;;x;;;5
+Nuts;Brazil nuts;;;;x;;;;4
+Nuts;Cashews;;;;x;;;;4
+Nuts;Filberts;;;;x;;;;4
+Nuts;Hazelnut;;;;x;;;;4
+Nuts;Macadamia nuts (raw);;;;x;;;;4
+Nuts;Peanut butter (raw, organic);;;x;;;;;3
+Nuts;Peanuts;;;x;;;;;3
+Nuts;pine nuts (raw);;;;;x;;;5
+Nuts;Pistachios;;;x;;;;;3
+Nuts;Walnuts;;;;x;;;;4
+Roots;Carrot;;;;;x;;;5
+Roots;Fresh red beet;;;;;;x;;6
+Roots;Kohlrabi;;;;;x;;;5
+Roots;Potatoes;;;;;x;;;5
+Roots;Red radish;;;;;;x;;6
+Roots;Rutabaga;;;;;x;;;5
+Roots;Summer black radish;;;;;;;x;7
+Roots;sweet potatoes;;;;x;;;;4
+Roots;Turnip;;;;;x;;;5
+Roots;White radish (spring);;;;;x;;;5
+Roots;Yams;;;;;x;;;5
+Seeds;Barley;;;;x;;;;4
+Seeds;Caraway seeds;;;;;x;;;5
+Seeds;Cumin seeds;;;;;x;;;5
+Seeds;Fennel seeds;;;;;x;;;5
+Seeds;Flax seeds;;;;x;;;;4
+Seeds;Pumpkin seeds;;;;x;;;;4
+Seeds;Sesame seeds;;;;;x;;;5
+Seeds;Sunflower seeds;;;;x;;;;4
+Seeds;Wheat Kernel;;;x;;;;;3
+Sweets & Sweeteners;Agave nectar;;;;x;;;;4
+Sweets & Sweeteners;Alcohol sugars (xylitol and the other sacharides.;;;x;;;;;3
+Sweets & Sweeteners;Artificial sweeteners;;x;;;;;;2
+Sweets & Sweeteners;Barley malt syrup;;;;x;;;;4
+Sweets & Sweeteners;Beet sugar;;;x;;;;;3
+Sweets & Sweeteners;Brown rice syrup;;;;x;;;;4
+Sweets & Sweeteners;Chocolates;;;x;;;;;3
+Sweets & Sweeteners;Dr. Bronner’s barley malt sweetener;;;;x;;;;4
+Sweets & Sweeteners;Dried sugar cane juice;;;;x;;;;4
+Sweets & Sweeteners;Fructose;;;;x;;;;4
+Sweets & Sweeteners;Halva [ground sesame seed sweet];;;x;;;;;3
+Sweets & Sweeteners;Honey;;;;x;;;;4
+Sweets & Sweeteners;Maple Syrup;;;;x;;;;4
+Sweets & Sweeteners;Milk sugar;;;;x;;;;4
+Sweets & Sweeteners;Molasses;;;x;;;;;3
+Sweets & Sweeteners;Sugar (white);;;x;;;;;3
+Sweets & Sweeteners;Sugarcane;;;x;;;;;3
+Sweets & Sweeteners;Turbinado sugar;;;;x;;;;4
+Sweets & Sweeteners;Xylitol;;;x;;;;;3
+Vegetables;Alfalfa;;;;;;x;;6
+Vegetables;Alfalfa grass;;;;;;;x;7
+Vegetables;Artichokes;;;;;x;;;5
+Vegetables;Asparagus;;;;;x;;;5
+Vegetables;Aubergine/Egg plant;;;;;x;;;5
+Vegetables;Barley grass;;;;;;;x;7
+Vegetables;Basil;;;;;x;;;5
+Vegetables;Bell peppers/capsicums (all colors);;;;;x;;;5
+Vegetables;Blue-Green Algae;;;;x;;;;4
+Vegetables;Bok Choy;;;;;x;;;5
+Vegetables;Brussels sprouts;;;;;x;;;5
+Vegetables;Cabbage lettuce, fresh;;;;;;x;;6
+Vegetables;Canned vegetables;;;x;;;;;3
+Vegetables;Cauliflower;;;;;x;;;5
+Vegetables;Cayenne pepper;;;;;;x;;6
+Vegetables;Celery;;;;;;x;;6
+Vegetables;Chives;;;;;x;;;5
+Vegetables;Cilantro;;;;;;x;;6
+Vegetables;Comfrey;;;;;x;;;5
+Vegetables;Cooked vegetables (all kinds);;;;x;;;;4
+Vegetables;Cucumber, fresh;;;;;;;x;7
+Vegetables;Dandelion;;;;;;;x;7
+Vegetables;Dog grass;;;;;;;x;7
+Vegetables;Endive, fresh;;;;;;x;;6
+Vegetables;French cut (green) beans;;;;;;x;;6
+Vegetables;Frozen vegetables;;;x;;;;;3
+Vegetables;Garlic;;;;;;x;;6
+Vegetables;Ginger;;;;;;x;;6
+Vegetables;Ginseng;;;;;x;;;5
+Vegetables;Green cabbage, (December Harvest);;;;;x;;;5
+Vegetables;Green cabbage, (March Harvest);;;;;x;;;5
+Vegetables;Horse radish;;;;;x;;;5
+Vegetables;Jicama;;;;;;;x;7
+Vegetables;Kale;;;;;;;x;7
+Vegetables;Kamut grass;;;;;;;x;7
+Vegetables;Lamb’s lettuce;;;;;x;;;5
+Vegetables;Leeks (bulbs);;;;;x;;;5
+Vegetables;Lettuce;;;;;x;;;5
+Vegetables;Mushrooms;;;x;;;;;3
+Vegetables;Mustard greens;;;;;x;;;5
+Vegetables;Onion;;;;;x;;;5
+Vegetables;Oregano;;;;;;x;;6
+Vegetables;Parsnips;;;;;x;;;5
+Vegetables;Peas, fresh;;;;;x;;;5
+Vegetables;Peas, ripe;;;;;x;;;5
+Vegetables;Peppers;;;;;x;;;5
+Vegetables;Pickled vegetables;;x;;;;;;2
+Vegetables;Pumpkins (raw);;;;;x;;;5
+Vegetables;Raw onions;;;;;x;;;5
+Vegetables;Red cabbage;;;;;x;;;5
+Vegetables;Rhubarb stalks;;;;;x;;;5
+Vegetables;Savoy Cabbage;;;;;x;;;5
+Vegetables;Sea Vegetables;;;;;x;;;5
+Vegetables;Seaweed (dulse, kelp, laver, etc);;;;;x;;;5
+Vegetables;Shave grass;;;;;;;x;7
+Vegetables;Sorrel;;;;;;x;;6
+Vegetables;Sourkraut;;;x;;;;;3
+Vegetables;Soy Sprouts;;;;;;;x;7
+Vegetables;Spinach (March harvest);;;;;x;;;5
+Vegetables;Spinach (other than March);;;;;;x;;6
+Vegetables;Sprouted seeds (all kinds);;;;;;;x;7
+Vegetables;Squash (all kinds, raw);;;;;x;;;5
+Vegetables;Straw grass;;;;;;;x;7
+Vegetables;Thyme;;;;;x;;;5
+Vegetables;Tomatoes (puree);;;;;x;;;5
+Vegetables;Tomatoes (raw);;;;;x;;;5
+Vegetables;Tomatoes (sundried);;;;;x;;;5
+Vegetables;Watercress;;;;;x;;;5
+Vegetables;Wheat grass;;;;;;;x;7
+Vegetables;White cabbage;;;;;x;;;5
+Vegetables;Yeast;;;;x;;;;4
+Vegetables;Zucchini;;;;;x;;;5
