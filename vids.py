@@ -14,13 +14,18 @@ def getvids(daysago):
               ("em&joel","UCbn5xzRrAOY9DWJlbyPBsvg",5),
               ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
               ("willem","UCF1fG3gT44nGTPU2sVLoFWg",5),
-              ("tibees","UC52kszkc08-acFOuogFl5jw",5),              
+              ("tibees","UC52kszkc08-acFOuogFl5jw",5),
+              ("MoreBestEverFood","UCXw1ddyrUmib3zmCmvSI1ow",5),
               ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
               ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),
               ("encamp","UCRIeMHsEdzA9RroG19kXdYg",5),
               ("LPPFusion","UCiBditpj7sdROMYz02qoCMQ",5),
               ("sky scholar","UCL7QIOZteWPpBWBOl8i0e-g",5),
-              ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5)
+              ("dialogue works","UCkF-6h_Zgf9zXNUmUB-MzTw",5),
+              ("reallifelore","UCP5tjEmvPItGyLhmjdwP7Ww",5),
+              ("sengupta","UCYCVm1aN33HYdLs66DHw_ow",4),
+              ("thinkschool","UCKZozRVHRYsYHGEyNKuhhdA",4),
+              ("caspianreport","UCwnKziETDbHJtx78nIkfYug",4)
     ]
 
     content = ""

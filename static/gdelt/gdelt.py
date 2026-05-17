@@ -1,6 +1,6 @@
 import zipfile, pandas as pd
-with zipfile.ZipFile('/home/burak/Downloads/20250522.export.CSV.zip', 'r') as z:
-     df = pd.read_csv(z.open('20250522.export.CSV'),sep='\t',header=None)
+with zipfile.ZipFile('/home/burak/Downloads/20260127.export.CSV.zip', 'r') as z:
+     df = pd.read_csv(z.open('20260127.export.CSV'),sep='\t',header=None)
      
 cols = ["GLOBALEVENTID", "SQLDATE", "MonthYear", "Year",
 "FractionDate", "Actor1Code", "Actor1Name", "Actor1CountryCode",

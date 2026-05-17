@@ -7,7 +7,7 @@ def strip_html(input):
     return BeautifulSoup(input, "lxml").text
 
 skip_words = ["Pope Leo","Turkey", "Elon", "Musk","Tesla",
-              "Mars","battery","electric", "radical left"]
+              "Mars","battery","electric", "radical left","pore over"]
 
 dnow = datetime.datetime.now()
 dago = dnow - datetime.timedelta(days=3)
@@ -22,10 +22,7 @@ def getnews():
 	("NYT", "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",5),
 	("France 24","https://www.france24.com/en/rss",5),
 	("Al Monitor", "https://www.al-monitor.com/rss",5),
-	("TASS", "http://tass.com/rss/v2.xml",5),
 	("First Post","https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml",5),
-	("WION","https://www.wionews.com/feeds/world/rss.xml",5),
-	("Arab News","https://www.arabnews.com/cat/3/rss.xml",5),
         ("Politico.eu","https://www.politico.eu/feed/",5),        
         ("The Lever","https://www.levernews.com/rss/",5),
         ("WaPo","https://feeds.washingtonpost.com/rss/national",5),
