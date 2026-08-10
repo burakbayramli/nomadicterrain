@@ -14,7 +14,6 @@ def getvids(daysago):
               ("em&joel","UCbn5xzRrAOY9DWJlbyPBsvg",5),
               ("werleman","UCa1_vNx2yAQzFnQWNajUHtg",5),
               ("willem","UCF1fG3gT44nGTPU2sVLoFWg",5),
-              ("tibees","UC52kszkc08-acFOuogFl5jw",5),
               ("MoreBestEverFood","UCXw1ddyrUmib3zmCmvSI1ow",5),
               ("haiph","UCOxLhz6B_elvLflntSEfnzA",5),
               ("rosen","UCvsIlofcT7DF3Kk8pz9yFfw",5),

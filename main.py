@@ -274,6 +274,13 @@ def get_file(farg):
         response.headers['Content-Type'] = 'video/mp4'
         response.headers['Content-Disposition'] = f'attachement; filename=%s' % os.path.basename(filename)
         return response
+    elif (".mp3" in filename):
+        with open(filename, "rb") as f:
+            binary_data = f.read()
+        response = make_response(binary_data)
+        response.headers['Content-Type'] = 'audio/mpeg'
+        response.headers['Content-Disposition'] = f'attachement; filename=%s' % os.path.basename(filename)
+        return response
     elif filename.lower().endswith('.zip'):
         with open(filename, "rb") as f:
             binary_data = f.read()
