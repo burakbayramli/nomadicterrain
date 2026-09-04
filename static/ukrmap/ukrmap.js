@@ -2,10 +2,13 @@
 function plot_map() {
     map = L.map('map').setView([48,37], 6);
     
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-	maxZoom: 19, attribution: 'OSM'
+    L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+	maxZoom: 20,
+	subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+	attribution: '&copy; Google Maps, <a href="https://www.google.com/maps/d/viewer?mid=1V8NzjQkzMOhpuLhkktbiKgodOQ27X6IV">Suriyak Maps</a>'
     }).addTo(map);
 
+       
     var b = document.getElementById("before").value;
     var a = document.getElementById("after").value;
     console.log(a,b);
